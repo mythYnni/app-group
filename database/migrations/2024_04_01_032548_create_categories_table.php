@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name')->nullable(false);
             $table->tinyInteger('status')->default(0);
             $table->string('timeCreate');
-            $table->string('iconText')->nullable();
+            // $table->string('iconText')->nullable();
             $table->timestamps();
         });
     }
