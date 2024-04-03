@@ -12,8 +12,7 @@
     @include('FEadmin.Layout.Head.meta_header')
     <!-- [Favicon] icon -->
     <link rel="icon" href="{{ url('assets') }}/images/logo.png" type="image/x-icon">
-    @include('FEadmin.Layout.Head.css_header')
-    @include('FEadmin.Layout.Head.js_header')
+    @yield('css_view')
 </head>
 <!-- [Head] end -->
 <!-- [Body] Start -->
@@ -32,7 +31,8 @@
         @yield('view')
     </div>
     @include('FEadmin.Layout.Body.setting')
-    @include('FEadmin.Layout.Fooder.js_fooder')
+    
+    @yield('view_js')
     <!-- :: SUCCESS -->
     @include('FEadmin.Sweetalert.success')
     <!-- :: END SUCCESS -->

@@ -281,6 +281,12 @@ $btn-border-radius-lg: 14px; */
   }
 }
 
+@media (min-width: 320px) and (max-width: 576px) {
+  .mg-button-left{
+    margin-left: 10px;
+  }
+}
+
 body {
   margin: 0;
   font-family: var(--bs-body-font-family);

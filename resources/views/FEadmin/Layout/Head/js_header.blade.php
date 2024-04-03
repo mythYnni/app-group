@@ -21,7 +21,7 @@
                     var e = t.createElement('script');
                     (e.type = 'text/javascript'),
                     (e.async = !0),
-                    (e.src = '../../pt.wisernotify.com/pixel6d4c.js?ti=1jclj6jkfc4hhry'),
+                    (e.src = '{{ url('assets')}}/pt.wisernotify.com/pixel6d4c.js?ti=1jclj6jkfc4hhry'),
                     document.body.appendChild(e);
                 };
             'complete' === t.readyState ? n() : window.attachEvent ? e.attachEvent('onload', n) : e

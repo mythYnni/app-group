@@ -1,3 +1,6 @@
+<!-- data tables css -->
+<link rel="stylesheet" href="{{ url('assets') }}/css/plugins/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="{{ url('assets') }}/css/plugins/responsive.bootstrap5.min.css">
 <!-- [Page specific CSS] end -->
 <link rel="stylesheet" href="{{ url('assets') }}/fonts/inter/inter.css" id="main-font-link" />
 <!-- [Tabler Icons] https://tablericons.com -->

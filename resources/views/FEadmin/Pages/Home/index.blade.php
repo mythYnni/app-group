@@ -1,4 +1,8 @@
 @extends ('FEadmin.master')
+@section('css_view')
+    @include('FEadmin.Layout.Head.css_header')
+    @include('FEadmin.Layout.Head.js_header')
+@stop
 @section('view')
 <div class="pc-content">
     <!-- [ breadcrumb ] start -->
@@ -27,4 +31,7 @@
     </div>
     <!-- [ Main Content ] end -->
 </div>
+@stop
+@section('view_js')
+    @include('FEadmin.Layout.Fooder.js_fooder')
 @stop

@@ -25,7 +25,8 @@ return new class extends Migration
             $table->string('district')->nullable();
             $table->string('wards')->nullable();
             $table->string('detail_address')->nullable();
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->unsignedBigInteger('idCategory');
+            $table->foreign('idCategory')->references('id')->on('categories')->onDelete('cascade');
             $table->tinyInteger('type')->default(0); // 0 là riêng tư, 1 công khai
             $table->double('price')->default(0)->nullable(); //giá bán
             $table->double('rent_cost')->default(0)->nullable(); //giá thuê
