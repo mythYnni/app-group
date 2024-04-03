@@ -50,4 +50,14 @@ class Category extends Model
         $obj = DB::table('categories')->where('slug', $slug)->delete();
         return $obj;
     }
+
+    // Phương thức cập nhật
+    public function update_category($req, $slug){
+        $obj = DB::table('categories')->where('slug', $slug)->update([
+            'name' => $req -> name,
+            'slug' => $req -> slug,
+            'status' => $req -> status,
+        ]);
+        return $obj;
+    }
 }

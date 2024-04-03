@@ -68,7 +68,7 @@
                                               <a class="dropdown-item" href="{{route('delete_category', $value->slug) }}" title="Delete" onclick="return confirm('Bạn Có Chắc Muốn Xóa Danh Mục {{ $value->name }} Không?')">
                                                 <span style="display: flex; justify-content: flex-start; color: #dc2626;"><i class="ti ti-trash me-1"></i> Xóa</span>
                                               </a>
-                                              <a class="dropdown-item" href="#!"><span style="display: flex; justify-content: flex-start; color: #2ca87f;"><i class="ti ti-pencil me-1"></i> Cập Nhật</span></a>
+                                              <a class="dropdown-item" href="{{route('view_update_category', $value->slug) }}"><span style="display: flex; justify-content: flex-start; color: #2ca87f;"><i class="ti ti-pencil me-1"></i> Cập Nhật</span></a>
                                             </div>
                                           </div>
                                         </td>

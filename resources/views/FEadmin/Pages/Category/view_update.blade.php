@@ -30,10 +30,10 @@
         <div class="row">
             <div class="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
                 <!-- Basic Inputs -->
-                <form class="card" action="{{ route('creater_category') }}" method="POST" id="formReset">
+                <form class="card" method="POST" id="formReset">
                     @csrf
                     <div class="card-header">
-                        <h5>Thêm Mới Danh Mục Vị Trí</h5>
+                        <h5>Cập Nhật Danh Mục Vị Trí: "{{ $obj->name }}"</h5>
                     </div>
                     <div class="card-body">
                         @error('status')
@@ -48,7 +48,7 @@
                             <label class="form-label">Tên vị trí</label>
                             <input type="text" class="form-control form-control" placeholder="Tên danh mục"
                                 onkeyup="ChangeToSlug();" fdprocessedid="w3ptog" name="name" id="slug"
-                                value="{{ old('name') }}">
+                                value="{{ $obj->name }}">
                             @error('name')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -58,7 +58,7 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">Đường dẫn sạch</label>
-                            <input type="text" class="form-control" name="slug" value="{{ old('slug') }}"
+                            <input type="text" class="form-control" name="slug" value="{{ $obj->slug }}"
                                 id="convert_slug" placeholder="Đường dẫn sạch" readonly fdprocessedid="qaalh">
                         </div>
                         <div class="form-group row mb-0">
@@ -66,13 +66,13 @@
                             <div class="col-sm-12">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" value="0"
-                                        id="customCheckinlhstate1" {{ old('status') == '0' ? 'checked' : '' }}
+                                        id="customCheckinlhstate1" {{ $obj->status  == '0' ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="2">
                                     <label class="form-check-label" for="customCheckinlhstate1"> Hiện </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" value="1"
-                                        id="customCheckinlhstate2" {{ old('status') == '1' ? 'checked' : '' }}
+                                        id="customCheckinlhstate2" {{ $obj->status  == '1' ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="1">
                                     <label class="form-check-label" for="customCheckinlhstate2"> Ẩn </label>
                                 </div>
@@ -80,8 +80,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary me-2" type="submit">Thêm Mới</button>
-                        <button type="reset" class="btn btn-light" id="resetBtn">Đặt Lại</button>
+                        <button class="btn btn-primary me-2" type="submit">Cập Nhật</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-light">Quay Lại</a>
                     </div>
                 </form>
             </div>
