@@ -62,8 +62,8 @@
                       <span class="pc-mtext">Nhân sự</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
                     ></a>
                     <ul class="pc-submenu">
-                      <li class="pc-item"><a class="pc-link" href="">Danh sách</a></li>
-                      <li class="pc-item"><a class="pc-link" href="">Thêm mới</a></li>
+                      <li class="pc-item"><a class="pc-link" href="{{route('view_list_account')}}">Danh sách</a></li>
+                      <li class="pc-item"><a class="pc-link" href="{{route('view_creater_account')}}">Thêm mới</a></li>
                     </ul>
                   </li>
                 <li class="pc-item pc-hasmenu">

@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">Hệ Thống</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">Danh Mục Vị Trí</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Thêm Mới</li>
+                            <li class="breadcrumb-item" aria-current="page">Cập Nhật</li>
                         </ul>
                     </div>
                     <div class="col-md-12">

@@ -35,6 +35,8 @@ return new class extends Migration
             $table->tinyInteger('type_sale')->default(0); // 0 mặc định, 1 bán chạy, 2 tương tác nhiều
             $table->string('timeCreate'); // ngày tạo
             $table->longText('detail_group')->default(0); //chi tiết
+            $table->string('user_create')->nullable();
+            $table->string('user_email_create')->nullable();
             $table->timestamps();
         });
     }
