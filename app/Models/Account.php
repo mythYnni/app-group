@@ -83,4 +83,15 @@ class Account extends Model
         ]);
         return $obj;
     }
+
+    // Phương thức cập nhật hồ sơ
+    public function update_profile($req, $slug){
+        $obj = DB::table('users')->where('slugUser', $slug)->update([
+            'fullName' => $req -> fullName,
+            'sex' => $req -> sex,
+            'birthday' => $req -> birthday,
+            'phone' => $req -> phone,
+        ]);
+        return $obj;
+    }
 }

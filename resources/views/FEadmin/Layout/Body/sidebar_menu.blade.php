@@ -3,7 +3,7 @@
         <div class="m-header">
             <a href="{{route('view_home_admin')}}" class="b-brand text-primary">
                 <!-- ========   Change your logo from here   ============ -->
-                <img src="{{ url('assets') }}/images/logo_white_background.png" class="img-fluid logo-lg"
+                <img style="max-width: 70%;" src="{{ url('assets') }}/images/logo_white_background.png" class="img-fluid logo-lg"
                     alt="logo">
                 <span class="badge bg-light-success rounded-pill ms-2 theme-version">v9.0</span>
             </a>
@@ -29,14 +29,14 @@
                     </div>
                     <div class="collapse pc-user-links" id="pc_sidebar_userlink">
                         <div class="pt-3">
-                            <a href="#!">
+                            <a href="{{route('view_profile')}}">
                                 <i class="ti ti-user"></i>
                                 <span>Tài khoản của tôi</span>
                             </a>
-                            <a href="#!">
-                                <i class="ti ti-settings"></i>
-                                <span>Cài đặt</span>
-                            </a>
+                            <a href="{{route('index_password')}}">
+                              <i class="ti ti-lock"></i>
+                              <span>Mật Khẩu</span>
+                          </a>
                             <a href="{{route('logout_admin')}}">
                                 <i class="ti ti-power"></i>
                                 <span>Đăng xuất</span>

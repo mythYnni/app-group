@@ -48,7 +48,7 @@
                         </svg>
                     </a>
                     <div class="dropdown-menu dropdown-menu-end pc-h-dropdown">
-                        <a href="#!" class="dropdown-item">
+                        <a href="{{route('view_profile')}}" class="dropdown-item">
                             <i class="ti ti-user"></i>
                             <span>Tài Khoản của tôi</span>
                         </a>

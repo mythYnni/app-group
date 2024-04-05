@@ -5,7 +5,7 @@ use App\Http\Controllers\AdminController\Category\CategoryController;
 use App\Http\Controllers\AdminController\Account\AccountController;
 use App\Http\Controllers\AccountController\User\LoginController;
 use App\Http\Controllers\AdminController\Home\HomeController;
-use App\Http\Middleware\groupMiddleware;
+use App\Http\Controllers\AdminController\Profile\ProfileController;
 
 // Router Đăng Nhập Admin
 Route::get('/dang-nhap-quan-tri',[LoginController::class,'view_login'])->name('view_login_account');
@@ -15,6 +15,13 @@ Route::get('/dang-xuat-quan-tri',[LoginController::class,'logout'])->name('logou
 Route::prefix('group-admin')->middleware('admin')-> group(function () {
     // Route Trang Home
     Route::get('/', [HomeController::class,'index'])->name('view_home_admin');
+
+    // Router Cá nhâ
+    Route::get('/thong-tin-ca-nhan', [ProfileController::class,'index'])->name('view_profile');
+    Route::post('/cap-nhat-thong-tin-ca-nhan',[ProfileController::class,'update_profile'])->name('update_profile');
+    Route::get('/thong-tin-mat-khau', [ProfileController::class,'index_password'])->name('index_password');
+    Route::post('/cap-nhat-mat-khau-ca-nhan',[ProfileController::class,'update_password_profile'])->name('update_password_profile');
+
     // Router Account
     Route::get('/view-danh-sach-nhan-su',[AccountController::class,'view_list'])->name('view_list_account');
     Route::get('/view-them-moi-nhan-su',[AccountController::class,'view_creater'])->name('view_creater_account');
