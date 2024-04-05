@@ -1,9 +1,9 @@
 <nav class="pc-sidebar">
     <div class="navbar-wrapper">
         <div class="m-header">
-            <a href="index.html" class="b-brand text-primary">
+            <a href="{{route('view_home_admin')}}" class="b-brand text-primary">
                 <!-- ========   Change your logo from here   ============ -->
-                <img src="https://ableproadmin.com/assets/images/logo-dark.svg" class="img-fluid logo-lg"
+                <img src="{{ url('assets') }}/images/logo_white_background.png" class="img-fluid logo-lg"
                     alt="logo">
                 <span class="badge bg-light-success rounded-pill ms-2 theme-version">v9.0</span>
             </a>
@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <div class="d-flex align-items-center">
                         <div class="flex-shrink-0">
-                            <img src="../assets/images/user/avatar-1.jpg" alt="user-image"
+                            <img src="{{ url('assets') }}/images/user/avatar-1.jpg" alt="user-image"
                                 class="user-avtar wid-45 rounded-circle" />
                         </div>
                         <div class="flex-grow-1 ms-3 me-2">
@@ -37,7 +37,7 @@
                                 <i class="ti ti-settings"></i>
                                 <span>Cài đặt</span>
                             </a>
-                            <a href="#!">
+                            <a href="{{route('logout_admin')}}">
                                 <i class="ti ti-power"></i>
                                 <span>Đăng xuất</span>
                             </a>

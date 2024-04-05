@@ -75,4 +75,12 @@ class Account extends Model
         ]);
         return $obj;
     }
+
+    // Phương thức cập nhật mật khẩu
+    public function update_password_account($req, $slug){
+        $obj = DB::table('users')->where('slugUser', $slug)->update([
+            'password' => $req -> password,
+        ]);
+        return $obj;
+    }
 }

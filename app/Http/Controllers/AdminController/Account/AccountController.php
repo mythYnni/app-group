@@ -9,7 +9,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\Account\createRequest;
 use App\Http\Requests\Account\updateRequest;
+use App\Http\Requests\Account\passwordRequest;
 use App\Rules\Account\AccountRule;
+use Mail;
+use App\Mail\Send_Email_Password;
 
 class AccountController extends Controller
 {
@@ -34,6 +37,7 @@ class AccountController extends Controller
         // }
 
         // Mã khóa mật khẩu
+        $text_password = $req->password;
         $req->merge(['password' => Hash::make($req->password)]);
         // Tạo slug dường dẫn sạch
         $text = 'abc0123456789';
@@ -47,6 +51,13 @@ class AccountController extends Controller
         $create = $account -> create_account($req);
         
         if ($create) {
+            $mailData = [
+                'email' => $req->email,
+                'password' => $text_password,
+            ];
+
+            Mail::to($req->email)->send(new Send_Email_Password($mailData));
+
             return redirect() -> route('view_creater_account')->with('success', 'Thêm Mới Thành Công!');
         }else{
             return redirect() -> back() ->with('Error', 'Thêm Mới Thất Bại!');
@@ -102,6 +113,48 @@ class AccountController extends Controller
             return redirect()->route('view_list_account')->with('success', 'Cập Nhật Nhân Sự Thành Công!');
         } else {
             return redirect() -> back() ->with('error', 'Cập Nhật Nhân Sự Thất Bại!');
+        }
+    }
+
+    public function view_update_password(Account $account, $slug){
+        // if(Auth::guard('admin')->user()->decentralization == 1){
+        //     return view('FEadmin.Pages.Error.error404');
+        // }
+
+        $obj = $account->get_link_slug($slug);
+
+        if (!$obj) {
+            return view('FEadmin.Pages.Error.error404');
+        }
+        return view('FEadmin.Pages.Account.view_update_password', compact('obj'));
+    }
+
+    public function update_password_account(passwordRequest $req, Account $account, $slug){
+        // if(Auth::guard('admin')->user()->decentralization == 1){
+        //     return view('FEadmin.Pages.Error.error404');
+        // }
+
+        $obj = $account->get_link_slug($slug);
+
+        if (!$obj) {
+            return view('FEadmin.Pages.Error.error404');
+        }
+
+        $text_password = $req->password;
+        //Mã khóa mật khẩu
+        $req->merge(['password' => Hash::make($req->password)]);
+
+        if ($account->update_password_account($req, $slug) >= 0) {
+
+            $mailData = [
+                'email' => $obj->email,
+                'password' => $text_password,
+            ];
+
+            Mail::to($obj->email)->send(new Send_Email_Password($mailData));
+            return redirect()->route('view_list_account')->with('success', 'Cập Nhật Mật Khẩu Nhân Sự Thành Công!');
+        } else {
+            return redirect() -> back() ->with('error', 'Cập Nhật Mật Khẩu Nhân Sự Thất Bại!');
         }
     }
 }

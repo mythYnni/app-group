@@ -52,7 +52,7 @@
                             <i class="ti ti-user"></i>
                             <span>Tài Khoản của tôi</span>
                         </a>
-                        <a href="#!" class="dropdown-item">
+                        <a href="{{route('logout_admin')}}" class="dropdown-item">
                             <i class="ti ti-power"></i>
                             <span>Đăng xuất</span>
                         </a>
