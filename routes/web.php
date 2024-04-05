@@ -39,4 +39,7 @@ Route::prefix('group-admin')->middleware('admin')-> group(function () {
     Route::get('/xoa-danh-muc/{slug}',[CategoryController::class,'delete_category'])->name('delete_category');
     Route::get('/cap-nhat-danh-muc/{slug}',[CategoryController::class,'view_update'])->name('view_update_category');
     Route::post('/cap-nhat-danh-muc/{slug}',[CategoryController::class,'update_category'])->name('update_category');
+
+    // Router Group
+    
 });

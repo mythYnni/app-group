@@ -53,7 +53,7 @@
                                         <div class="text-center mt-3">
                                             <div class="chat-avtar d-inline-flex mx-auto">
                                                 <img class="rounded-circle img-fluid wid-70"
-                                                    src="../assets/images/user/avatar-5.jpg" alt="User image">
+                                                    src="{{ url('assets') }}/images/user/avatar-1.jpg" alt="User image">
                                             </div>
                                             <h5 class="mb-0">{{ Auth::guard('admin')->user()->fullName }}</h5>
                                             <p class="text-muted text-sm">Tài Khoản Quyền Quản Trị</p>
