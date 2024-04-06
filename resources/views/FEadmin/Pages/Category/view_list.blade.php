@@ -30,7 +30,7 @@
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
         <div class="row">
-            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-10 offset-xxl-1">
+            <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12">
                 <div class="card">
                     <div class="card-header">
                         <h5>Danh Sách Danh Mục Vị Trí</h5>
