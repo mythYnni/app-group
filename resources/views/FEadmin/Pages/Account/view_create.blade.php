@@ -72,8 +72,8 @@
                         <div class="form-group col-6">
                             <label class="form-label" for="exampleSelect1">Phân quyền</label>
                             <select class="form-select" id="exampleSelect1" name="decentralization">
-                                <option value="0">Quản Trị</option>
-                                <option value="1">Nhân Sự</option>
+                                <option value="0"  {{ old('decentralization')== 0 ? 'selected' : '' }}>Quản Trị</option>
+                                <option value="1"  {{ old('decentralization')== 1 ? 'selected' : '' }}>Nhân Sự</option>
                             </select>
                         </div>
                         <div class="form-group col-6">

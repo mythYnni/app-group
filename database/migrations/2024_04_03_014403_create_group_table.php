@@ -14,18 +14,19 @@ return new class extends Migration
         Schema::create('group', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nameGroup')->nullable(false);
+            $table->string('slugGroup')->nullable(false);
             $table->string('linkGroup')->nullable(false);
-            $table->string('name_user_group')->nullable(false);
-            $table->string('account_group')->nullable(false);
-            $table->string('image')->nullable(false);
-            $table->string('administrator')->nullable(false);
-            $table->string('account_group_week')->nullable(false);
-            $table->string('blog_week')->nullable(false);
-            $table->string('province')->nullable();
-            $table->string('district')->nullable();
-            $table->string('wards')->nullable();
-            $table->string('detail_address')->nullable();
-            $table->unsignedBigInteger('idCategory');
+            $table->string('category')->nullable(); // danh mục
+            $table->json('name_user_group')->default()->nullable(false); // danh sách quản trị
+            $table->string('image')->nullable(false); // ảnh nhóm
+            $table->string('account_group')->nullable(false); // lượng thành viên
+            $table->double('account_group_week')->nullable(false); // lượng thành viên vào trong tuần
+            $table->double('account_group_blog')->nullable(false); // lượng bài viết / tuần
+            $table->string('blog_week')->nullable(false); // bài viết giời thiệu nhóm
+            $table->string('province')->nullable(); // tỉnh thành
+            $table->string('district')->nullable(); // quận / huyện
+            $table->string('wards')->nullable(); // xã / phường
+            $table->unsignedBigInteger('idCategory'); // danh mục vị trí 
             $table->foreign('idCategory')->references('id')->on('categories')->onDelete('cascade');
             $table->tinyInteger('type')->default(0); // 0 là riêng tư, 1 công khai
             $table->double('price')->default(0)->nullable(); //giá bán
@@ -35,8 +36,9 @@ return new class extends Migration
             $table->tinyInteger('type_sale')->default(0); // 0 mặc định, 1 bán chạy, 2 tương tác nhiều
             $table->string('timeCreate'); // ngày tạo
             $table->longText('detail_group')->default(0); //chi tiết
-            $table->string('user_create')->nullable();
-            $table->string('user_email_create')->nullable();
+            $table->string('user_create')->nullable(); // người tạo
+            $table->string('user_email_create')->nullable(); // email người tạo
+            
             $table->timestamps();
         });
     }

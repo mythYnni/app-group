@@ -29,6 +29,11 @@ class Account extends Model
         'timeCreate',
     ];
 
+    //Phương thức lấy danh sách
+    public function getAll(){
+        return DB::table('users')->orderBy('timeCreate','ASC')->get();
+    } 
+
     //Phương thức lấy danh sách không có quản trị
     public function get_orderBy_ASC(){
         return DB::table('users')->where('email', '!=', 'admin@group.com.vn')->where('email', '!=', 'admin@gmail.com')->orderBy('timeCreate','DESC')->get();

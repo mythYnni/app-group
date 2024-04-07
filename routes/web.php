@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController\Account\AccountController;
 use App\Http\Controllers\AccountController\User\LoginController;
 use App\Http\Controllers\AdminController\Home\HomeController;
 use App\Http\Controllers\AdminController\Profile\ProfileController;
+use App\Http\Controllers\AdminController\Group\GroupController;
 
 // Router Đăng Nhập Admin
 Route::get('/dang-nhap-quan-tri',[LoginController::class,'view_login'])->name('view_login_account');
@@ -41,5 +42,5 @@ Route::prefix('group-admin')->middleware('admin')-> group(function () {
     Route::post('/cap-nhat-danh-muc/{slug}',[CategoryController::class,'update_category'])->name('update_category');
 
     // Router Group
-    
+    Route::get('/view-them-moi-group',[GroupController::class,'view_creater'])->name('view_creater_group');
 });

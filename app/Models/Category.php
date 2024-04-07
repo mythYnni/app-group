@@ -60,4 +60,9 @@ class Category extends Model
         ]);
         return $obj;
     }
+
+    // Phương Thức Liên kết khóa ngoại
+    public function Group(){
+        return $this->hasMany('App\Models\Group', 'idCategory','id');
+    }
 }
