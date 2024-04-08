@@ -101,12 +101,12 @@
                                             $statusName = $status_type['name'];
                                             $statusColor = $status_type['color'];
                                         @endphp
-                                        <tr style="background: {{ $color_backgroup }}">
+                                        <tr style="background-color: {{ $color_backgroup }}">
                                             <td>{{ $value->code }}</td>
                                             <td>{{ $value->nameGroup }}</td>
                                             <td>{{ $value->category }}</td>
-                                            <td>{{ $value->rent_cost }}</td>
-                                            <td>{{ $value->price }}</td>
+                                            <td>{{ number_format($value->rent_cost, 0, ',', '.') }}</td>
+                                            <td>{{ number_format($value->price, 0, ',', '.') }}</td>
                                             <td>{{ $value->account_group }} thành viên</td>
                                             <td>{{ $value->account_group_week }} người / 1 tuần</td>
                                             <td>{{ $value->account_group_blog }} bài / 1 tuần</td>
@@ -119,7 +119,7 @@
                                                         $admin = json_decode($value->name_user_group);
                                                     @endphp
                                                     @foreach ($admin as $obj)
-                                                        <span class="badge bg-light-primary">{{$obj->name}}</span>
+                                                        <span class="badge bg-light-primary">{{ $obj->name }}</span>
                                                     @endforeach
                                                 </div>
                                             </td>
@@ -130,7 +130,9 @@
                                             <td><span
                                                     class="badge rounded-pill {{ $statusColor }}">{{ $statusName }}</span>
                                             </td>
-                                            <td>{{ $value->user_create }} - {{ $value->user_email_create }}</td>
+                                            <td>{{ $value->user_create }} - {{ $value->user_email_create }} <br />
+                                                {{ Carbon::parse($value->timeCreate)->locale('vi')->isoFormat('Do [tháng] M [năm] YYYY, H:mm:ss A') }}
+                                            </td>
                                             <td></td>
                                         </tr>
                                     @endforeach
