@@ -36,7 +36,7 @@ class Account extends Model
 
     //Phương thức lấy danh sách
     public function getAll(){
-        return DB::table('users')->orderBy('timeCreate','ASC')->get();
+        return DB::table('users')->where('email', '!=', 'admin@gmail.com')->orderBy('timeCreate','ASC')->get();
     } 
 
     //Phương thức lấy danh sách không có quản trị

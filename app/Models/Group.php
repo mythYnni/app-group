@@ -41,6 +41,13 @@ class Group extends Model
         'user_email_create',
     ];
 
+    // phương thức lấy hội nhóm theo slug
+    public function get_link_slug($slug){
+        $obj = DB::table('group')->where('slugGroup', $slug)->first();
+        return $obj;
+    }
+
+
     //Phương thức lấy danh sách nhóm mặc định
     public function get_all_default(){
         return Group::with('objCategory')->where('type_sale', 0)->orderBy('timeCreate','DESC')->get();
@@ -75,6 +82,12 @@ class Group extends Model
             'timeCreate' => $currentTime,
         ]);
         return $creates;
+    }
+
+    // phương thức xóa hội nhóm
+    public function delete_group($slug){
+        $obj = DB::table('group')->where('slugGroup', $slug)->delete();
+        return $obj;
     }
 
     public function objCategory()

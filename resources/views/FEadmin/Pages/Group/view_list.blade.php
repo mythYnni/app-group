@@ -94,7 +94,7 @@
                                             $color_backgroup = $status_color['background'];
                                         @endphp
                                         @php
-                                            $status_type = $statusHTML[$value->status_color] ?? [
+                                            $status_type = $statusHTML[$value->status] ?? [
                                                 'name' => 'Không Xác Định',
                                                 'color' => '#000000',
                                             ];
@@ -103,7 +103,7 @@
                                         @endphp
                                         <tr style="background-color: {{ $color_backgroup }}">
                                             <td>{{ $value->code }}</td>
-                                            <td>{{ $value->nameGroup }}</td>
+                                            <td><span class="h6">{{ $value->nameGroup }}</span></td>
                                             <td>{{ $value->category }}</td>
                                             <td>{{ number_format($value->rent_cost, 0, ',', '.') }}</td>
                                             <td>{{ number_format($value->price, 0, ',', '.') }}</td>
@@ -133,7 +133,17 @@
                                             <td>{{ $value->user_create }} - {{ $value->user_email_create }} <br />
                                                 {{ Carbon::parse($value->timeCreate)->locale('vi')->isoFormat('Do [tháng] M [năm] YYYY, H:mm:ss A') }}
                                             </td>
-                                            <td></td>
+                                            <td class="action">
+                                                <div class="btn-group-dropdown">
+                                                  <button class="btn btn-outline-secondary dropdown-toggle btn-sm mg-button-left" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lựa chọn</button>
+                                                  <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{route('delete_group', $value->slugGroup) }}" title="Delete" onclick="return confirm('Bạn Có Chắc Muốn Xóa Nhóm {{ $value->nameGroup }} Không?')">
+                                                      <span style="display: flex; justify-content: flex-start; color: #dc2626;"><i class="ti ti-trash me-1"></i> Xóa</span>
+                                                    </a>
+                                                    <a class="dropdown-item" href="{{route('view_update_group', $value->slugGroup) }}"><span style="display: flex; justify-content: flex-start; color: #2ca87f;"><i class="ti ti-pencil me-1"></i> Cập Nhật</span></a>
+                                                  </div>
+                                                </div>
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>

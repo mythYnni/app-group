@@ -14,7 +14,7 @@
                             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">Hệ Thống</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">Group</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Thêm Mới</li>
+                            <li class="breadcrumb-item" aria-current="page">Cập Nhật</li>
                         </ul>
                     </div>
                     <div class="col-md-12">
@@ -34,13 +34,13 @@
                     id="formReset">
                     @csrf
                     <div class="card-header">
-                        <h5>Thêm Mới Hội Nhóm</h5>
+                        <h5>Cập Nhật Nhóm "{{$obj->nameGroup}}"</h5>
                     </div>
                     <div class="card-body row">
                         <div class="form-group col-12 col-md-2">
                             <label class="form-label">Mã Nhóm</label>
                             <input type="text" class="form-control form-control" placeholder="Mã Nhóm" fdprocessedid="w3ptog" name="code"
-                                value="{{ old('code') }}">
+                                value="{{$obj->nameGroup}}">
                             @error('code')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -49,7 +49,7 @@
                             <label class="form-label">Tên Hội Nhóm</label>
                             <input type="text" class="form-control form-control" placeholder="Tên Nhóm"
                                 onkeyup="ChangeToSlug();" fdprocessedid="w3ptog" name="nameGroup" id="slug"
-                                value="{{ old('nameGroup') }}">
+                                value="{{$obj->nameGroup}}">
                             @error('nameGroup')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -59,30 +59,37 @@
                         </div>
                         <div class="form-group col-12 col-md-5">
                             <label class="form-label">Đường dẫn sạch</label>
-                            <input type="text" class="form-control" name="slugGroup" value="{{ old('slugGroup') }}"
+                            <input type="text" class="form-control" name="slugGroup" value="{{$obj->slugGroup}}"
                                 id="convert_slug" placeholder="Đường dẫn sạch" readonly fdprocessedid="qaalh">
                         </div>
                         <div class="form-group col-12 col-md-5">
+                            @php
+                                $admin = json_decode($obj->name_user_group);
+                            @endphp
                             <label class="form-label" for="exampleSelect1">Quản Trị</label>
                             <select class="form-control" name="name_user_group[]" id="choices-multiple-groups" multiple>
                                 <optgroup label="Quản Trị">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
-                                        @if ($value->decentralization == 0)
-                                            <option value="{{ $value->id }}"
-                                                {{ old('name_user_group') && in_array($value->id, old('name_user_group')) ? 'selected' : '' }}>
-                                                {{ $value->fullName }}
-                                            </option>
-                                        @endif
+                                        @foreach ($admin as $objs)                                                    
+                                            @if ($value->decentralization == 0)
+                                                <option value="{{ $value->id }}"
+                                                    {{ $value->id && $objs->id ? 'selected' : '' }}>
+                                                    {{ $value->fullName }}
+                                                </option>
+                                            @endif
+                                        @endforeach
                                     @endforeach
                                 </optgroup>
                                 <optgroup label="Nhân Sự">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
-                                        @if ($value->decentralization == 1)
-                                            <option value="{{ $value->id }}"
-                                                {{ old('name_user_group') && in_array($value->id, old('name_user_group')) ? 'selected' : '' }}>
-                                                {{ $value->fullName }}
-                                            </option>
-                                        @endif
+                                        @foreach ($admin as $objs)                                                    
+                                            @if ($value->decentralization == 1)
+                                                <option value="{{ $value->id }}"
+                                                    {{ $value->id && $objs->id ? 'selected' : '' }}>
+                                                    {{ $value->fullName }}
+                                                </option>
+                                            @endif
+                                        @endforeach
                                     @endforeach
                                 </optgroup>
                             </select>
@@ -93,7 +100,7 @@
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label">Link Group</label>
                             <input type="text" class="form-control form-control" placeholder="Link"
-                                fdprocessedid="w3ptog" name="linkGroup" value="{{ old('linkGroup') }}">
+                                fdprocessedid="w3ptog" name="linkGroup" value="{{$obj->linkGroup}}">
                             @error('linkGroup')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -101,7 +108,7 @@
                         <div class="form-group col-12 col-md-3">
                             <label class="form-label">Danh Mục Loại Nhóm</label>
                             <input type="text" class="form-control form-control" placeholder="Danh Mục"
-                                fdprocessedid="w3ptog" name="category" id="category" value="{{ old('category') }}">
+                                fdprocessedid="w3ptog" name="category" id="category" value="{{$obj->category}}">
                             @error('category')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -112,7 +119,7 @@
                                 @foreach ($listCategory->sortBy('name') as $value)
                                     @if ($value->status == 0)
                                         <option value="{{ $value->id }}"
-                                            @if ($value->id == old('idCategory')) selected @endif>
+                                            @if ($value->id == $obj->idCategory) selected @endif>
                                             {{ $value->name }}
                                         </option>
                                     @endif
@@ -152,7 +159,7 @@
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label">Số Lượng Thành Viên</label>
                             <input type="text" class="form-control" name="account_group"
-                                value="{{ old('account_group') }}" placeholder="Số Lượng Thành Viên"
+                                value="{{$obj->account_group}}" placeholder="Số Lượng Thành Viên"
                                 fdprocessedid="qaalh">
                             @error('account_group')
                                 <small style="color: #f33923;">{{ $message }}</small>
@@ -160,7 +167,7 @@
                         </div>
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label" for="example-quantity">Lượng Thành Viên/Tuần</label>
-                            <input type="number" class="form-control" id="example-quantity" min="1" value="{{old('account_group_week')}}"
+                            <input type="number" class="form-control" id="example-quantity" min="1" value="{{$obj->account_group_week}}"
                                 name="account_group_week" data-gtm-form-interact-field-id="1">
                             @error('account_group_week')
                                 <small style="color: #f33923;">{{ $message }}</small>
@@ -168,7 +175,7 @@
                         </div>
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label" for="example-quantity">Lượng Bài Viết/Tuần</label>
-                            <input type="number" class="form-control" id="example-quantity" min="1" value="{{old('account_group_blog')}}"
+                            <input type="number" class="form-control" id="example-quantity" min="1" value="{{$obj->account_group_blog}}"
                                 name="account_group_blog" data-gtm-form-interact-field-id="1">
                             @error('account_group_blog')
                                 <small style="color: #f33923;">{{ $message }}</small>
@@ -177,7 +184,7 @@
                         <div class="form-group col-12 col-md-6">
                             <label class="form-label">Giá Thuê</label>
                             <input type="text" class="form-control" name="rent_cost" id="rent_cost"
-                                value="{{ old('rent_cost') }}" placeholder="Giá Thuê" fdprocessedid="qaalh">
+                                value="{{$obj->rent_cost}}" placeholder="Giá Thuê" fdprocessedid="qaalh">
                             @error('rent_cost')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -186,7 +193,7 @@
                         <div class="form-group col-12 col-md-6">
                             <label class="form-label">Giá Bán</label>
                             <input type="text" class="form-control" name="price" id="price"
-                                value="{{ old('price') }}" placeholder="Giá Bán" fdprocessedid="qaalh">
+                                value="{{$obj->price}}" placeholder="Giá Bán" fdprocessedid="qaalh">
                             @error('price')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -195,10 +202,10 @@
                         <div class="form-group col-12 col-md-6">
                             <label class="form-label" for="exampleSelect1">Phân Loại</label>
                             <select class="form-select" id="exampleSelect1" name="type_sale">
-                                <option value="0" {{ old('type_sale') == 0 ? 'selected' : '' }}>Mặc Định</option>
-                                <option value="1" {{ old('type_sale') == 1 ? 'selected' : '' }}>Nhóm Thuê Nhiều
+                                <option value="0" {{ $obj->type_sale == 0 ? 'selected' : '' }}>Mặc Định</option>
+                                <option value="1" {{ $obj->type_sale == 1 ? 'selected' : '' }}>Nhóm Thuê Nhiều
                                 </option>
-                                <option value="2" {{ old('type_sale') == 2 ? 'selected' : '' }}>Nhóm Tương Tác Tốt
+                                <option value="2" {{ $obj->type_sale == 2 ? 'selected' : '' }}>Nhóm Tương Tác Tốt
                                 </option>
                             </select>
                             @error('type_sale')
@@ -219,13 +226,13 @@
                             <div class="col-sm-12">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="type" value="0"
-                                        id="customCheckinlhstate1" {{ old('type') == '0' ? 'checked' : '' }}
+                                        id="customCheckinlhstate1" {{ $obj->type == 0 ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="2">
                                     <label class="form-check-label" for="customCheckinlhstate1"> Riêng Tư </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="type" value="1"
-                                        id="customCheckinlhstate2" {{ old('type') == '1' ? 'checked' : '' }}
+                                        id="customCheckinlhstate2" {{ $obj->type == 1 ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="1">
                                     <label class="form-check-label" for="customCheckinlhstate2"> Công Khai </label>
                                 </div>
@@ -239,19 +246,19 @@
                             <div class="col-sm-12">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status_color" value="0"
-                                        id="customCheckinlhstate3" {{ old('status_color') == '0' ? 'checked' : '' }}
+                                        id="customCheckinlhstate3" {{ $obj->status_color == 0 ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="2">
                                     <label class="form-check-label" for="customCheckinlhstate3"> Xanh </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status_color" value="1"
-                                        id="customCheckinlhstate4" {{ old('status_color') == '1' ? 'checked' : '' }}
+                                        id="customCheckinlhstate4" {{ $obj->status_color == 1 ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="1">
                                     <label class="form-check-label" for="customCheckinlhstate4"> Vàng </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status_color" value="2"
-                                        id="customCheckinlhstate5" {{ old('status_color') == '2' ? 'checked' : '' }}
+                                        id="customCheckinlhstate5" {{ $obj->status_color == 2 ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="1">
                                     <label class="form-check-label" for="customCheckinlhstate5"> Đỏ </label>
                                 </div>
@@ -265,13 +272,13 @@
                             <div class="col-sm-12">
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" value="0"
-                                        id="customCheckinlhstate6" {{ old('status') == '0' ? 'checked' : '' }}
+                                        id="customCheckinlhstate6" {{ $obj->status == 0 ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="2">
                                     <label class="form-check-label" for="customCheckinlhstate6"> Hiển Thị </label>
                                 </div>
                                 <div class="form-check form-check-inline">
                                     <input class="form-check-input" type="radio" name="status" value="1"
-                                        id="customCheckinlhstate7" {{ old('status') == '1' ? 'checked' : '' }}
+                                        id="customCheckinlhstate7" {{ $obj->status == 1 ? 'checked' : '' }}
                                         data-gtm-form-interact-field-id="1">
                                     <label class="form-check-label" for="customCheckinlhstate7"> Lưu Trữ </label>
                                 </div>
@@ -283,12 +290,12 @@
                         <div class="form-group col-12 col-md-12"></div>
                         <div class="form-group col-12 col-md-12">
                             <label class="form-label" for="exampleFormControlTextarea1">Giới Thiệu</label>
-                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="detail_group">{{ old('detail_group') }}</textarea>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" name="detail_group">{{$obj->detail_group}}</textarea>
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary me-2" type="submit">Thêm Mới</button>
-                        <button type="reset" class="btn btn-light" id="resetBtn">Đặt Lại</button>
+                        <button class="btn btn-primary me-2" type="submit">Cập Nhật</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-light">Quay Lại</a>
                     </div>
                 </form>
             </div>
@@ -300,6 +307,6 @@
     @include('FEadmin.Layout.Fooder.js_create_group')
     @include('FEadmin.Layout.JS.Reset_button')
     @include('FEadmin.Layout.JS.Drop_Account')
-    @include('FEadmin.Layout.JS.Get_Account')
+    @include('FEadmin.Layout.JS.Get_Update_Account')
     @include('FEadmin.Layout.JS.Price')
 @stop

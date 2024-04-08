@@ -74,4 +74,41 @@ class GroupController extends Controller
             return redirect() -> back() ->with('Error', 'Thêm Mới Nhóm Thất Bại!');
         }
     }
+
+    // Phương thức xóa hội nhóm
+    //Phương thức xóa danh mục
+    public function delete_group(Group $group, $slug){
+        // if(Auth::guard('admin')->user()->decentralization == 1){
+        //     return view('FEadmin.Pages.Error.error404');
+        // }
+
+        $obj = $group->get_link_slug($slug);
+        if (!$obj) {
+            return view('FEadmin.Pages.Error.error404');
+        }
+
+        if ($group->delete_group($slug) > 0) {
+            return redirect()->route('view_list_group')->with('success','Xóa Group Thành Công!');
+        } else {
+            return redirect()->route('view_list_group')->with('err','Kiểm Tra Lại, Xóa Group Thất Bại!');
+        }
+    }
+
+    // View cập nhật
+    public function view_update(Category $category, Account $account, Group $group, $slug){
+        // if(Auth::guard('admin')->user()->decentralization == 1){
+        //     return view('FEadmin.Pages.Error.error404');
+        // }
+        // Lấy thông tin hội nhóm
+        $obj = $group->get_link_slug($slug);
+        if (!$obj) {
+            return view('FEadmin.Pages.Error.error404');
+        } 
+        // Lấy danh mục quản trị
+        $listAccount = $account->getAll();
+        // Lấy danh mục vị trí
+        $listCategory = $category->get_orderBy_ASC();
+        return view('FEadmin.Pages.Group.view_update', compact('listCategory', 'listAccount', 'obj'));
+    }
+
 }

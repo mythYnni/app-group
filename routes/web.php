@@ -45,4 +45,6 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
     Route::get('/danh-sach-group',[GroupController::class,'view_list'])->name('view_list_group');
     Route::get('/view-them-moi-group',[GroupController::class,'view_creater'])->name('view_creater_group');
     Route::post('/them-moi-group',[GroupController::class,'creater_group'])->name('creater_group');
+    Route::get('/xoa-danh-group/{slug}',[GroupController::class,'delete_group'])->name('delete_group');
+    Route::get('/cap-nhat-group/{slug}',[GroupController::class,'view_update'])->name('view_update_group');
 });
