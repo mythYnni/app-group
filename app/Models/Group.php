@@ -16,6 +16,7 @@ class Group extends Model
 
     protected $fillable = [
         'id',
+        'code',
         'nameGroup',
         'slugGroup',
         'linkGroup',
@@ -25,7 +26,6 @@ class Group extends Model
         'image',
         'account_group_week',
         'account_group_blog',
-        'blog_week',
         'province',
         'district',
         'wards',
@@ -40,4 +40,45 @@ class Group extends Model
         'user_create',
         'user_email_create',
     ];
+
+    //Phương thức lấy danh sách nhóm mặc định
+    public function get_all_default(){
+        return Group::with('objCategory')->where('type_sale', 0)->orderBy('timeCreate','DESC')->get();
+    } 
+
+    // phương thức thêm mới
+    public function create_group($req){
+        $currentTime = now();
+        $creates = $this->Create([
+            'nameGroup' => $req -> nameGroup,
+            'code' => $req -> code,
+            'slugGroup' => $req -> slugGroup,
+            'linkGroup' => $req -> linkGroup,
+            'category' => $req -> category,
+            'account_group' => $req -> account_group,
+            'name_user_group' => json_encode($req -> name_user_group),
+            'image' => $req -> image,
+            'account_group_week' => $req -> account_group_week,
+            'account_group_blog' => $req -> account_group_blog,
+            'province' => $req -> province,
+            'district' => $req -> district,
+            'wards' => $req -> wards,
+            'idCategory' => $req -> idCategory,
+            'type' => $req -> type,
+            'price' => $req -> price,
+            'rent_cost' => $req -> rent_cost,
+            'status' => $req -> status,
+            'status_color' => $req -> status_color,
+            'detail_group' => $req -> detail_group,
+            'user_create' => $req -> user_create,
+            'user_email_create' => $req -> user_email_create,
+            'timeCreate' => $currentTime,
+        ]);
+        return $creates;
+    }
+
+    public function objCategory()
+    {
+        return $this->belongsTo(Category::class, 'idCategory');
+    }
 }

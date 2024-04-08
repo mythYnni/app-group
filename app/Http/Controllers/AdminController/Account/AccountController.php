@@ -51,12 +51,12 @@ class AccountController extends Controller
         $create = $account -> create_account($req);
         
         if ($create) {
-            $mailData = [
-                'email' => $req->email,
-                'password' => $text_password,
-            ];
+            // $mailData = [
+            //     'email' => $req->email,
+            //     'password' => $text_password,
+            // ];
 
-            Mail::to($req->email)->send(new Send_Email_Password($mailData));
+            // Mail::to($req->email)->send(new Send_Email_Password($mailData));
 
             return redirect() -> route('view_creater_account')->with('success', 'Thêm Mới Thành Công!');
         }else{
@@ -146,12 +146,12 @@ class AccountController extends Controller
 
         if ($account->update_password_account($req, $slug) >= 0) {
 
-            $mailData = [
-                'email' => $obj->email,
-                'password' => $text_password,
-            ];
+            // $mailData = [
+            //     'email' => $obj->email,
+            //     'password' => $text_password,
+            // ];
 
-            Mail::to($obj->email)->send(new Send_Email_Password($mailData));
+            // Mail::to($obj->email)->send(new Send_Email_Password($mailData));
             return redirect()->route('view_list_account')->with('success', 'Cập Nhật Mật Khẩu Nhân Sự Thành Công!');
         } else {
             return redirect() -> back() ->with('error', 'Cập Nhật Mật Khẩu Nhân Sự Thất Bại!');

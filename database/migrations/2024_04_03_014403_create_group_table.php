@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('group', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('code')->nullable(false);
             $table->string('nameGroup')->nullable(false);
             $table->string('slugGroup')->nullable(false);
             $table->string('linkGroup')->nullable(false);
@@ -22,7 +23,6 @@ return new class extends Migration
             $table->string('account_group')->nullable(false); // lượng thành viên
             $table->double('account_group_week')->nullable(false); // lượng thành viên vào trong tuần
             $table->double('account_group_blog')->nullable(false); // lượng bài viết / tuần
-            $table->string('blog_week')->nullable(false); // bài viết giời thiệu nhóm
             $table->string('province')->nullable(); // tỉnh thành
             $table->string('district')->nullable(); // quận / huyện
             $table->string('wards')->nullable(); // xã / phường
@@ -35,7 +35,7 @@ return new class extends Migration
             $table->tinyInteger('status_color')->default(0); // 0 đỏ, 1 vành, 2 xanh
             $table->tinyInteger('type_sale')->default(0); // 0 mặc định, 1 bán chạy, 2 tương tác nhiều
             $table->string('timeCreate'); // ngày tạo
-            $table->longText('detail_group')->default(0); //chi tiết
+            $table->longText('detail_group')->default()->nullable(); //chi tiết
             $table->string('user_create')->nullable(); // người tạo
             $table->string('user_email_create')->nullable(); // email người tạo
             

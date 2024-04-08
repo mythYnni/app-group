@@ -29,6 +29,11 @@ class Account extends Model
         'timeCreate',
     ];
 
+    //Phương thức lấy thông tin theo id
+    public function get_by_id($id){
+        return DB::table('users')->where('id', $id)->first();
+    } 
+
     //Phương thức lấy danh sách
     public function getAll(){
         return DB::table('users')->orderBy('timeCreate','ASC')->get();

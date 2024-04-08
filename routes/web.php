@@ -13,7 +13,7 @@ Route::get('/dang-nhap-quan-tri',[LoginController::class,'view_login'])->name('v
 Route::post('/dang-nhap-quan-tri',[LoginController::class,'login'])->name('login_admin');
 Route::get('/dang-xuat-quan-tri',[LoginController::class,'logout'])->name('logout_admin');
 
-Route::prefix('group-admin')->middleware('admin')-> group(function () {
+Route::prefix('group-admin')->middleware('admin')->group(function () {
     // Route Trang Home
     Route::get('/', [HomeController::class,'index'])->name('view_home_admin');
 
@@ -42,5 +42,7 @@ Route::prefix('group-admin')->middleware('admin')-> group(function () {
     Route::post('/cap-nhat-danh-muc/{slug}',[CategoryController::class,'update_category'])->name('update_category');
 
     // Router Group
+    Route::get('/danh-sach-group',[GroupController::class,'view_list'])->name('view_list_group');
     Route::get('/view-them-moi-group',[GroupController::class,'view_creater'])->name('view_creater_group');
+    Route::post('/them-moi-group',[GroupController::class,'creater_group'])->name('creater_group');
 });
