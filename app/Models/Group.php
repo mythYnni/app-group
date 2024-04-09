@@ -107,7 +107,7 @@ class Group extends Model
     }
 
     // Phương thức cập nhật
-    public function update_droup($req, $slug){
+    public function update_group($req, $slug){
         $obj = DB::table('group')->where('slugGroup', $slug)->update([
             'nameGroup' => $req -> nameGroup,
             'code' => $req -> code,

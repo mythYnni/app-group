@@ -160,7 +160,9 @@ class GroupController extends Controller
         }
         $req->merge(['name_user_group' => $accountData]);
 
-        if ($group->update_droup($req, $slug) >= 0) {
+        dd($req->all());
+
+        if ($group->update_group($req, $slug) >= 0) {
             return redirect()->route('view_list_group')->with('success', 'Cập Nhật Nhóm Thành Công!');
         } else {
             return redirect()->route('view_list_group')->with('error', 'Cập Nhật Nhóm Thất Bại!');
