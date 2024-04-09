@@ -42,9 +42,12 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
     Route::post('/cap-nhat-danh-muc/{slug}',[CategoryController::class,'update_category'])->name('update_category');
 
     // Router Group
+    Route::get('/danh-sach-group-thue-nhieu',[GroupController::class,'view_list_rent'])->name('view_list_rent');
+    Route::get('/danh-sach-group-tuong-tac-tot',[GroupController::class,'view_list_interact'])->name('view_list_interact');
     Route::get('/danh-sach-group',[GroupController::class,'view_list'])->name('view_list_group');
     Route::get('/view-them-moi-group',[GroupController::class,'view_creater'])->name('view_creater_group');
     Route::post('/them-moi-group',[GroupController::class,'creater_group'])->name('creater_group');
     Route::get('/xoa-danh-group/{slug}',[GroupController::class,'delete_group'])->name('delete_group');
     Route::get('/cap-nhat-group/{slug}',[GroupController::class,'view_update'])->name('view_update_group');
+    Route::post('/cap-nhat-group/{slug}',[GroupController::class,'update_group'])->name('update_group');
 });

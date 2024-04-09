@@ -38,7 +38,7 @@ return new class extends Migration
             $table->longText('detail_group')->default()->nullable(); //chi tiết
             $table->string('user_create')->nullable(); // người tạo
             $table->string('user_email_create')->nullable(); // email người tạo
-            
+            $table->double('rentals')->default(0)->nullable(); //số lượt thuê
             $table->timestamps();
         });
     }

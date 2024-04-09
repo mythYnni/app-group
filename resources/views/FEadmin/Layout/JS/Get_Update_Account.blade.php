@@ -15,6 +15,7 @@
     var promise = axios(Parameter);
     promise.then(function(result) {
         renderCity(result.data);
+        setSelectedProvince(selectedProvince, selectedDistrict, selectedWard);
     });
 
     function renderCity(data) {
@@ -45,5 +46,36 @@
                 }
             }
         };
+    }
+
+    function setSelectedProvince(selectedProvince) {
+        for (let i = 0; i < citis.options.length; i++) {
+            if (citis.options[i].value === selectedProvince) {
+                citis.selectedIndex = i;
+                citis.dispatchEvent(new Event('change')); // Kích hoạt sự kiện thay đổi để tải dữ liệu quận/huyện
+                setSelectedDistrict(selectedDistrict); // Gọi hàm để thiết lập quận/huyện đã chọn
+                break;
+            }
+        }
+    }
+
+    function setSelectedDistrict(selectedDistrict) {
+        for (let i = 0; i < districts.options.length; i++) {
+            if (districts.options[i].value === selectedDistrict) {
+                districts.selectedIndex = i;
+                district.dispatchEvent(new Event('change'));
+                setSelectedWard(selectedWard);
+                break;
+            }
+        }
+    }
+
+    function setSelectedWard(selectedWard) {
+        for (let i = 0; i < wards.options.length; i++) {
+            if (wards.options[i].value === selectedWard) {
+                wards.selectedIndex = i;
+                break;
+            }
+        }
     }
 </script>

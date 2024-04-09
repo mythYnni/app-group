@@ -8,12 +8,28 @@ use App\Models\Category;
 use App\Models\Account;
 use App\Models\Group;
 use App\Http\Requests\Group\createRequest;
+use App\Http\Requests\Group\updateRequest;
 use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
 {
-     // View danh sách nhóm mặc định
-     public function view_list(Group $group){
+     // View danh sách nhóm thuê nhiều
+     public function view_list_rent(Group $group){
+       
+        $list = $group->get_all_rent();
+        return view('FEadmin.Pages.Group.view_list_rent', compact('list'));
+    }
+
+
+    // View danh sách nhóm Tương tác tốt
+    public function view_list_interact(Group $group){
+       
+        $list = $group->get_all_interact();
+        return view('FEadmin.Pages.Group.view_list_interact', compact('list'));
+    }
+
+    // View danh sách nhóm mặc định
+    public function view_list(Group $group){
        
         $list = $group->get_all_default();
         return view('FEadmin.Pages.Group.view_list', compact('list'));
@@ -111,4 +127,43 @@ class GroupController extends Controller
         return view('FEadmin.Pages.Group.view_update', compact('listCategory', 'listAccount', 'obj'));
     }
 
+    // Phương thức cập nhật
+    public function update_group(updateRequest $req, Category $category, Account $account, Group $group, $slug){
+        // if(Auth::guard('admin')->user()->decentralization == 1){
+        //     return view('FEadmin.Pages.Error.error404');
+        // }
+        // Lấy Thông Tin Nhóm
+        $obj = $group->get_link_slug($slug);
+        if (!$obj) {
+            return view('FEadmin.Pages.Error.error404');
+        } 
+        
+        // Xử lý ảnh: Nếu có file ảnh được tải lên, lưu trên Cloudinary, ngược lại sử dụng ảnh hiện tại
+        $imgrPath = $req->file('file') ? cloudinary()->upload($req->file('file')->getRealPath())->getSecurePath(): $obj->image;
+        $req->merge(['image' => $imgrPath]);
+
+        // Xử lý danh sách quản trị
+        // Khởi tạo mảng rỗng để lưu trữ kết quả
+        $accountData = [];
+
+        // Xử lý danh sách quản trị
+        foreach ($req->name_user_group as $value) {
+            $objAccount = $account->get_by_id($value);
+            if ($objAccount) {
+                $accountItem = [
+                    'id' => $objAccount->id,
+                    'slug' => $objAccount->slugUser,
+                    'name' => $objAccount->fullName
+                ];
+                $accountData[] = $accountItem;
+            }
+        }
+        $req->merge(['name_user_group' => $accountData]);
+
+        if ($group->update_droup($req, $slug) >= 0) {
+            return redirect()->route('view_list_group')->with('success', 'Cập Nhật Nhóm Thành Công!');
+        } else {
+            return redirect()->route('view_list_group')->with('error', 'Cập Nhật Nhóm Thất Bại!');
+        }
+    }
 }

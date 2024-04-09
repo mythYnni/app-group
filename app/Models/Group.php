@@ -39,6 +39,7 @@ class Group extends Model
         'detail_group',
         'user_create',
         'user_email_create',
+        'rentals'
     ];
 
     // phương thức lấy hội nhóm theo slug
@@ -46,6 +47,16 @@ class Group extends Model
         $obj = DB::table('group')->where('slugGroup', $slug)->first();
         return $obj;
     }
+
+    //Phương thức lấy danh sách nhóm thuê nhiều
+    public function get_all_rent(){
+        return Group::with('objCategory')->where('type_sale', 1)->orderBy('timeCreate','DESC')->get();
+    } 
+
+    //Phương thức lấy danh sách nhóm tương tác tốt
+    public function get_all_interact(){
+        return Group::with('objCategory')->where('type_sale', 2)->orderBy('timeCreate','DESC')->get();
+    } 
 
 
     //Phương thức lấy danh sách nhóm mặc định
@@ -93,5 +104,32 @@ class Group extends Model
     public function objCategory()
     {
         return $this->belongsTo(Category::class, 'idCategory');
+    }
+
+    // Phương thức cập nhật
+    public function update_droup($req, $slug){
+        $obj = DB::table('group')->where('slugGroup', $slug)->update([
+            'nameGroup' => $req -> nameGroup,
+            'code' => $req -> code,
+            'slugGroup' => $req -> slugGroup,
+            'linkGroup' => $req -> linkGroup,
+            'category' => $req -> category,
+            'account_group' => $req -> account_group,
+            'name_user_group' => json_encode($req -> name_user_group),
+            'image' => $req -> image,
+            'account_group_week' => $req -> account_group_week,
+            'account_group_blog' => $req -> account_group_blog,
+            'province' => $req -> province,
+            'district' => $req -> district,
+            'wards' => $req -> wards,
+            'idCategory' => $req -> idCategory,
+            'type' => $req -> type,
+            'price' => $req -> price,
+            'rent_cost' => $req -> rent_cost,
+            'status' => $req -> status,
+            'status_color' => $req -> status_color,
+            'detail_group' => $req -> detail_group,
+        ]);
+        return $obj;
     }
 }

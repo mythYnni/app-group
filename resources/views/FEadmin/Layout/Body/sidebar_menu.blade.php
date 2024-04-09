@@ -90,8 +90,8 @@
                       <span class="pc-mtext">Hội Nhóm</span><span class="pc-arrow"><i data-feather="chevron-right"></i></span
                     ></a>
                     <ul class="pc-submenu">
-                      <li class="pc-item"><a class="pc-link" href="">Nhóm thuê nhiều</a></li>
-                      <li class="pc-item"><a class="pc-link" href="">Nhóm tương tác tốt</a></li>
+                      <li class="pc-item"><a class="pc-link" href="{{route('view_list_rent')}}">Nhóm thuê nhiều</a></li>
+                      <li class="pc-item"><a class="pc-link" href="{{route('view_list_interact')}}">Nhóm tương tác tốt</a></li>
                       <li class="pc-item"><a class="pc-link" href="{{route('view_list_group')}}">Danh sách</a></li>
                       <li class="pc-item"><a class="pc-link" href="{{route('view_creater_group')}}">Thêm mới</a></li>
                     </ul>
