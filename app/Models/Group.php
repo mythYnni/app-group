@@ -42,6 +42,17 @@ class Group extends Model
         'rentals'
     ];
 
+     //Phương thức lấy 12 danh sách nhóm thuê nhiều
+     public function get_all_rent_paginate_12(){
+        return Group::with('objCategory')->where('type_sale', 1)->orderBy('timeCreate','DESC')->paginate(12);
+    } 
+
+    //Phương thức lấy 12 danh sách nhóm tương tác tốt
+    public function get_all_interact_paginate_12(){
+        return Group::with('objCategory')->where('type_sale', 2)->orderBy('timeCreate','DESC')->paginate(12);
+    } 
+
+
     // phương thức lấy hội nhóm theo slug
     public function get_link_slug($slug){
         $obj = DB::table('group')->where('slugGroup', $slug)->first();
@@ -80,6 +91,7 @@ class Group extends Model
             'account_group_blog' => $req -> account_group_blog,
             'province' => $req -> province,
             'district' => $req -> district,
+            'type_sale' => $req -> type_sale,
             'wards' => $req -> wards,
             'idCategory' => $req -> idCategory,
             'type' => $req -> type,
@@ -120,6 +132,7 @@ class Group extends Model
             'account_group_week' => $req -> account_group_week,
             'account_group_blog' => $req -> account_group_blog,
             'province' => $req -> province,
+            'type_sale' => $req -> type_sale,
             'district' => $req -> district,
             'wards' => $req -> wards,
             'idCategory' => $req -> idCategory,

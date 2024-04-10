@@ -17,8 +17,8 @@
                                 class="user-avtar wid-45 rounded-circle" />
                         </div>
                         <div class="flex-grow-1 ms-3 me-2">
-                            <h6 class="mb-0">Jonh Smith</h6>
-                            <small>Tài khoản quản lý</small>
+                            <h6 class="mb-0">{{ Auth::guard('admin')->user()->fullName }}</h6>
+                            <small>{{ Auth::guard('admin')->user()->email }}</small>
                         </div>
                         <a class="btn btn-icon btn-link-secondary avtar" data-bs-toggle="collapse"
                             href="#pc_sidebar_userlink">

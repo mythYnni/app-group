@@ -9,6 +9,8 @@ use App\Models\Account;
 use App\Models\Group;
 use App\Http\Requests\Group\createRequest;
 use App\Http\Requests\Group\updateRequest;
+use App\Rules\Group\codeRule;
+use App\Rules\Group\slugRule;
 use Illuminate\Support\Facades\Auth;
 
 class GroupController extends Controller
@@ -132,6 +134,15 @@ class GroupController extends Controller
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
+
+        $validatedData = $req->validate([
+            'code' => [new codeRule($req->code)],
+        ]);
+
+        $validatedData = $req->validate([
+            'slugGroup' => [new slugRule($req->slugGroup)],
+        ]);
+
         // Lấy Thông Tin Nhóm
         $obj = $group->get_link_slug($slug);
         if (!$obj) {
@@ -160,7 +171,7 @@ class GroupController extends Controller
         }
         $req->merge(['name_user_group' => $accountData]);
 
-        dd($req->all());
+        // dd($req->all());
 
         if ($group->update_group($req, $slug) >= 0) {
             return redirect()->route('view_list_group')->with('success', 'Cập Nhật Nhóm Thành Công!');

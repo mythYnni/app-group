@@ -7,12 +7,15 @@ use App\Http\Controllers\AccountController\User\LoginController;
 use App\Http\Controllers\AdminController\Home\HomeController;
 use App\Http\Controllers\AdminController\Profile\ProfileController;
 use App\Http\Controllers\AdminController\Group\GroupController;
+// Controller Người Dùng
+use App\Http\Controllers\UserController\Home\HomeController as UserHomeController;
 
 // Router Đăng Nhập Admin
 Route::get('/dang-nhap-quan-tri',[LoginController::class,'view_login'])->name('view_login_account');
 Route::post('/dang-nhap-quan-tri',[LoginController::class,'login'])->name('login_admin');
 Route::get('/dang-xuat-quan-tri',[LoginController::class,'logout'])->name('logout_admin');
 
+// Danh Sách Router Admin
 Route::prefix('group-admin')->middleware('admin')->group(function () {
     // Route Trang Home
     Route::get('/', [HomeController::class,'index'])->name('view_home_admin');
@@ -50,4 +53,10 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
     Route::get('/xoa-danh-group/{slug}',[GroupController::class,'delete_group'])->name('delete_group');
     Route::get('/cap-nhat-group/{slug}',[GroupController::class,'view_update'])->name('view_update_group');
     Route::post('/cap-nhat-group/{slug}',[GroupController::class,'update_group'])->name('update_group');
+});
+
+// Danh Sách Router Người Dùng
+Route::prefix('/')->group(function () {
+    // Route Trang Home
+    Route::get('/',[UserHomeController::class,'view_home'])->name('view_home_user');
 });

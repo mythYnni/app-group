@@ -2,18 +2,25 @@
 
 namespace App\Rules\Group;
 
-use Closure;
-use Illuminate\Contracts\Validation\ValidationRule;
+use Illuminate\Contracts\Validation\Rule;
+use App\Models\Group;
 
-class codeRule implements ValidationRule
+class codeRule implements Rule
 {
-    /**
-     * Run the validation rule.
-     *
-     * @param  \Closure(string): \Illuminate\Translation\PotentiallyTranslatedString  $fail
-     */
-    public function validate(string $attribute, mixed $value, Closure $fail): void
+    protected $slug;
+
+    public function __construct($slug)
     {
-        //
+        $this->slug = $slug;
+    }
+
+    public function passes($attribute, $value)
+    {
+        return Group::where('code', $value)->where('slugGroup', '!=', $this->slug)->doesntExist();
+    }
+
+    public function message()
+    {
+        return 'Mã Nhóm bạn nhập đã tồn tại.';
     }
 }
