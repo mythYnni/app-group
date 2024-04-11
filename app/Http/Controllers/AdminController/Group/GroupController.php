@@ -136,11 +136,11 @@ class GroupController extends Controller
         // }
 
         $validatedData = $req->validate([
-            'code' => [new codeRule($req->code)],
+            'code' => [new codeRule($slug)],
         ]);
 
         $validatedData = $req->validate([
-            'slugGroup' => [new slugRule($req->slugGroup)],
+            'slugGroup' => [new slugRule($slug)],
         ]);
 
         // Lấy Thông Tin Nhóm
@@ -174,9 +174,9 @@ class GroupController extends Controller
         // dd($req->all());
 
         if ($group->update_group($req, $slug) >= 0) {
-            return redirect()->route('view_list_group')->with('success', 'Cập Nhật Nhóm Thành Công!');
+            return redirect() -> back()->with('success', 'Cập Nhật Nhóm Thành Công!');
         } else {
-            return redirect()->route('view_list_group')->with('error', 'Cập Nhật Nhóm Thất Bại!');
+            return redirect() -> back()->with('error', 'Cập Nhật Nhóm Thất Bại!');
         }
     }
 }

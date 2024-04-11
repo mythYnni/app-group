@@ -33,6 +33,7 @@
     <!-- Footer End -->
 
     @include('FEuser.Layout.Fooder.JS_Fooder')
+    @yield('view_js')
 </body>
 
 <!-- Mirrored from shreethemes.in/jobnova/layouts/job-list-one.html by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 10 Apr 2024 02:24:13 GMT -->

@@ -137,6 +137,10 @@ p {
     position: relative
 }
 
+.hover-h4 :hover{
+    color: red;
+}
+
 .section-title .title {
     letter-spacing: 0.5px;
     font-size: 28px !important
@@ -154,6 +158,10 @@ p {
 
 .mt-100 {
     margin-top: 100px
+}
+
+.mt-50 {
+    margin-top: 50px
 }
 
 .mb-60 {
@@ -3475,7 +3483,7 @@ button:not(:disabled) {
 }
 
 .bg-half {
-    padding: 200px 0 100px;
+    padding: 120px 0 100px;
     background-size: cover !important;
     align-self: center;
     position: relative;
@@ -3795,15 +3803,31 @@ button:not(:disabled) {
     .job-post.job-post-list .w-full {
         width: 100%
     }
+
+    .mb-10px {
+        margin-top: 5px;
+    }
 }
 
 @media (min-width: 768px) {
+    .job-post.job-post-list .w-400px {
+        width: 400px !important
+    }
+
+    .job-post.job-post-list .w-350px {
+        width: 350px !important
+    }
+
     .job-post.job-post-list .w-310px {
         width: 310px !important
     }
 
     .job-post.job-post-list .w-250px {
         width: 250px !important
+    }
+
+    .job-post.job-post-list .w-200px {
+        width: 200px !important
     }
 
     .job-post.job-post-list .w-100px {

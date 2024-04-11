@@ -41,21 +41,41 @@ class Group extends Model
         'user_email_create',
         'rentals'
     ];
+    // Phương thức lấy danh mục
+    public function lay_danh_muc() {
+        $list = Group::with('objCategory')->where('status', '=', 0)->get();
+        // Khởi tạo mảng để lưu trữ các giá trị category không trùng lặp
+        $uniqueCategories = [];
+    
+        foreach ($list as $item) {
+            // Kiểm tra nếu category không phải là null và không tồn tại trong mảng uniqueCategories
+            if ($item->category !== null && !in_array($item->category, $uniqueCategories)) {
+                $uniqueCategories[] = $item->category;
+            }
+        }
+    
+        return $uniqueCategories;
+    }
 
-     //Phương thức lấy 12 danh sách nhóm thuê nhiều
-     public function get_all_rent_paginate_12(){
-        return Group::with('objCategory')->where('type_sale', 1)->orderBy('timeCreate','DESC')->paginate(12);
+    // Phương thức lấy hội nhóm liên quan
+    public function get_all_detail_3($category, $province, $slug){
+        return Group::with('objCategory')->where('category', $category)->where('province', $province)->where('slugGroup', '!=', $slug)->where('status', 0)->orderBy('timeCreate','DESC')->paginate(6);
+    } 
+
+    //Phương thức lấy 12 danh sách nhóm thuê nhiều
+    public function get_all_rent_paginate_12(){
+        return Group::with('objCategory')->where('type_sale', 1)->where('status', 0)->orderBy('timeCreate','DESC')->paginate(12);
     } 
 
     //Phương thức lấy 12 danh sách nhóm tương tác tốt
     public function get_all_interact_paginate_12(){
-        return Group::with('objCategory')->where('type_sale', 2)->orderBy('timeCreate','DESC')->paginate(12);
+        return Group::with('objCategory')->where('type_sale', 2)->where('status', 0)->orderBy('timeCreate','DESC')->paginate(12);
     } 
 
 
     // phương thức lấy hội nhóm theo slug
     public function get_link_slug($slug){
-        $obj = DB::table('group')->where('slugGroup', $slug)->first();
+        $obj = Group::with('objCategory')->where('slugGroup', $slug)->first();
         return $obj;
     }
 

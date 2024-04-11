@@ -9,6 +9,7 @@ use App\Http\Controllers\AdminController\Profile\ProfileController;
 use App\Http\Controllers\AdminController\Group\GroupController;
 // Controller Người Dùng
 use App\Http\Controllers\UserController\Home\HomeController as UserHomeController;
+use App\Http\Controllers\UserController\Cart\CartController;
 
 // Router Đăng Nhập Admin
 Route::get('/dang-nhap-quan-tri',[LoginController::class,'view_login'])->name('view_login_account');
@@ -59,4 +60,8 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
 Route::prefix('/')->group(function () {
     // Route Trang Home
     Route::get('/',[UserHomeController::class,'view_home'])->name('view_home_user');
+    // Router thông tin chi tiết
+    Route::get('/chi-tiet/{slug}',[UserHomeController::class,'view_detail_group'])->name('view_detail_group');
+    // Router lấy thông tin khách hàng
+    Route::post('/dang-ky-thong-tin',[CartController::class,'creater_cart'])->name('creater_cart');
 });
