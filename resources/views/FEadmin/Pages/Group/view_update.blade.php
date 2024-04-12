@@ -65,31 +65,26 @@
                         <div class="form-group col-12 col-md-5">
                             @php
                                 $admin = json_decode($obj->name_user_group);
+                                $adminIds = array_column($admin, 'id');
                             @endphp
                             <label class="form-label" for="exampleSelect1">Quản Trị</label>
                             <select class="form-control" name="name_user_group[]" id="choices-multiple-groups" multiple>
                                 <optgroup label="Quản Trị">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
-                                        @foreach ($admin as $objs)
-                                            @if ($value->decentralization == 0)
-                                                <option value="{{ $value->id }}"
-                                                    {{ $value->id && $objs->id ? 'selected' : '' }}>
-                                                    {{ $value->fullName }}
-                                                </option>
-                                            @endif
-                                        @endforeach
+                                        @if ($value->decentralization == 0)
+                                            <option value="{{ $value->id }}" {{ in_array($value->id, $adminIds) ? 'selected' : '' }}>
+                                                {{ $value->fullName }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </optgroup>
                                 <optgroup label="Nhân Sự">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
-                                        @foreach ($admin as $objs)
-                                            @if ($value->decentralization == 1)
-                                                <option value="{{ $value->id }}"
-                                                    {{ $value->id && $objs->id ? 'selected' : '' }}>
-                                                    {{ $value->fullName }}
-                                                </option>
-                                            @endif
-                                        @endforeach
+                                        @if ($value->decentralization == 1)
+                                            <option value="{{ $value->id }}" {{ in_array($value->id, $adminIds) ? 'selected' : '' }}>
+                                                {{ $value->fullName }}
+                                            </option>
+                                        @endif
                                     @endforeach
                                 </optgroup>
                             </select>
