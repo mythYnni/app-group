@@ -41,6 +41,70 @@ class Group extends Model
         'user_email_create',
         'rentals'
     ];
+
+    //Phương thức lấy 20 danh sách nhóm thuê nhiều + tìm kiếm + phân trang
+    public function get_all_paginate_20_type($request, $type){
+        $query = Group::with('objCategory')
+                       ->where('type_sale', $type)
+                       ->where('status', 0)
+                       ->orderBy('timeCreate', 'DESC');
+        
+        $filters = $request->only(['search', 'category', 'province', 'district', 'wards']);
+    
+        // Kiểm tra xem $filters không rỗng và có các trường dữ liệu
+        if (!empty($filters)) {
+            foreach ($filters as $key => $value) {
+                // Kiểm tra xem trường dữ liệu có tồn tại trong $filters không
+                if (isset($value) && $value !== '') {
+                    // Áp dụng điều kiện tìm kiếm
+                    if ($key === 'search') {
+                        $query->where('nameGroup', 'like', '%' . $value . '%');
+                    } else {
+                        $query->where($key, 'like', '%' . $value . '%');
+                    }
+                }
+            }
+        }
+    
+        // Lọc điều kiện cho 'province', 'district', 'wards'
+        if (isset($filters['province'])) {
+            $query->where('province', $filters['province']);
+    
+            if (isset($filters['district'])) {
+                $query->where('district', $filters['district']);
+    
+                if (isset($filters['wards'])) {
+                    $query->where('wards', $filters['wards']);
+                }
+            }
+        }
+    
+        // Phân trang và trả về kết quả
+        $searchResult = $query->paginate(20);
+    
+        // Lấy danh sách bản ghi theo 'province' và 'province, district' nếu có
+        $allByProvince = null;
+        $allByProvinceAndDistrict = null;
+        
+        if (isset($filters['province'])) {
+            $allByProvince = Group::with('objCategory')
+                                  ->where('province', $filters['province'])
+                                  ->get();
+    
+            if (isset($filters['district'])) {
+                $allByProvinceAndDistrict = Group::with('objCategory')
+                                                  ->where('province', $filters['province'])
+                                                  ->where('district', $filters['district'])
+                                                  ->get();
+            }
+        }
+    
+        return [
+            'searchResult' => $searchResult,
+            'allByProvince' => $allByProvince,
+            'allByProvinceAndDistrict' => $allByProvinceAndDistrict
+        ];
+    }
     // Phương thức lấy danh mục
     public function lay_danh_muc() {
         $list = Group::with('objCategory')->where('status', '=', 0)->get();

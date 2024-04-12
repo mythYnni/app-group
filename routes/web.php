@@ -64,4 +64,8 @@ Route::prefix('/')->group(function () {
     Route::get('/chi-tiet/{slug}',[UserHomeController::class,'view_detail_group'])->name('view_detail_group');
     // Router lấy thông tin khách hàng
     Route::post('/dang-ky-thong-tin',[CartController::class,'creater_cart'])->name('creater_cart');
+    // Route danh sách group tương tác tốt
+    Route::get('/danh-sach-group-tuong-tac-tot',[UserHomeController::class,'view_group_interact'])->name('view_group_interact');
+    // Route danh sách group thuê nhiều
+    Route::get('/danh-sach-group-thue-nhieu',[UserHomeController::class,'view_group_rent'])->name('view_group_rent');
 });

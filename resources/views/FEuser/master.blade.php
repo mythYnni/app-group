@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dịch Vụ Thuê/Mua Group Facebook</title>
+    <title>DPC Marketing</title>
     <!-- [Feather Icons] https://feathericons.com -->
     <link rel="stylesheet" href="{{ url('assets') }}/fonts/fontawesome.css">
     <!-- favicon -->
@@ -33,6 +33,12 @@
     <!-- Footer End -->
 
     @include('FEuser.Layout.Fooder.JS_Fooder')
+    <!-- :: SUCCESS -->
+    @include('FEuser.Sweetalert.success')
+    <!-- :: END SUCCESS -->
+    <!-- :: ERROR -->
+    @include('FEuser.Sweetalert.error')
+    <!-- :: END ERROR -->
     @yield('view_js')
 </body>
 

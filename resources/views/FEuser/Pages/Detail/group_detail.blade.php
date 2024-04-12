@@ -47,7 +47,7 @@
         }
     @endphp
     <!-- Start -->
-    <section class="bg-half d-table w-100">
+    <section class="bg-half d-table w-100" style="min-height: 1000px;">
         <div class="container">
             <div class="row g-4">
                 <div class="col-lg-4 col-md-6">
@@ -119,7 +119,7 @@
                                 <div class="d-flex widget align-items-center">
                                     <i data-feather="briefcase" class="fea icon-ex-md me-3"></i>
                                     <div class="flex-1">
-                                        <h6 class="widget-title mb-0">Lượng Thành Viên Vào Trong Tuần</h6>
+                                        <h6 class="widget-title mb-0">Lượng Thành Viên / Tuần</h6>
                                         <small class="text-primary mb-0">+{{ $obj->account_group_week }} thành viên /
                                             tuần</small>
                                     </div>
@@ -130,7 +130,7 @@
                                 <div class="d-flex widget align-items-center">
                                     <i data-feather="book" class="fea icon-ex-md me-3"></i>
                                     <div class="flex-1">
-                                        <h6 class="widget-title mb-0">Lượng Thành Viên Vào Trong Tuần</h6>
+                                        <h6 class="widget-title mb-0">Lượng Bài Viết / Tuần</h6>
                                         <small class="text-primary mb-0">+{{ $obj->account_group_blog }} bài / tuần</small>
                                     </div>
                                 </div>
@@ -196,40 +196,44 @@
                             $address .= $value->wards;
                         }
                     @endphp
-                    <div class="col-12">
+                    <div class="col-xl-12 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div
-                            class="job-post job-post-list rounded shadow p-4 d-md-flex align-items-center justify-content-between position-relative">
-                            <div class="d-flex align-items-center w-400px">
+                            class="job-post job-post-list rounded shadow p-3 d-xl-flex align-items-center justify-content-between position-relative">
+                            <div class="d-flex align-items-center w-350px">
                                 <div>
-                                    <a href="{{ $value->linkGroup }}" target="_blank"
-                                        class="h5 title text-dark">{{ $value->nameGroup }}</a>
+                                    <div class="truncate-mobile">
+                                        <a href="{{ $value->linkGroup }}" target="_blank"
+                                            class="h5 title text-dark">{{ $value->nameGroup }}</a>
+
+                                    </div>
                                     <span class="d-flex fw-medium mt-md-2">{{ $value->account_group }} Thành Viên</span>
                                 </div>
                             </div>
 
-                            <div class="d-flex align-items-center justify-content-between d-md-block mt-3 mt-md-0 w-200px">
+                            <div class="d-flex align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-120px">
                                 <span class="badge rounded-pill {{ $typeColor }}">{{ $typeName }}</span>
-                                <span class="text-muted d-flex align-items-center fw-medium mt-md-2"><i
+                                <span class="text-muted d-flex align-items-center fw-medium mt-lg-2"><i
                                         class="fea icon-sm me-1 align-middle fas fa-map-signs"></i>{{ $value->category }}</span>
                             </div>
 
-                            <div class="d-blog align-items-center justify-content-between d-md-block mt-3 mt-md-0 w-250px">
+                            <div class="d-blog align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-280px">
                                 <span class="text-muted d-flex align-items-center fw-medium mt-md-2">
                                     Giá Thuê: {{ number_format($value->rent_cost, 0, ',', '.') }} vnđ / tháng</span>
                                 <span class="text-muted d-flex align-items-center fw-medium mt-md-2 mb-10px">
                                     Giá Bán: {{ number_format($value->price, 0, ',', '.') }} vnđ</span>
                             </div>
 
-                            <div class="d-blog align-items-center justify-content-between d-md-block mt-2 mt-md-0 w-350px">
-                                <span class="text-muted d-flex align-items-center"><i data-feather="map-pin"
+                            <div
+                                class="d-blog align-items-center justify-content-between d-xl-block mt-2 mt-md-0 w-350px truncate">
+                                <span class="text-muted d-flex align-items-center mt-md-2"><i data-feather="map-pin"
                                         class="fea icon-sm me-1 align-middle"></i>{{ $value->objCategory->name }}</span>
-                                <span class="d-flex fw-medium mt-md-2 mb-10px"
+                                <span class="d-flex fw-medium mt-md-2 mb-10px mb-md-2"
                                     style="font-size: 11.5px;">{{ $address }}</span>
                             </div>
 
                             <div class="mt-3 mt-md-0">
                                 <a href="{{ route('view_detail_group', $value->slugGroup) }}"
-                                    class="btn btn-sm btn-primary w-full ms-md-1">Đăng Ký</a>
+                                    class="btn btn-sm btn-primary w-full">Đăng Ký</a>
                             </div>
                         </div>
                     </div><!--end col-->

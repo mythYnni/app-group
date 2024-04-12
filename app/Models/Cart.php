@@ -20,6 +20,7 @@ class Cart extends Model
         'phone',
         'email',
         'idGroup',
+        'nameGroup',
         'price',
         'rent_cost',
         'status',
@@ -27,4 +28,23 @@ class Cart extends Model
         'linkGroup',
         'timeCreate',
     ];
+
+    // phương thức thêm mới
+    public function create_cart($req){
+        $currentTime = now();
+        $creates = $this->Create([
+            'name_account' => $req -> name_account,
+            'phone' => $req -> phone,
+            'email' => $req -> email,
+            'idGroup' => $req -> idGroup,
+            'nameGroup' => $req -> nameGroup,
+            'price' => $req -> price,
+            'rent_cost' => $req -> rent_cost,
+            'status_type' => $req -> status_type,
+            'linkGroup' => $req -> linkGroup,
+            'timeCreate' => $currentTime,
+        ]);
+        return $creates;
+    }
+
 }
