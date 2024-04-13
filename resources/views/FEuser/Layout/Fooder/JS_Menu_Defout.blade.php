@@ -10,9 +10,6 @@
         displayMenu();
     };
 
-    var selectedCategory = "<?php echo $category; ?>";
-    var search = "<?php echo $search; ?>";
-
     function displayMenu() {
         // Lấy chiều rộng của màn hình
         var screenWidth = window.innerWidth;
@@ -27,9 +24,8 @@
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12 mb-md-1">
                     <div class="input-group search-form">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="Tìm kiếm....." name="search"
-                            style="border-bottom-right-radius: 7px; border-top-right-radius: 7px; border: 1px solid #e7e7e7; padding: 0.3rem 2.25rem .375rem .75rem;"
-                            value="<?php echo $search; ?>">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm....." name="search"
+                                style="border-bottom-right-radius: 7px; border-top-right-radius: 7px; border: 1px solid #e7e7e7; padding: 0.3rem 2.25rem .375rem .75rem;">
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 none-laptop">
@@ -52,11 +48,9 @@
                                                 <select class="form-select" fdprocessedid="o6qc3" name="category">
                                                     <option value="">Danh Mục</option>
                                                     @foreach ($list_category as $value)
-                                                        @if ($value == $category)
-                                                            <option value="{{ $value }}" selected>{{ $value }}</option>
-                                                        @else
-                                                            <option value="{{ $value }}">{{ $value }}</option>
-                                                        @endif
+                                                        <option value="{{ $value }}">
+                                                                {{ $value }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
@@ -108,22 +102,19 @@
                 <div class="col-xl-3 col-lg-6 col-md-6 col-12 mb-md-1">
                     <div class="input-group search-form">
                         <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="Tìm kiếm....." name="search"
-                            style="border-bottom-right-radius: 7px; border-top-right-radius: 7px; border: 1px solid #e7e7e7; padding: 0.3rem 2.25rem .375rem .75rem;"
-                            value="<?php echo $search; ?>">
+                            <input type="text" class="form-control" placeholder="Tìm kiếm....." name="search"
+                                style="border-bottom-right-radius: 7px; border-top-right-radius: 7px; border: 1px solid #e7e7e7; padding: 0.3rem 2.25rem .375rem .75rem;">
                     </div>
                 </div>
                 <div class="col-xl-2 col-lg-6 col-md-6 col-12">
                     <div class="form-group">
                         <select class="form-select" fdprocessedid="o6qc3" name="category">
                             <option value="">Danh Mục</option>
-                            @foreach ($list_category as $value)
-                                @if ($value == $category)
-                                    <option value="{{ $value }}" selected>{{ $value }}</option>
-                                @else
-                                    <option value="{{ $value }}">{{ $value }}</option>
-                                @endif
-                            @endforeach
+                                @foreach ($list_category as $value)
+                                    <option value="{{ $value }}">
+                                        {{ $value }}
+                                    </option>
+                                @endforeach
                         </select>
                     </div>
                 </div>
@@ -163,11 +154,6 @@
     }
     // Function to fetch data and render city options
     function fetchDataAndRenderCityOptions() {
-
-        var selectedProvince = "<?php echo $province; ?>";
-        var selectedDistrict = "<?php echo $district; ?>";
-        var selectedWard = "<?php echo $wards; ?>";
-
         var citis = document.getElementById("city");
         var districts = document.getElementById("district");
         var wards = document.getElementById("ward");
@@ -179,7 +165,6 @@
         var promise = axios(Parameter);
         promise.then(function(result) {
             renderCity(result.data);
-            setSelectedProvince(selectedProvince, selectedDistrict, selectedWard);
         });
 
         function renderCity(data) {
@@ -210,37 +195,6 @@
                     }
                 }
             };
-        }
-
-        function setSelectedProvince(selectedProvince) {
-            for (let i = 0; i < citis.options.length; i++) {
-                if (citis.options[i].value === selectedProvince) {
-                    citis.selectedIndex = i;
-                    citis.dispatchEvent(new Event('change')); // Kích hoạt sự kiện thay đổi để tải dữ liệu quận/huyện
-                    setSelectedDistrict(selectedDistrict); // Gọi hàm để thiết lập quận/huyện đã chọn
-                    break;
-                }
-            }
-        }
-
-        function setSelectedDistrict(selectedDistrict) {
-            for (let i = 0; i < districts.options.length; i++) {
-                if (districts.options[i].value === selectedDistrict) {
-                    districts.selectedIndex = i;
-                    district.dispatchEvent(new Event('change'));
-                    setSelectedWard(selectedWard);
-                    break;
-                }
-            }
-        }
-
-        function setSelectedWard(selectedWard) {
-            for (let i = 0; i < wards.options.length; i++) {
-                if (wards.options[i].value === selectedWard) {
-                    wards.selectedIndex = i;
-                    break;
-                }
-            }
         }
     }
 </script>

@@ -28,7 +28,7 @@
                 <div class="col-12 mt-4">
                     <div class="features-absolute">
                         <div class="d-md-flex justify-content-between align-items-center bg-white shadow rounded p-4">
-                            <form class="card-body text-start">
+                            <form class="card-body text-start" method="GET" action="{{ route('view_group_index') }}">
                                 <div class="registration-form text-dark text-start">
                                     <div class="row g-lg-1" id="menuSearch">
 
@@ -217,6 +217,6 @@
     </section><!--end section-->
 @stop
 @section('view_js')
-    @include('FEuser.Layout.Fooder.JS_Menu')
+    @include('FEuser.Layout.Fooder.JS_Menu_Defout')
     {{-- @include('FEadmin.Layout.JS.Get_Account') --}}
 @stop
