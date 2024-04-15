@@ -6,7 +6,7 @@
                     <div class="row align-items-center">
                         <div class="col-sm-3">
                             <div class="text-center text-sm-start">
-                                <a href="#"><img src="{{ url('assets') }}/user/images/logo-light.png"
+                                <a href="#"><img style="width: 100%;" src="{{ url('assets') }}/images/logo_white_background.png"
                                         alt=""></a>
                             </div>
                         </div>
@@ -15,19 +15,13 @@
                             <ul class="list-unstyled footer-list terms-service text-center text-sm-end mb-0">
                                 <li class="list-inline-item my-2"><a href="index.html"
                                         class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i>
-                                        Home</a></li>
+                                        Trang Chủ</a></li>
                                 <li class="list-inline-item my-2"><a href="services.html"
-                                        class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i> How
-                                        it works</a></li>
+                                        class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i>Nhóm Tương Tác Tốt</a></li>
                                 <li class="list-inline-item my-2"><a href="job-post.html"
-                                        class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i>
-                                        Create a job</a></li>
+                                        class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i>Nhóm Thuê Nhiều</a></li>
                                 <li class="list-inline-item my-2"><a href="aboutus.html"
-                                        class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i> About
-                                        us</a></li>
-                                <li class="list-inline-item my-2"><a href="pricing.html"
-                                        class="text-foot fs-6 fw-medium"><i class="mdi mdi-circle-small"></i> Plans</a>
-                                </li>
+                                        class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i>Liên Hệ</a></li>
                             </ul>
                         </div><!--end col-->
                     </div><!--end row-->
@@ -44,8 +38,7 @@
                         <p class="mb-0 fw-medium">©
                             <script>
                                 document.write(new Date().getFullYear())
-                            </script> Jobnova. Design with <i class="mdi mdi-heart text-danger"></i> by
-                            <a href="https://shreethemes.in/" target="_blank" class="text-reset">Shreethemes</a>.
+                            </script> DPC Marketing <i class="mdi mdi-heart text-danger"></i></a>.
                         </p>
                     </div>
                 </div>
