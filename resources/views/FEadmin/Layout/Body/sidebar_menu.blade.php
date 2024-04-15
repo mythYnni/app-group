@@ -49,6 +49,16 @@
                 <li class="pc-item pc-caption">
                     <label>Kinh Doanh</label>
                 </li>
+                <li class="pc-item">
+                  <a href="https://ableproadmin.com/application/file-manager.html" class="pc-link">
+                    <span class="pc-micon">
+                      <svg class="pc-icon">
+                        <use xlink:href="#custom-dollar-square"></use>
+                      </svg>
+                    </span>
+                    <span class="pc-mtext">Đơn Hàng</span>
+                    <span class="pc-badge">2</span></a>
+                </li>
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
                         <span class="pc-micon">
@@ -56,16 +66,14 @@
                                 <use xlink:href="#custom-status-up"></use>
                             </svg>
                         </span>
-                        <span class="pc-mtext">Đơn Hàng</span>
+                        <span class="pc-mtext">Thống Kê</span>
                         <span class="pc-arrow"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
                                 stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-right">
                                 <polyline points="9 18 15 12 9 6"></polyline>
                             </svg></span>
-                        <span class="pc-badge">2</span>
                     </a>
                     <ul class="pc-submenu" style="display: none;">
-                        <li class="pc-item"><a class="pc-link" href="">Danh Sách</a></li>
                         <li class="pc-item"><a class="pc-link" href="">Nhóm Thuê</a></li>
                         <li class="pc-item"><a class="pc-link" href="">Nhóm Đã Bán</a></li>
                     </ul>
