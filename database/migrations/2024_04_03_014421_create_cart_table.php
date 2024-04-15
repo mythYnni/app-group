@@ -25,6 +25,7 @@ return new class extends Migration
             $table->tinyInteger('status_type')->default(0); // 0 mua, 1 thuê
             $table->string('linkGroup')->nullable(false);
             $table->string('timeCreate'); // ngày thuê, ngày mua
+            $table->longText('note')->default()->nullable(); //chi tiết
             $table->timestamps();
         });
     }

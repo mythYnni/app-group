@@ -27,6 +27,7 @@ class Cart extends Model
         'status_type',
         'linkGroup',
         'timeCreate',
+        'note',
     ];
 
     // phương thức thêm mới
