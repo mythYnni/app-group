@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('cart', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name_account')->nullable(false);
-            $table->string('phone')->nullable()->unique();
+            $table->string('phone')->nullable();
             $table->string('email')->nullable()->validate(['email' => 'email']);
             $table->string('nameGroup')->nullable(false);
             $table->unsignedBigInteger('idGroup');

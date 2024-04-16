@@ -50,13 +50,13 @@
                     <label>Kinh Doanh</label>
                 </li>
                 <li class="pc-item">
-                  <a href="https://ableproadmin.com/application/file-manager.html" class="pc-link">
+                  <a href="{{route('view_list_cart')}}" class="pc-link">
                     <span class="pc-micon">
                       <svg class="pc-icon">
                         <use xlink:href="#custom-dollar-square"></use>
                       </svg>
                     </span>
-                    <span class="pc-mtext">Đơn Hàng</span>
+                    <span class="pc-mtext">Hỗ Trợ</span>
                     <span class="pc-badge">2</span></a>
                 </li>
                 <li class="pc-item pc-hasmenu">

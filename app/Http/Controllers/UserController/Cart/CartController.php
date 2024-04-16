@@ -20,14 +20,15 @@ class CartController extends Controller
         // Tạo dữ liệu
         $req->merge([
             'name_account' => $req->name_account,
-            'phone' => $req->email,
-            'email' => $req->phone,
+            'phone' => $req->phone,
+            'email' => $req->email,
             'idGroup' => $obj->id,
             'nameGroup' => $obj->nameGroup,
             'price' => $obj->price,
             'rent_cost' => $obj->rent_cost,
             'status_type' => $req->status_type,
             'linkGroup' => $obj->linkGroup,
+            'status' => 0,
         ]);
     
         //Thực hiện thêm mới

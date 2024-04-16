@@ -42,6 +42,13 @@ class Group extends Model
         'rentals'
     ];
 
+     // phương thức lấy hội nhóm theo slug
+     public function get_by_id($id){
+        $obj = Group::with('objCategory')->where('id', $id)->first();
+        return $obj;
+    }
+
+
     //Phương thức lấy 20 danh sách nhóm thuê nhiều + tìm kiếm + phân trang
     public function get_all_group_20_type($request){
         $query = Group::with('objCategory')

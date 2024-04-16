@@ -7,6 +7,7 @@ use App\Http\Controllers\AccountController\User\LoginController;
 use App\Http\Controllers\AdminController\Home\HomeController;
 use App\Http\Controllers\AdminController\Profile\ProfileController;
 use App\Http\Controllers\AdminController\Group\GroupController;
+use App\Http\Controllers\adminController\Cart\CartController as adminCartController;
 // Controller Người Dùng
 use App\Http\Controllers\UserController\Home\HomeController as UserHomeController;
 use App\Http\Controllers\UserController\Cart\CartController;
@@ -20,6 +21,12 @@ Route::get('/dang-xuat-quan-tri',[LoginController::class,'logout'])->name('logou
 Route::prefix('group-admin')->middleware('admin')->group(function () {
     // Route Trang Home
     Route::get('/', [HomeController::class,'index'])->name('view_home_admin');
+
+    // Router Đơn Hàng
+    Route::get('/don-hang', [adminCartController::class,'view_list'])->name('view_list_cart');
+    Route::get('/xoa-don-hang/{slug}',[adminCartController::class,'delete_cart'])->name('delete_cart');
+    Route::get('/cap-nhat-don-hang/{slug}', [adminCartController::class,'index_update'])->name('view_update_cart');
+    Route::post('/cap-nhat-don-hang/{slug}',[adminCartController::class,'update_cart'])->name('update_cart');
 
     // Router Cá nhâ
     Route::get('/thong-tin-ca-nhan', [ProfileController::class,'index'])->name('view_profile');

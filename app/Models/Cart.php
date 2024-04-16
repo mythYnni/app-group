@@ -30,6 +30,24 @@ class Cart extends Model
         'note',
     ];
 
+    // phương thức xóa
+    public function deleteCart($slug){
+        $obj = DB::table('cart')->where('id', $slug)->delete();
+        return $obj;
+    }
+
+
+    // phương thức lấy đơn hàng theo id
+    public function get_by_id($slug){
+        $obj = DB::table('cart')->where('id', $slug)->first();
+        return $obj;
+    }
+
+    //Phương thức lấy danh sách
+    public function get_orderBy_ASC(){
+        return $this->orderBy('timeCreate','DESC')->get();
+    } 
+
     // phương thức thêm mới
     public function create_cart($req){
         $currentTime = now();
@@ -41,6 +59,7 @@ class Cart extends Model
             'nameGroup' => $req -> nameGroup,
             'price' => $req -> price,
             'rent_cost' => $req -> rent_cost,
+            'status' => $req -> status,
             'status_type' => $req -> status_type,
             'linkGroup' => $req -> linkGroup,
             'timeCreate' => $currentTime,
@@ -48,4 +67,12 @@ class Cart extends Model
         return $creates;
     }
 
+     // Phương thức cập nhật note
+     public function update_cart_note($req, $slug){
+        $obj = DB::table('cart')->where('id', $slug)->update([
+            'status' => $req -> status,
+            'note' => $req -> note,
+        ]);
+        return $obj;
+    }
 }
