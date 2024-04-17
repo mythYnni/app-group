@@ -30,6 +30,11 @@ class Cart extends Model
         'note',
     ];
 
+    //Phương thức lấy danh sách nhóm thuê nhiều
+    public function get_all_count(){
+        return $this->orderBy('timeCreate','DESC')->where('status', 0)->count();
+    } 
+
     // phương thức xóa
     public function deleteCart($slug){
         $obj = DB::table('cart')->where('id', $slug)->delete();

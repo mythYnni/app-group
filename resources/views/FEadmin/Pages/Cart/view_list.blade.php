@@ -110,10 +110,11 @@
                                                 <div class="btn-group-dropdown">
                                                   <button class="btn btn-outline-secondary dropdown-toggle btn-sm mg-button-left" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lựa chọn</button>
                                                   <div class="dropdown-menu">
+                                                    <a class="dropdown-item" href="{{route('index_buiding' , $value->id)}}"><span style="display: flex; justify-content: flex-start; color: #352ca8;"><i class="ti ti-pencil me-1"></i> Tạo Hợp Đồng Thuê</span></a>
+                                                    <a class="dropdown-item" href="{{route('view_update_cart' , $value->id)}}"><span style="display: flex; justify-content: flex-start; color: #2ca87f;"><i class="ti ti-pencil me-1"></i> Note & Trạng Thái</span></a>
                                                     <a class="dropdown-item" href="{{route('delete_cart' , $value->id)}}" title="Delete" onclick="return confirm('Bạn Có Chắc Muốn Xóa Khách {{ $value->name_account }} Không?')">
                                                       <span style="display: flex; justify-content: flex-start; color: #dc2626;"><i class="ti ti-trash me-1"></i> Xóa</span>
                                                     </a>
-                                                    <a class="dropdown-item" href="{{route('view_update_cart' , $value->id)}}"><span style="display: flex; justify-content: flex-start; color: #2ca87f;"><i class="ti ti-pencil me-1"></i> Note & Trạng Thái</span></a>
                                                   </div>
                                                 </div>
                                             </td>

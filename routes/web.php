@@ -27,8 +27,9 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
     Route::get('/xoa-don-hang/{slug}',[adminCartController::class,'delete_cart'])->name('delete_cart');
     Route::get('/cap-nhat-don-hang/{slug}', [adminCartController::class,'index_update'])->name('view_update_cart');
     Route::post('/cap-nhat-don-hang/{slug}',[adminCartController::class,'update_cart'])->name('update_cart');
+    Route::get('/tao-hop-dong-thue/{slug}', [adminCartController::class,'index_buiding'])->name('index_buiding');
 
-    // Router Cá nhâ
+    // Router Cá nhân
     Route::get('/thong-tin-ca-nhan', [ProfileController::class,'index'])->name('view_profile');
     Route::post('/cap-nhat-thong-tin-ca-nhan',[ProfileController::class,'update_profile'])->name('update_profile');
     Route::get('/thong-tin-mat-khau', [ProfileController::class,'index_password'])->name('index_password');

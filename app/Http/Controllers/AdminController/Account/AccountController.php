@@ -12,22 +12,25 @@ use App\Http\Requests\Account\updateRequest;
 use App\Http\Requests\Account\passwordRequest;
 use App\Rules\Account\AccountRule;
 use Mail;
+use App\Models\Cart;
 use App\Mail\Send_Email_Password;
 
 class AccountController extends Controller
 {
     // View danh sách
-    public function view_list(Account $account){
+    public function view_list(Account $account, Cart $cart){
         $list = $account -> get_orderBy_ASC();
-        return view('FEadmin.Pages.Account.view_list', compact('list'));
+        $count = $cart->get_all_count();
+        return view('FEadmin.Pages.Account.view_list', compact('list', 'count'));
     }
 
      // View thêm mới
-     public function view_creater(){
+     public function view_creater(Cart $cart){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
-        return view('FEadmin.Pages.Account.view_create');
+        $count = $cart->get_all_count();
+        return view('FEadmin.Pages.Account.view_create', compact('count'));
     }
 
     // Phương thức thêm mới
@@ -69,10 +72,10 @@ class AccountController extends Controller
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
-
+        $count = $cart->get_all_count();
         $obj = $account->get_link_slug($slug);
         if (!$obj) {
-            return view('FEadmin.Pages.Error.error404');
+            return view('FEadmin.Pages.Error.error404', compact('count'));
         }
 
         if ($account->delete_account($slug) > 0) {
@@ -82,23 +85,24 @@ class AccountController extends Controller
         }
     }
 
-    public function view_update(Account $account, $slug){
+    public function view_update(Account $account, $slug, Cart $cart){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
-
+        $count = $cart->get_all_count();
         $obj = $account->get_link_slug($slug);
 
         if (!$obj) {
-            return view('FEadmin.Pages.Error.error404');
+            return view('FEadmin.Pages.Error.error404', compact('count'));
         }
         return view('FEadmin.Pages.Account.view_update', compact('obj'));
     }
 
-    public function update_account(updateRequest $req, Account $account, $slug){
+    public function update_account(updateRequest $req, Account $account, $slug, Cart $cart){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
+        $count = $cart->get_all_count();
         $validatedData = $req->validate([
             'phone' => [new AccountRule($slug)],
         ]);
@@ -106,7 +110,7 @@ class AccountController extends Controller
         $obj = $account->get_link_slug($slug);
 
         if (!$obj) {
-            return view('FEadmin.Pages.Error.error404');
+            return view('FEadmin.Pages.Error.error404', compact('count'));
         }
 
         if ($account->update_account($req, $slug) >= 0) {
@@ -116,28 +120,28 @@ class AccountController extends Controller
         }
     }
 
-    public function view_update_password(Account $account, $slug){
+    public function view_update_password(Account $account, $slug, Cart $cart){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
-
+        $count = $cart->get_all_count();
         $obj = $account->get_link_slug($slug);
 
         if (!$obj) {
-            return view('FEadmin.Pages.Error.error404');
+            return view('FEadmin.Pages.Error.error404', compact('count'));
         }
         return view('FEadmin.Pages.Account.view_update_password', compact('obj'));
     }
 
-    public function update_password_account(passwordRequest $req, Account $account, $slug){
+    public function update_password_account(passwordRequest $req, Account $account, $slug, Cart $cart){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
-
+        $count = $cart->get_all_count();
         $obj = $account->get_link_slug($slug);
 
         if (!$obj) {
-            return view('FEadmin.Pages.Error.error404');
+            return view('FEadmin.Pages.Error.error404', compact('count'));
         }
 
         $text_password = $req->password;

@@ -10,17 +10,20 @@ use App\Http\Requests\Profile\passwordRequest;
 use App\Rules\Account\AccountRule;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Cart;
 
 class ProfileController extends Controller
 {
-    public function index(){
-        return view('FEadmin.Pages.Profile.index');
+    public function index(Cart $cart){
+        $count = $cart->get_all_count();
+        return view('FEadmin.Pages.Profile.index', compact('count'));
     }
 
-    public function update_profile(updateRequest $req, Account $account){
+    public function update_profile(updateRequest $req, Account $account, Cart $cart){
         $obj = $account->get_link_slug($req -> slugUser);
+        $count = $cart->get_all_count();
         if (!$obj) {
-            return view('FEadmin.Pages.Error.error404');
+            return view('FEadmin.Pages.Error.error404', compact('count'));
         }
 
         $validatedData = $req->validate([
@@ -34,19 +37,20 @@ class ProfileController extends Controller
         }
     }
 
-    public function index_password(){
-        return view('FEadmin.Pages.Profile.index_password');
+    public function index_password(Cart $cart){
+        $count = $cart->get_all_count();
+        return view('FEadmin.Pages.Profile.index_password', compact('count'));
     }
 
-    public function update_password_profile(passwordRequest $req, Account $account){
+    public function update_password_profile(passwordRequest $req, Account $account, Cart $cart){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
-
+        $count = $cart->get_all_count();
         $obj = $account->get_link_slug($req -> slugUser);
 
         if (!$obj) {
-            return view('FEadmin.Pages.Error.error404');
+            return view('FEadmin.Pages.Error.error404', compact('count'));
         }
 
         $text_password = $req->password;

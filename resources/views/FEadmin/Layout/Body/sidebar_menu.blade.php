@@ -57,7 +57,7 @@
                       </svg>
                     </span>
                     <span class="pc-mtext">Hỗ Trợ</span>
-                    <span class="pc-badge">2</span></a>
+                    <span class="pc-badge">{{$count}}</span></a>
                 </li>
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
