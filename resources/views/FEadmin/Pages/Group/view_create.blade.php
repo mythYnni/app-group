@@ -62,9 +62,9 @@
                             <input type="text" class="form-control" name="slugGroup" value="{{ old('slugGroup') }}"
                                 id="convert_slug" placeholder="Đường dẫn sạch" readonly fdprocessedid="qaalh">
                         </div>
-                        <div class="form-group col-12 col-md-5">
+                        <div class="form-group col-12 col-md-4">
                             <label class="form-label" for="exampleSelect1">Quản Trị</label>
-                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups" multiple>
+                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups-admin" multiple>
                                 <optgroup label="Quản Trị">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
                                         @if ($value->decentralization == 0)
@@ -86,11 +86,26 @@
                                     @endforeach
                                 </optgroup>
                             </select>
+                        </div>
+                        <div class="form-group col-12 col-md-3">
+                            <label class="form-label" for="exampleSelect1">Sale</label>
+                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups" multiple>
+                                <optgroup label="Quản Trị">
+                                    @foreach ($listAdmin->sortBy('fullName') as $value)
+                                        @if ($value->decentralization == 0)
+                                            <option value="{{ $value->id }}"
+                                                {{ old('name_user_sale') && in_array($value->id, old('name_user_sale')) ? 'selected' : '' }}>
+                                                {{ $value->fullName }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+                                </optgroup>
+                            </select>
                             @error('name_user_group')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-12 col-md-4">
+                        <div class="form-group col-12 col-md-3">
                             <label class="form-label">Link Group</label>
                             <input type="text" class="form-control form-control" placeholder="Link"
                                 fdprocessedid="w3ptog" name="linkGroup" value="{{ old('linkGroup') }}">
@@ -98,7 +113,7 @@
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-12 col-md-3">
+                        <div class="form-group col-12 col-md-2">
                             <label class="form-label">Danh Mục Loại Nhóm</label>
                             <input type="text" class="form-control form-control" placeholder="Danh Mục"
                                 fdprocessedid="w3ptog" name="category" id="category" value="{{ old('category') }}">

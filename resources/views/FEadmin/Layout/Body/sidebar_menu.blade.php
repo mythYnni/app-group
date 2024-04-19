@@ -103,6 +103,24 @@
                     <a class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
+                                <use xlink:href="#custom-flag"></use>
+                            </svg>
+                        </span>
+                        <span class="pc-mtext">Quản Trị</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_list_quan_tri_nhom') }}">Danh
+                                sách</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_create_quan_tri_nhom') }}">Thêm
+                                mới</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="pc-item pc-hasmenu">
+                    <a class="pc-link">
+                        <span class="pc-micon">
+                            <svg class="pc-icon">
                                 <use xlink:href="#custom-add-item"></use>
                             </svg>
                         </span>

@@ -36,7 +36,7 @@
                         <h5>Cập Nhật Nhân Sự</h5>
                     </div>
                     <div class="card-body row">
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-md-6">
                             <label class="form-label">Tên nhân sự</label>
                             <input type="text" class="form-control form-control" placeholder="Tên nhân sự"
                                 onkeyup="ChangeToSlug();" fdprocessedid="w3ptog" name="fullName" id="slug"
@@ -45,7 +45,7 @@
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-md-6">
                             <label class="form-label">Phone nhân sự</label>
                             <input type="text" class="form-control form-control" placeholder="Phone nhân sự"
                                 fdprocessedid="w3ptog" name="phone" value="{{ $obj->phone }}">
@@ -53,7 +53,7 @@
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group">
+                        <div class="form-group col-12 col-md-6">
                             <label class="form-label">Email nhân sự</label>
                             <input type="email" class="form-control form-control" placeholder="Email nhân sự"
                                 fdprocessedid="w3ptog" name="email" disabled value="{{ $obj->email }}">
@@ -61,7 +61,7 @@
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-md-6">
                             <label class="form-label">Ngày sinh</label>
                             <input class="form-control" type="date" name="birthday" value="{{ $obj->birthday }}"
                                 id="demo-date-only">
@@ -69,7 +69,7 @@
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-6">
+                        <div class="form-group col-12 col-md-6">
                             <label class="form-label" for="exampleSelect1">Phân quyền</label>
                             <select class="form-select" id="exampleSelect1" name="decentralization">
                                 <option value="0" {{ $obj->decentralization == '0' ? 'selected' : '' }}>Quản Trị</option>

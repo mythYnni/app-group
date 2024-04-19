@@ -68,7 +68,7 @@ class AccountController extends Controller
     }
 
     //Phương thức xóa nhân sự
-    public function delete_account(Account $account, $slug){
+    public function delete_account(Account $account, $slug,Cart $cart){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
@@ -95,7 +95,7 @@ class AccountController extends Controller
         if (!$obj) {
             return view('FEadmin.Pages.Error.error404', compact('count'));
         }
-        return view('FEadmin.Pages.Account.view_update', compact('obj'));
+        return view('FEadmin.Pages.Account.view_update', compact('obj','count'));
     }
 
     public function update_account(updateRequest $req, Account $account, $slug, Cart $cart){

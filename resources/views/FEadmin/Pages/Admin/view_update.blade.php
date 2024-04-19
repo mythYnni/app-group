@@ -13,8 +13,8 @@
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">Hệ Thống</a></li>
-                            <li class="breadcrumb-item"><a href="javascript: void(0)">Nhân sự</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Cập Nhật Mật Khẩu</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0)">Quản Trị</a></li>
+                            <li class="breadcrumb-item" aria-current="page">Cập Nhật</li>
                         </ul>
                     </div>
                     <div class="col-md-12">
@@ -28,17 +28,17 @@
         <!-- [ breadcrumb ] end -->
         <!-- [ Main Content ] start -->
         <div class="row">
-            <div class="col-sm-12 col-md-6 offset-md-3 col-lg-6 offset-lg-3">
+            <div class="col-sm-12 col-md-8 offset-md-2 col-lg-8 offset-lg-2 col-xl-8 offset-xl-2 col-xxl-8 offset-xxl-2">
                 <!-- Basic Inputs -->
                 <form class="card" method="POST" id="formReset">
                     @csrf
                     <div class="card-header">
-                        <h5>Cập Nhật Mật Khẩu Nhân Sự</h5>
+                        <h5>Cập Nhật Quản Trị</h5>
                     </div>
                     <div class="card-body row">
                         <div class="form-group col-12 col-md-6">
-                            <label class="form-label">Tên nhân sự</label>
-                            <input type="text" class="form-control form-control" placeholder="Tên nhân sự" disabled
+                            <label class="form-label">Tên Quản Trị</label>
+                            <input type="text" class="form-control form-control" placeholder="Tên Quản Trị"
                                 onkeyup="ChangeToSlug();" fdprocessedid="w3ptog" name="fullName" id="slug"
                                 value="{{ $obj->fullName }}">
                             @error('fullName')
@@ -46,51 +46,25 @@
                             @enderror
                         </div>
                         <div class="form-group col-12 col-md-6">
-                            <label class="form-label">Phone nhân sự</label>
-                            <input type="text" class="form-control form-control" placeholder="Phone nhân sự" disabled
+                            <label class="form-label">Phone Quản Trị</label>
+                            <input type="text" class="form-control form-control" placeholder="Phone Quản Trị"
                                 fdprocessedid="w3ptog" name="phone" value="{{ $obj->phone }}">
                             @error('phone')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group col-12 col-md-6">
-                            <label class="form-label">Email nhân sự</label>
-                            <input type="email" class="form-control form-control" placeholder="Email nhân sự"
-                                fdprocessedid="w3ptog" name="email" disabled value="{{ $obj->email }}">
+                            <label class="form-label">Email Quản Trị</label>
+                            <input type="email" class="form-control form-control" placeholder="Email Quản Trị"
+                                fdprocessedid="w3ptog" name="email" value="{{ $obj->email }}">
                             @error('email')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group col-12 col-md-6">
-                            <label class="form-label">Ngày sinh</label>
-                            <input class="form-control" type="date" name="birthday" value="{{ $obj->birthday }}" disabled
-                                id="demo-date-only">
-                            @error('birthday')
-                                <small style="color: #f33923;">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="form-group col-12 col-md-6">
-                            <label class="form-label" for="exampleSelect1">Phân quyền</label>
-                            <select class="form-select" id="exampleSelect1" name="decentralization" disabled>
-                                <option value="0" {{ $obj->decentralization == '0' ? 'selected' : '' }}>Quản Trị
-                                </option>
-                                <option value="1" {{ $obj->decentralization == '1' ? 'selected' : '' }}>Nhân Sự
-                                </option>
-                            </select>
-                        </div>
-                        <div class="form-group col-12 col-md-6">
-                            <label class="form-label" for="exampleInputPassword1">Mật khẩu Mới</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="password"
-                                placeholder="Password">
-                            @error('password')
-                                <small style="color: #f33923;">{{ $message }}</small>
-                            @enderror
-                        </div>
-                        <div class="form-group col-12 col-md-6">
-                            <label class="form-label" for="exampleInputPassword1">Nhập lại mật khẩu</label>
-                            <input type="password" class="form-control" id="exampleInputPassword1" name="check_password"
-                                placeholder="Password">
-                            @error('check_password')
+                            <label class="form-label" for="exampleInputPassword1">Link Facebook</label>
+                            <input type="text" class="form-control" id="exampleInputPassword1" name="linkFacebook" placeholder="Link Facebook" value="{{ $obj->linkFacebook }}">
+                            @error('linkFacebook')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>

@@ -13,6 +13,7 @@ use App\Rules\Group\codeRule;
 use App\Rules\Group\slugRule;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
+use App\Models\Admin;
 
 class GroupController extends Controller
 {
@@ -39,20 +40,22 @@ class GroupController extends Controller
     }
 
     // View thêm mới
-    public function view_creater(Category $category, Account $account, Cart $cart){
+    public function view_creater(Category $category, Account $account, Cart $cart, Admin $admin){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
-         $count = $cart->get_all_count();
+        $count = $cart->get_all_count();
+        // Lấy danh mục sale
+        $listAdmin = $admin->getAll();
         // Lấy danh mục quản trị
         $listAccount = $account->getAll();
         // Lấy danh mục vị trí
         $listCategory = $category->get_orderBy_ASC();
-        return view('FEadmin.Pages.Group.view_create', compact('listCategory', 'listAccount', 'count'));
+        return view('FEadmin.Pages.Group.view_create', compact('listCategory', 'listAccount', 'count', 'listAdmin'));
     }
 
     // Phương thức thêm mới
-    public function creater_group(createRequest $req, Group $group, Account $account, Cart $cart){
+    public function creater_group(createRequest $req, Group $group, Account $account, Cart $cart, Admin $admin){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
@@ -115,7 +118,7 @@ class GroupController extends Controller
     }
 
     // View cập nhật
-    public function view_update(Category $category, Account $account, Group $group, $slug, Cart $cart){
+    public function view_update(Category $category, Account $account, Group $group, $slug, Cart $cart, Admin $admin){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }
@@ -125,15 +128,17 @@ class GroupController extends Controller
         if (!$obj) {
             return view('FEadmin.Pages.Error.error404', compact('count'));
         } 
+        // Lấy danh mục sale
+        $listAdmin = $admin->getAll();
         // Lấy danh mục quản trị
         $listAccount = $account->getAll();
         // Lấy danh mục vị trí
         $listCategory = $category->get_orderBy_ASC();
-        return view('FEadmin.Pages.Group.view_update', compact('listCategory', 'listAccount', 'obj', 'count'));
+        return view('FEadmin.Pages.Group.view_update', compact('listCategory', 'listAccount', 'obj', 'count', 'listAdmin'));
     }
 
     // Phương thức cập nhật
-    public function update_group(updateRequest $req, Category $category, Account $account, Group $group, $slug, Cart $cart){
+    public function update_group(updateRequest $req, Category $category, Account $account, Group $group, $slug, Cart $cart, Admin $admin){
         // if(Auth::guard('admin')->user()->decentralization == 1){
         //     return view('FEadmin.Pages.Error.error404');
         // }

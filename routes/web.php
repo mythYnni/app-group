@@ -10,6 +10,7 @@ use App\Http\Controllers\AdminController\Group\GroupController;
 use App\Http\Controllers\adminController\Cart\CartController as adminCartController;
 use App\Http\Controllers\AdminController\Banner\BannerController;
 use App\Http\Controllers\AdminController\Blog\BlogController;
+use App\Http\Controllers\AdminController\Admin\AdminController;
 // Controller Người Dùng
 use App\Http\Controllers\UserController\Home\HomeController as UserHomeController;
 use App\Http\Controllers\UserController\Cart\CartController;
@@ -83,6 +84,14 @@ Route::prefix('group-admin')->group(function () {
     Route::get('/xoa-bai-viet/{slug}',[BlogController::class,'delete_blog'])->name('delete_blog');
     Route::get('/cap-nhat-bai-viet/{slug}',[BlogController::class,'view_update'])->name('view_update_blog');
     Route::post('/cap-nhat-bai-viet/{slug}',[BlogController::class,'update_blog'])->name('update_blog');
+
+    // Banner
+    Route::get('/view-danh-sach-quan-tri-nhom',[AdminController::class,'view_list'])->name('view_list_quan_tri_nhom');
+    Route::get('/view-them-moi-quan-tri-nhom',[AdminController::class,'view_creater'])->name('view_create_quan_tri_nhom');
+    Route::post('/them-moi-quan-tri-nhom',[AdminController::class,'creater_quan_tri_nhom'])->name('creater_quan_tri_nhom');
+    Route::get('/xoa-quan-tri-nhom/{slug}',[AdminController::class,'delete_quan_tri_nhom'])->name('delete_quan_tri_nhom');
+    Route::get('/cap-nhat-quan-tri-nhom/{slug}',[AdminController::class,'view_update'])->name('view_update_quan_tri_nhom');
+    Route::post('/cap-nhat-quan-tri-nhom/{slug}',[AdminController::class,'update_quan_tri_nhom'])->name('update_quan_tri_nhom');
 });
 
 // Danh Sách Router Người Dùng

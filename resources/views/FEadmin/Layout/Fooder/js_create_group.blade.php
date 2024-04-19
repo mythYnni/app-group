@@ -55,3 +55,19 @@
       });
     });
 </script>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+      // Initialize Choices.js with the flattened data
+      var multipleDefault = new Choices(document.getElementById('choices-multiple-groups-admin'), {
+        choices: [],
+        renderChoiceLimit: -1, // Render all choices
+        renderGroup: {
+          key: 'group',
+          element: function (group) {
+            return '<div class="group">' + group.value + '</div>';
+          }
+        }
+      });
+    });
+</script>
