@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('linkGroup')->nullable(false);
             $table->string('category')->nullable(); // danh mục
             $table->json('name_user_group')->default()->nullable(false); // danh sách quản trị
+            $table->json('name_user_sale')->default()->nullable(); // danh sách quản trị
             $table->string('image')->nullable(false); // ảnh nhóm
             $table->string('account_group')->nullable(false); // lượng thành viên
             $table->double('account_group_week')->nullable(false); // lượng thành viên vào trong tuần

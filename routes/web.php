@@ -8,6 +8,8 @@ use App\Http\Controllers\AdminController\Home\HomeController;
 use App\Http\Controllers\AdminController\Profile\ProfileController;
 use App\Http\Controllers\AdminController\Group\GroupController;
 use App\Http\Controllers\adminController\Cart\CartController as adminCartController;
+use App\Http\Controllers\AdminController\Banner\BannerController;
+use App\Http\Controllers\AdminController\Blog\BlogController;
 // Controller Người Dùng
 use App\Http\Controllers\UserController\Home\HomeController as UserHomeController;
 use App\Http\Controllers\UserController\Cart\CartController;
@@ -18,7 +20,8 @@ Route::post('/dang-nhap-quan-tri',[LoginController::class,'login'])->name('login
 Route::get('/dang-xuat-quan-tri',[LoginController::class,'logout'])->name('logout_admin');
 
 // Danh Sách Router Admin
-Route::prefix('group-admin')->middleware('admin')->group(function () {
+Route::prefix('group-admin')->group(function () {
+// Route::prefix('group-admin')->middleware('admin')->group(function () {
     // Route Trang Home
     Route::get('/', [HomeController::class,'index'])->name('view_home_admin');
 
@@ -62,6 +65,24 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
     Route::get('/xoa-danh-group/{slug}',[GroupController::class,'delete_group'])->name('delete_group');
     Route::get('/cap-nhat-group/{slug}',[GroupController::class,'view_update'])->name('view_update_group');
     Route::post('/cap-nhat-group/{slug}',[GroupController::class,'update_group'])->name('update_group');
+
+    // Banner
+    Route::get('/view-danh-sach-banner',[BannerController::class,'view_list'])->name('view_list_banner');
+    Route::get('/view-danh-sach-popup',[BannerController::class,'view_list_popup'])->name('view_list_popup');
+    Route::get('/view-them-moi-banner',[BannerController::class,'view_creater'])->name('view_creater_banner');
+    Route::post('/them-moi-banner',[BannerController::class,'creater_banner'])->name('creater_banner');
+    Route::get('/xoa-banner/{slug}',[BannerController::class,'delete_banner'])->name('delete_banner');
+    Route::get('/cap-nhat-banner/{slug}',[BannerController::class,'view_update'])->name('view_update_banner');
+    Route::post('/cap-nhat-banner/{slug}',[BannerController::class,'update_banner'])->name('update_banner');
+
+    // Router Blog
+    Route::get('/view-danh-sach-bai-viet',[BlogController::class,'view_list'])->name('view_list_blog');
+    Route::get('/chi-tiet-bai-viet/{slug}',[BlogController::class,'detail_blog'])->name('detail_blog');
+    Route::get('/view-them-moi-bai-viet',[BlogController::class,'view_creater'])->name('view_creater_blog');
+    Route::post('/them-moi-bai-viet',[BlogController::class,'creater_blog'])->name('creater_blog');
+    Route::get('/xoa-bai-viet/{slug}',[BlogController::class,'delete_blog'])->name('delete_blog');
+    Route::get('/cap-nhat-bai-viet/{slug}',[BlogController::class,'view_update'])->name('view_update_blog');
+    Route::post('/cap-nhat-bai-viet/{slug}',[BlogController::class,'update_blog'])->name('update_blog');
 });
 
 // Danh Sách Router Người Dùng

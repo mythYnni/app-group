@@ -15,10 +15,10 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->string('name_account')->nullable(false);
             $table->string('phone')->nullable();
+            $table->string('linkFacebook')->nullable();
             $table->string('email')->nullable()->validate(['email' => 'email']);
             $table->string('nameGroup')->nullable(false);
-            $table->unsignedBigInteger('idGroup');
-            $table->foreign('idGroup')->references('id')->on('group')->onDelete('cascade');
+            $table->tinyInteger('idGroup');
             $table->double('price')->default(0)->nullable(); //giá bán
             $table->double('rent_cost')->default(0)->nullable(); //giá thuê
             $table->tinyInteger('status')->default(0); // 0 chưa duyện, 1 đã duyệt

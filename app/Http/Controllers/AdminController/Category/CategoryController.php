@@ -72,7 +72,7 @@ class CategoryController extends Controller
         if (!$obj) {
             return view('FEadmin.Pages.Error.error404', compact('count'));
         }
-        return view('FEadmin.Pages.Category.view_update', compact('obj'));
+        return view('FEadmin.Pages.Category.view_update', compact('obj', 'count'));
     }
 
     public function update_category(updateRequest $req, Category $category, $slug, Cart $cart){

@@ -17,8 +17,10 @@
                                 class="user-avtar wid-45 rounded-circle" />
                         </div>
                         <div class="flex-grow-1 ms-3 me-2">
-                            <h6 class="mb-0">{{ Auth::guard('admin')->user()->fullName }}</h6>
-                            <small>{{ Auth::guard('admin')->user()->email }}</small>
+                            {{-- <h6 class="mb-0">{{ Auth::guard('admin')->user()->fullName }}</h6>
+                            <small>{{ Auth::guard('admin')->user()->email }}</small> --}}
+                            <h6 class="mb-0">Demo</h6>
+                            <small>Email Demo</small>
                         </div>
                         <a class="btn btn-icon btn-link-secondary avtar" data-bs-toggle="collapse"
                             href="#pc_sidebar_userlink">
@@ -50,14 +52,14 @@
                     <label>Kinh Doanh</label>
                 </li>
                 <li class="pc-item">
-                  <a href="{{route('view_list_cart')}}" class="pc-link">
-                    <span class="pc-micon">
-                      <svg class="pc-icon">
-                        <use xlink:href="#custom-dollar-square"></use>
-                      </svg>
-                    </span>
-                    <span class="pc-mtext">Hỗ Trợ</span>
-                    <span class="pc-badge">{{$count}}</span></a>
+                    <a href="{{ route('view_list_cart') }}" class="pc-link">
+                        <span class="pc-micon">
+                            <svg class="pc-icon">
+                                <use xlink:href="#custom-dollar-square"></use>
+                            </svg>
+                        </span>
+                        <span class="pc-mtext">Hỗ Trợ</span>
+                        <span class="pc-badge">{{ $count }}</span></a>
                 </li>
                 <li class="pc-item pc-hasmenu">
                     <a href="#!" class="pc-link">
@@ -101,15 +103,54 @@
                     <a class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
+                                <use xlink:href="#custom-add-item"></use>
+                            </svg>
+                        </span>
+                        <span class="pc-mtext">Banner & Popup</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_list_banner') }}">Danh sách
+                                Banner</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_list_popup') }}">Danh sách
+                                Popup</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_creater_banner') }}">Thêm
+                                mới</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="pc-item pc-hasmenu">
+                    <a class="pc-link">
+                        <span class="pc-micon">
+                            <svg class="pc-icon">
+                                <use xlink:href="#custom-text-block"></use>
+                            </svg>
+                        </span>
+                        <span class="pc-mtext">Bài Viết</span><span class="pc-arrow"><i
+                                data-feather="chevron-right"></i></span></a>
+                    <ul class="pc-submenu">
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_list_blog') }}">Danh sách</a>
+                        </li>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_creater_blog') }}">Thêm mới</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="pc-item pc-hasmenu">
+                    <a class="pc-link">
+                        <span class="pc-micon">
+                            <svg class="pc-icon">
                                 <use xlink:href="#custom-row-vertical"></use>
                             </svg>
                         </span>
                         <span class="pc-mtext">Danh Mục Vị Trí</span><span class="pc-arrow"><i
                                 data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">
-                        <li class="pc-item"><a class="pc-link" href="{{ route('view_list_category') }}">Danh sách</a>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_list_category') }}">Danh
+                                sách</a>
                         </li>
-                        <li class="pc-item"><a class="pc-link" href="{{ route('view_creater_category') }}">Thêm mới</a>
+                        <li class="pc-item"><a class="pc-link" href="{{ route('view_creater_category') }}">Thêm
+                                mới</a>
                         </li>
                     </ul>
                 </li>
