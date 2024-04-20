@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="py-5 footer-bar">
-                    <div class="row align-items-center">
+                    {{-- <div class="row align-items-center">
                         <div class="col-sm-3">
                             <div class="text-center text-sm-start">
                                 <a href="#"><img style="width: 100%;" src="{{ url('assets') }}/images/logo_white_background.png"
@@ -24,7 +24,7 @@
                                         class="text-foot fs-6 fw-medium me-2"><i class="mdi mdi-circle-small"></i>Liên Hệ</a></li>
                             </ul>
                         </div><!--end col-->
-                    </div><!--end row-->
+                    </div><!--end row--> --}}
                 </div>
             </div><!--end col-->
         </div><!--end row-->

@@ -33,7 +33,7 @@
                         <li><a href="{{route('view_group_rent')}}" class="sub-menu-item">Nhóm Thuê Nhiều</a></li>
                     </ul>
                 </li>
-                <li><a href="{{ route('view_home_user') }}" class="sub-menu-item"> Liên hệ</a></li>
+                <li><a href="#" class="sub-menu-item"> Liên hệ</a></li>
             </ul><!--end navigation menu-->
         </div><!--end navigation-->
     </div>
