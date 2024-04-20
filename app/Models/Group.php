@@ -23,6 +23,7 @@ class Group extends Model
         'category',
         'account_group',
         'name_user_group',
+        'name_user_sale',
         'image',
         'account_group_week',
         'account_group_blog',
@@ -233,7 +234,7 @@ class Group extends Model
 
     //Phương thức lấy danh sách nhóm mặc định
     public function get_all_default(){
-        return Group::with('objCategory')->where('type_sale', 0)->orderBy('timeCreate','DESC')->get();
+        return Group::with('objCategory')->orderBy('timeCreate','DESC')->get();
     } 
 
     // phương thức thêm mới
@@ -247,6 +248,7 @@ class Group extends Model
             'category' => $req -> category,
             'account_group' => $req -> account_group,
             'name_user_group' => json_encode($req -> name_user_group),
+            'name_user_sale' => json_encode($req -> name_user_sale),
             'image' => $req -> image,
             'account_group_week' => $req -> account_group_week,
             'account_group_blog' => $req -> account_group_blog,
@@ -289,6 +291,7 @@ class Group extends Model
             'category' => $req -> category,
             'account_group' => $req -> account_group,
             'name_user_group' => json_encode($req -> name_user_group),
+            'name_user_sale' => json_encode($req -> name_user_sale),
             'image' => $req -> image,
             'account_group_week' => $req -> account_group_week,
             'account_group_blog' => $req -> account_group_blog,

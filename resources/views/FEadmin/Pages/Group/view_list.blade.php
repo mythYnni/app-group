@@ -68,12 +68,13 @@
                                         <th>Bài Viết/Tuần</th>
                                         <th>Số Lượng Người Thuê</th>
                                         <th>Loại Nhóm</th>
-                                        <th>Quản Trị</th>
+                                        <th>Quản Trị Nhóm</th>
                                         <th>Vị Trí</th>
                                         <th>Tỉnh Thành</th>
                                         <th>Quận/Huyện</th>
                                         <th>Phường/Xã</th>
                                         <th>Tình Trạng</th>
+                                        <th>Sale</th>
                                         <th>Người Tạo</th>
                                         <th>Tính Năng</th>
                                     </tr>
@@ -118,10 +119,10 @@
                                             <td style="max-width: 200px;">
                                                 <div style="white-space: normal;">
                                                     @php
-                                                        $admin = json_decode($value->name_user_group);
+                                                        $admin = json_decode($value->name_user_sale);
                                                     @endphp
                                                     @foreach ($admin as $obj)
-                                                        <span class="badge bg-light-primary">{{ $obj->name }}</span>
+                                                        <a href="{{ $obj->linkFacebook }}" target="_blank" class="badge bg-light-primary">{{ $obj->name }}</a>
                                                     @endforeach
                                                 </div>
                                             </td>
@@ -131,6 +132,16 @@
                                             <td>{{ $value->wards }}</td>
                                             <td><span
                                                     class="badge rounded-pill {{ $statusColor }}">{{ $statusName }}</span>
+                                            </td>
+                                            <td style="max-width: 200px;">
+                                                <div style="white-space: normal;">
+                                                    @php
+                                                        $admin = json_decode($value->name_user_group);
+                                                    @endphp
+                                                    @foreach ($admin as $obj)
+                                                        <span class="badge bg-light-primary">{{ $obj->name }}</span>
+                                                    @endforeach
+                                                </div>
                                             </td>
                                             <td>{{ $value->user_create }} - {{ $value->user_email_create }} <br />
                                                 {{ Carbon::parse($value->timeCreate)->locale('vi')->isoFormat('Do [tháng] M [năm] YYYY, H:mm:ss A') }}

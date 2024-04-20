@@ -83,6 +83,25 @@ class GroupController extends Controller
             }
         }
         $req->merge(['name_user_group' => $accountData]);
+
+        // Xử lý danh sách sale
+        // Khởi tạo mảng rỗng để lưu trữ kết quả
+        $saleData = [];
+
+        // Xử lý danh sách quản trị
+        foreach ($req->name_user_group as $value) {
+            $objSale = $admin->get_by_id($value);
+            if ($objSale) {
+                $accountItem = [
+                    'id' => $objSale->id,
+                    'slug' => $objSale->slugUser,
+                    'name' => $objSale->fullName,
+                    'linkFacebook' => $objSale->linkFacebook,
+                ];
+                $saleData[] = $accountItem;
+            }
+        }
+        $req->merge(['name_user_sale' => $saleData]);
             
         // Lấy Thông Tin Người Tạo
         $req->merge(['user_create' =>  Auth::guard('admin')->user()->fullName]);
@@ -178,6 +197,25 @@ class GroupController extends Controller
             }
         }
         $req->merge(['name_user_group' => $accountData]);
+
+        // Xử lý danh sách sale
+        // Khởi tạo mảng rỗng để lưu trữ kết quả
+        $saleData = [];
+
+        // Xử lý danh sách quản trị
+        foreach ($req->name_user_group as $value) {
+            $objSale = $admin->get_by_id($value);
+            if ($objSale) {
+                $accountItem = [
+                    'id' => $objSale->id,
+                    'slug' => $objSale->slugUser,
+                    'name' => $objSale->fullName,
+                    'linkFacebook' => $objSale->linkFacebook,
+                ];
+                $saleData[] = $accountItem;
+            }
+        }
+        $req->merge(['name_user_sale' => $saleData]);
 
         // dd($req->all());
 

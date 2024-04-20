@@ -23,8 +23,6 @@ class createRequest extends FormRequest
     {
         return [
             'fullName' => 'required',
-            'phone' => 'unique:admin',
-            'email' => 'unique:admin',
             'linkFacebook' => ['required','unique:admin'],
         ];
     }
@@ -32,8 +30,6 @@ class createRequest extends FormRequest
     public function messages(){
         return [
             'fullName.required' => 'Trường Không Được Để Trống!',
-            'email.unique' => 'Email Đã Tồn Tại!',
-            'phone.unique' => 'Trường Đã Tồn Tại!',
             'linkFacebook.required' => 'Trường Không Được Để Trống!',
             'linkFacebook.unique' => 'Trường Đã Tồn Tại!',
         ];

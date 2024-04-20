@@ -77,6 +77,8 @@
                             </select>
                         </div>
                         <div class="form-group col-12 col-md-6">
+                        </div>
+                        <div class="form-group col-12 col-md-6">
                             <label class="form-label" for="exampleInputPassword1">Mật khẩu</label>
                             <input type="password" class="form-control" id="exampleInputPassword1" name="password" placeholder="Password">
                             @error('password')

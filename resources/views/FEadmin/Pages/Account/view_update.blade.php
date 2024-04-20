@@ -76,6 +76,8 @@
                                 <option value="1" {{ $obj->decentralization == '1' ? 'selected' : '' }}>Nhân Sự</option>
                             </select>
                         </div>
+                        <div class="form-group col-12 col-md-6">
+                        </div>
                         <div class="form-group row mb-0">
                             <label class="form-label">Giới tính</label>
                             <div class="col-sm-12">

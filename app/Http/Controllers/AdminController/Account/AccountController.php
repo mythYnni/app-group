@@ -130,7 +130,7 @@ class AccountController extends Controller
         if (!$obj) {
             return view('FEadmin.Pages.Error.error404', compact('count'));
         }
-        return view('FEadmin.Pages.Account.view_update_password', compact('obj'));
+        return view('FEadmin.Pages.Account.view_update_password', compact('count','obj'));
     }
 
     public function update_password_account(passwordRequest $req, Account $account, $slug, Cart $cart){

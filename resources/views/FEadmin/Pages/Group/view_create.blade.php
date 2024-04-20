@@ -39,8 +39,8 @@
                     <div class="card-body row">
                         <div class="form-group col-12 col-md-2">
                             <label class="form-label">Mã Nhóm</label>
-                            <input type="text" class="form-control form-control" placeholder="Mã Nhóm" fdprocessedid="w3ptog" name="code"
-                                value="{{ old('code') }}">
+                            <input type="text" class="form-control form-control" placeholder="Mã Nhóm"
+                                fdprocessedid="w3ptog" name="code" value="{{ old('code') }}">
                             @error('code')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
@@ -64,7 +64,24 @@
                         </div>
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label" for="exampleSelect1">Quản Trị</label>
-                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups-admin" multiple>
+                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups" multiple>
+                                <optgroup label="Quản Trị Nhóm">
+                                    @foreach ($listAdmin->sortBy('fullName') as $value)
+                                        <option value="{{ $value->id }}"
+                                            {{ old('name_user_sale') && in_array($value->id, old('name_user_sale')) ? 'selected' : '' }}>
+                                            {{ $value->fullName }}
+                                        </option>
+                                    @endforeach
+                                </optgroup>
+                            </select>
+                            @error('name_user_group')
+                                <small style="color: #f33923;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group col-12 col-md-3">
+                            <label class="form-label" for="exampleSelect1">Sale</label>
+                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups-admin"
+                                multiple>
                                 <optgroup label="Quản Trị">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
                                         @if ($value->decentralization == 0)
@@ -86,24 +103,6 @@
                                     @endforeach
                                 </optgroup>
                             </select>
-                        </div>
-                        <div class="form-group col-12 col-md-3">
-                            <label class="form-label" for="exampleSelect1">Sale</label>
-                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups" multiple>
-                                <optgroup label="Quản Trị">
-                                    @foreach ($listAdmin->sortBy('fullName') as $value)
-                                        @if ($value->decentralization == 0)
-                                            <option value="{{ $value->id }}"
-                                                {{ old('name_user_sale') && in_array($value->id, old('name_user_sale')) ? 'selected' : '' }}>
-                                                {{ $value->fullName }}
-                                            </option>
-                                        @endif
-                                    @endforeach
-                                </optgroup>
-                            </select>
-                            @error('name_user_group')
-                                <small style="color: #f33923;">{{ $message }}</small>
-                            @enderror
                         </div>
                         <div class="form-group col-12 col-md-3">
                             <label class="form-label">Link Group</label>
@@ -175,16 +174,18 @@
                         </div>
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label" for="example-quantity">Lượng Thành Viên/Tuần</label>
-                            <input type="number" class="form-control" id="example-quantity" min="1" value="{{old('account_group_week')}}"
-                                name="account_group_week" data-gtm-form-interact-field-id="1">
+                            <input type="number" class="form-control" id="example-quantity" min="1"
+                                value="{{ old('account_group_week') }}" name="account_group_week"
+                                data-gtm-form-interact-field-id="1">
                             @error('account_group_week')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label" for="example-quantity">Lượng Bài Viết/Tuần</label>
-                            <input type="number" class="form-control" id="example-quantity" min="1" value="{{old('account_group_blog')}}"
-                                name="account_group_blog" data-gtm-form-interact-field-id="1">
+                            <input type="number" class="form-control" id="example-quantity" min="1"
+                                value="{{ old('account_group_blog') }}" name="account_group_blog"
+                                data-gtm-form-interact-field-id="1">
                             @error('account_group_blog')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror

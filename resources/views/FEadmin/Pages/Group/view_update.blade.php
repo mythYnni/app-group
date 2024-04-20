@@ -30,8 +30,7 @@
         <div class="row">
             <div class="col-sm-12">
                 <!-- Basic Inputs -->
-                <form class="card" enctype="multipart/form-data" method="POST"
-                    id="formReset">
+                <form class="card" enctype="multipart/form-data" method="POST" id="formReset">
                     @csrf
                     <div class="card-header">
                         <h5>Cập Nhật Nhóm "{{ $obj->nameGroup }}"</h5>
@@ -62,17 +61,39 @@
                             <input type="text" class="form-control" name="slugGroup" value="{{ $obj->slugGroup }}"
                                 id="convert_slug" placeholder="Đường dẫn sạch" readonly fdprocessedid="qaalh">
                         </div>
-                        <div class="form-group col-12 col-md-5">
+                        <div class="form-group col-12 col-md-4">
+                            @php
+                                $admin = json_decode($obj->name_user_sale);
+                                $adminIds = array_column($admin, 'id');
+                            @endphp
+                            <label class="form-label" for="exampleSelect1">Quản Trị</label>
+                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups" multiple>
+                                <optgroup label="Quản Trị Nhóm">
+                                    @foreach ($listAdmin->sortBy('fullName') as $value)
+                                        <option value="{{ $value->id }}"
+                                            {{ in_array($value->id, $adminIds) ? 'selected' : '' }}>
+                                            {{ $value->fullName }}
+                                        </option>
+                                    @endforeach
+                                </optgroup>
+                            </select>
+                            @error('name_user_sale')
+                                <small style="color: #f33923;">{{ $message }}</small>
+                            @enderror
+                        </div>
+                        <div class="form-group col-12 col-md-3">
                             @php
                                 $admin = json_decode($obj->name_user_group);
                                 $adminIds = array_column($admin, 'id');
                             @endphp
-                            <label class="form-label" for="exampleSelect1">Quản Trị</label>
-                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups" multiple>
+                            <label class="form-label" for="exampleSelect1">Sale</label>
+                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups-admin"
+                                multiple>
                                 <optgroup label="Quản Trị">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
                                         @if ($value->decentralization == 0)
-                                            <option value="{{ $value->id }}" {{ in_array($value->id, $adminIds) ? 'selected' : '' }}>
+                                            <option value="{{ $value->id }}"
+                                                {{ in_array($value->id, $adminIds) ? 'selected' : '' }}>
                                                 {{ $value->fullName }}
                                             </option>
                                         @endif
@@ -81,7 +102,8 @@
                                 <optgroup label="Nhân Sự">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
                                         @if ($value->decentralization == 1)
-                                            <option value="{{ $value->id }}" {{ in_array($value->id, $adminIds) ? 'selected' : '' }}>
+                                            <option value="{{ $value->id }}"
+                                                {{ in_array($value->id, $adminIds) ? 'selected' : '' }}>
                                                 {{ $value->fullName }}
                                             </option>
                                         @endif
@@ -92,7 +114,7 @@
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-12 col-md-4">
+                        <div class="form-group col-12 col-md-3">
                             <label class="form-label">Link Group</label>
                             <input type="text" class="form-control form-control" placeholder="Link"
                                 fdprocessedid="w3ptog" name="linkGroup" value="{{ $obj->linkGroup }}">
@@ -100,7 +122,7 @@
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
-                        <div class="form-group col-12 col-md-3">
+                        <div class="form-group col-12 col-md-2">
                             <label class="form-label">Danh Mục Loại Nhóm</label>
                             <input type="text" class="form-control form-control" placeholder="Danh Mục"
                                 fdprocessedid="w3ptog" name="category" id="category" value="{{ $obj->category }}">
