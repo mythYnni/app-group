@@ -63,11 +63,11 @@
                         </div>
                         <div class="form-group col-12 col-md-4">
                             @php
-                                $admin = json_decode($obj->name_user_sale);
+                                $admin = json_decode($obj->name_user_group);
                                 $adminIds = array_column($admin, 'id');
                             @endphp
                             <label class="form-label" for="exampleSelect1">Quản Trị</label>
-                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups" multiple>
+                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups" multiple>
                                 <optgroup label="Quản Trị Nhóm">
                                     @foreach ($listAdmin->sortBy('fullName') as $value)
                                         <option value="{{ $value->id }}"
@@ -77,17 +77,17 @@
                                     @endforeach
                                 </optgroup>
                             </select>
-                            @error('name_user_sale')
+                            @error('name_user_group')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>
                         <div class="form-group col-12 col-md-3">
                             @php
-                                $admin = json_decode($obj->name_user_group);
+                                $admin = json_decode($obj->name_user_sale);
                                 $adminIds = array_column($admin, 'id');
                             @endphp
                             <label class="form-label" for="exampleSelect1">Sale</label>
-                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups-admin"
+                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups-admin"
                                 multiple>
                                 <optgroup label="Quản Trị">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
@@ -110,7 +110,7 @@
                                     @endforeach
                                 </optgroup>
                             </select>
-                            @error('name_user_group')
+                            @error('name_user_sale')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                         </div>

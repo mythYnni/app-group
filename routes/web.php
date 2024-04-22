@@ -14,6 +14,7 @@ use App\Http\Controllers\AdminController\Admin\AdminController;
 // Controller Người Dùng
 use App\Http\Controllers\UserController\Home\HomeController as UserHomeController;
 use App\Http\Controllers\UserController\Cart\CartController;
+use App\Http\Controllers\UserController\Blog\BlogController as UserBlogController;
 
 // Router Đăng Nhập Admin
 Route::get('/dang-nhap-quan-tri',[LoginController::class,'view_login'])->name('view_login_account');
@@ -27,11 +28,14 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
     Route::get('/', [HomeController::class,'index'])->name('view_home_admin');
 
     // Router Đơn Hàng
-    Route::get('/don-hang', [adminCartController::class,'view_list'])->name('view_list_cart');
-    Route::get('/xoa-don-hang/{slug}',[adminCartController::class,'delete_cart'])->name('delete_cart');
-    Route::get('/cap-nhat-don-hang/{slug}', [adminCartController::class,'index_update'])->name('view_update_cart');
-    Route::post('/cap-nhat-don-hang/{slug}',[adminCartController::class,'update_cart'])->name('update_cart');
+    Route::get('/khach-hang', [adminCartController::class,'view_list'])->name('view_list_cart');
+    Route::get('/xoa-khach-hang/{slug}',[adminCartController::class,'delete_cart'])->name('delete_cart');
+    Route::get('/cap-nhat-khach-hang/{slug}', [adminCartController::class,'index_update'])->name('view_update_cart');
+    Route::post('/cap-nhat-khach-hang/{slug}',[adminCartController::class,'update_cart'])->name('update_cart');
     Route::get('/tao-hop-dong-thue/{slug}', [adminCartController::class,'index_buiding'])->name('index_buiding');
+    Route::get('/them-moi-khach-hang', [adminCartController::class,'view_create_cart'])->name('view_create_cart');
+    Route::get('/lay-thong-tin-nhom/{slug}', [adminCartController::class,'get_detail_groups'])->name('get_detail_group');
+    Route::post('them-moi-khach-hang',[adminCartController::class,'post_detail_groups'])->name('post_detail_groups');
 
     // Router Cá nhân
     Route::get('/thong-tin-ca-nhan', [ProfileController::class,'index'])->name('view_profile');
@@ -108,4 +112,9 @@ Route::prefix('/')->group(function () {
     Route::get('/danh-sach-group-thue-nhieu',[UserHomeController::class,'view_group_rent'])->name('view_group_rent');
     // Route danh sách group thuê nhiều
     Route::get('/danh-sach-group',[UserHomeController::class,'view_group_index'])->name('view_group_index');
+
+
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet',[UserBlogController::class,'view_list_blog'])->name('view_list_blog_user');
+    // Kết Thúc Route Bài Viết
 });

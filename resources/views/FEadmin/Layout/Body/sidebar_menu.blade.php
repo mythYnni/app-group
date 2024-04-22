@@ -176,9 +176,9 @@
                     <a class="pc-link">
                         <span class="pc-micon">
                             <svg class="pc-icon">
-                                <use xlink:href="#custom-fatrows"></use>
+                              <use xlink:href="#custom-kanban"></use>
                             </svg>
-                        </span>
+                          </span>
                         <span class="pc-mtext">Hội Nhóm</span><span class="pc-arrow"><i
                                 data-feather="chevron-right"></i></span></a>
                     <ul class="pc-submenu">

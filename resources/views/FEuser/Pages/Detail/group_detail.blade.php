@@ -57,6 +57,13 @@
                         <div class="mt-4">
                             <h4 class="title mb-3"><a href="{{ $obj->linkGroup }}" target="_blank"
                                     class="hover-h4">{{ $obj->nameGroup }}</a></h4>
+
+                            <ul class="list-unstyled mb-3">
+                                <li class="d-inline-flex align-items-center text-muted me-2"
+                                    style="color: #000000 !important; font-weight: 600;">Mã Nhóm:
+                                    {{$obj->code}}</li>
+                            </ul>
+
                             <ul class="list-unstyled mb-3">
                                 <li class="d-inline-flex align-items-center text-muted me-2"
                                     style="color: #000000 !important; font-weight: 600;">Giá Thuê:
@@ -247,65 +254,77 @@
     <section id="exampleModalCenter" class="modal fade" tabindex="-1" role="dialog"
         aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
-            <form class="modal-content" action="{{ route('creater_cart') }}" method="post">
+            <div class="modal-content">
                 @csrf
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông Tin Khách Hàng</h5>
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Thông Tin Liên Hệ</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body row">
-                    <input type="hidden" class="form-control" aria-describedby="emailHelp" name="slugGroup"
-                        value="{{ $obj->slugGroup }}">
-                    <div class="form-group col-md-7 col-12">
-                        <label class="form-label" for="exampleInputEmail1">Họ Và Tên</label>
-                        <input type="text" class="form-control" placeholder="Họ Và Tên" fdprocessedid="kmg3t"
-                            style="border: 1px solid #b1b1b1;" name="name_account">
-                        @error('name_account')
-                            <small style="color: #f33923;">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="form-group col-md-7 col-12 mt-4">
-                        <label class="form-label" for="exampleInputEmail1">Email</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            style="border: 1px solid #b1b1b1;" name="email" placeholder="Email Khách Hàng"
-                            fdprocessedid="kmg3t">
-                        @error('email')
-                            <small style="color: #f33923;">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="form-group col-md-5 col-12 mt-4">
-                        <label class="form-label" for="exampleInputPassword1">Số Điện Thoại</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1"
-                            style="border: 1px solid #b1b1b1;" name="phone" placeholder="Phone Sử Dụng Zalo (nếu có)"
-                            fdprocessedid="aua78l">
-                        @error('phone')
-                            <small style="color: #f33923;">{{ $message }}</small>
-                        @enderror
-                    </div>
-                    <div class="form-group col-md-12 col-12 mt-4">
-                        <label class="form-label" for="exampleInputPassword1">Nhu Cầu</label>
-                        <div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status_type" value="0"
-                                    id="customCheckinlh1" data-gtm-form-interact-field-id="1" checked>
-                                <label class="form-check-label" for="customCheckinlh1"> Thuê </label>
+                    <div id="accordion">
+
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="btn" data-bs-toggle="collapse" href="#collapseOne">
+                                    Thông Tin Liên Hệ
+                                </a>
                             </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="status_type" value="1"
-                                    id="customCheckinlh2" data-gtm-form-interact-field-id="0">
-                                <label class="form-check-label" for="customCheckinlh2"> Mua </label>
+                            <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
+                                <div class="card-body">
+                                    <p style="font-size: 15px;"><span style="color: #f2277e;;">Mọi Khó Khăn Hãy
+                                            Liên Hệ Qua Zalo Qua Số <span
+                                                style="font-weight: 600; text-decoration: underline;">0888.999.857</span>
+                                            Để Được Hỗ
+                                            Trợ!</span></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-header">
+                                <a class="collapsed btn" data-bs-toggle="collapse" href="#collapseTwo">
+                                    Thông Tin Thanh Toán
+                                </a>
+                            </div>
+                            <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12 col-lg-6">
+                                            <img style="width: 100%;"
+                                                src="https://chiasekhoahoc.com.vn/asset/img/herobanner/qr.png"
+                                                class="rounded" alt="Cinque Terre">
+                                        </div>
+                                        <div class="col-12 col-lg-6" style="padding: 30px 10px 0px 10px;">
+                                            <h4>Thông Tin Người Nhận &amp; Nội Dung Chuyền Khoản</h4>
+                                            <p style="font-size: 15px;">Chủ Tài Khoản: <span
+                                                    style="font-size: 18px; color: black; font-weight: 600;">Lo Thi
+                                                    Dung</span></p>
+                                            <p style="font-size: 15px;">Số Tài Khoản: <span
+                                                    style="font-size: 18px; color: black; font-weight: 600;">1903 9284 8630
+                                                    16</span></p>
+                                            <p style="font-size: 15px;">Nội Dung: <span
+                                                    style="font-size: 14px; color: #f2277e; font-weight: 600;"> Thue "Mã
+                                                    Nhóm"</span> hoặc <span
+                                                    style="font-size: 14px; color: #f2277e; font-weight: 600;"> Mua "Mã
+                                                    Nhóm"</span>
+                                            </p>
+
+                                            <p style="font-size: 15px;">Ghi Chú: <span style="color: #f2277e;;">Mọi Khó
+                                                    Khăn Hãy Liên Hệ Qua Zalo Qua Số <span
+                                                        style="font-weight: 600; text-decoration: underline;">0888.999.857</span>
+                                                    Để Được Hỗ
+                                                    Trợ!</span></p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <small class="form-text d-block text-muted mt-4" style="color: black;">Lưu ý: Hãy Điền Đầy Đủ
-                        <span style="color: red;"> Thông Tin Cá Nhân</span> Để Được Nhận <span style="color: red;">Hỗ
-                            Trợ</span> Dịch Vụ Nhanh Nhất Nhé...</small>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Thoát</button>
-                    <button type="submit" class="btn btn-primary">Đăng Ký</button>
-            </form>
-        </div>
+                </div>
+            </div>
     </section>
 @stop
 @section('view_js')

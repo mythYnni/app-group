@@ -119,7 +119,7 @@
                                             <td style="max-width: 200px;">
                                                 <div style="white-space: normal;">
                                                     @php
-                                                        $admin = json_decode($value->name_user_sale);
+                                                        $admin = json_decode($value->name_user_group);
                                                     @endphp
                                                     @foreach ($admin as $obj)
                                                         <a href="{{ $obj->linkFacebook }}" target="_blank" class="badge bg-light-primary">{{ $obj->name }}</a>
@@ -136,10 +136,10 @@
                                             <td style="max-width: 200px;">
                                                 <div style="white-space: normal;">
                                                     @php
-                                                        $admin = json_decode($value->name_user_group);
+                                                        $adminSale = json_decode($value->name_user_sale);
                                                     @endphp
-                                                    @foreach ($admin as $obj)
-                                                        <span class="badge bg-light-primary">{{ $obj->name }}</span>
+                                                    @foreach ($adminSale as $objs)
+                                                        <span class="badge bg-light-primary">{{ $objs->name }}</span>
                                                     @endforeach
                                                 </div>
                                             </td>

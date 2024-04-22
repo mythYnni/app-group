@@ -5,19 +5,22 @@ namespace App\Http\Controllers\UserController\Home;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Group;
+use App\Models\Blog;
 
 class HomeController extends Controller
 {
     // View danh sách nhóm thuê nhiều + tương tác tốt trang home
-    public function view_home(Request $req, Group $group){
+    public function view_home(Request $req, Group $group, Blog $blog){
         // danh sách nhóm thuê nhiều
         $list_rent = $group->get_all_rent_paginate_12();
         // danh sách danh mục
         $list_category = $group->lay_danh_muc();
         // danh sách nhóm tương tác tốt
         $list_interact = $group->get_all_interact_paginate_12();
+        // danh sách bài viết
+        $listBlog = $blog->get_orderBy_DESC_where_status_paginate4();
 
-        return view('FEuser.Pages.Home.index', compact('list_rent', 'list_interact', 'list_category'));
+        return view('FEuser.Pages.Home.index', compact('list_rent', 'list_interact', 'list_category', 'listBlog'));
     }
 
     // View danh sách nhóm

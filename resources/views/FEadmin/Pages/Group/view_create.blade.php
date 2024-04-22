@@ -64,11 +64,11 @@
                         </div>
                         <div class="form-group col-12 col-md-4">
                             <label class="form-label" for="exampleSelect1">Quản Trị</label>
-                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups" multiple>
+                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups" multiple>
                                 <optgroup label="Quản Trị Nhóm">
                                     @foreach ($listAdmin->sortBy('fullName') as $value)
                                         <option value="{{ $value->id }}"
-                                            {{ old('name_user_sale') && in_array($value->id, old('name_user_sale')) ? 'selected' : '' }}>
+                                            {{ old('name_user_group') && in_array($value->id, old('name_user_group')) ? 'selected' : '' }}>
                                             {{ $value->fullName }}
                                         </option>
                                     @endforeach
@@ -80,13 +80,13 @@
                         </div>
                         <div class="form-group col-12 col-md-3">
                             <label class="form-label" for="exampleSelect1">Sale</label>
-                            <select class="form-control" name="name_user_group[]" id="choices-multiple-groups-admin"
+                            <select class="form-control" name="name_user_sale[]" id="choices-multiple-groups-admin"
                                 multiple>
                                 <optgroup label="Quản Trị">
                                     @foreach ($listAccount->sortBy('fullName') as $value)
                                         @if ($value->decentralization == 0)
                                             <option value="{{ $value->id }}"
-                                                {{ old('name_user_group') && in_array($value->id, old('name_user_group')) ? 'selected' : '' }}>
+                                                {{ old('name_user_sale') && in_array($value->id, old('name_user_sale')) ? 'selected' : '' }}>
                                                 {{ $value->fullName }}
                                             </option>
                                         @endif
@@ -96,7 +96,7 @@
                                     @foreach ($listAccount->sortBy('fullName') as $value)
                                         @if ($value->decentralization == 1)
                                             <option value="{{ $value->id }}"
-                                                {{ old('name_user_group') && in_array($value->id, old('name_user_group')) ? 'selected' : '' }}>
+                                                {{ old('name_user_sale') && in_array($value->id, old('name_user_sale')) ? 'selected' : '' }}>
                                                 {{ $value->fullName }}
                                             </option>
                                         @endif

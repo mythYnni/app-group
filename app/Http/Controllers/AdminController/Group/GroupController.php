@@ -67,45 +67,56 @@ class GroupController extends Controller
         $req->merge(['image' => $imgrPath]);
 
         // Xử lý danh sách quản trị
-        // Khởi tạo mảng rỗng để lưu trữ kết quả
+         // Khởi tạo mảng rỗng để lưu trữ kết quả
         $accountData = [];
 
-        // Xử lý danh sách quản trị
-        foreach ($req->name_user_group as $value) {
-            $objAccount = $account->get_by_id($value);
-            if ($objAccount) {
-                $accountItem = [
-                    'id' => $objAccount->id,
-                    'slug' => $objAccount->slugUser,
-                    'name' => $objAccount->fullName
-                ];
-                $accountData[] = $accountItem;
+        // Xử lý danh sách sale
+        if (is_array($req->name_user_sale) || is_object($req->name_user_sale)) {
+            // Xử lý danh sách sale
+            foreach ($req->name_user_sale as $value) {
+                $objAccount = $account->get_by_id($value);
+                if ($objAccount) {
+                    $accountItem = [
+                        'id' => $objAccount->id,
+                        'slug' => $objAccount->slugUser,
+                        'name' => $objAccount->fullName
+                    ];
+                    $accountData[] = $accountItem;
+                }
             }
+            $req->merge(['name_user_sale' => $accountData]);
+        }else{
+            $req->merge(['name_user_sale' => $accountData]);
         }
-        $req->merge(['name_user_group' => $accountData]);
 
         // Xử lý danh sách sale
         // Khởi tạo mảng rỗng để lưu trữ kết quả
         $saleData = [];
 
         // Xử lý danh sách quản trị
-        foreach ($req->name_user_group as $value) {
-            $objSale = $admin->get_by_id($value);
-            if ($objSale) {
-                $accountItem = [
-                    'id' => $objSale->id,
-                    'slug' => $objSale->slugUser,
-                    'name' => $objSale->fullName,
-                    'linkFacebook' => $objSale->linkFacebook,
-                ];
-                $saleData[] = $accountItem;
+        if (is_array($req->name_user_group) || is_object($req->name_user_group)) {
+            foreach ($req->name_user_group as $value) {
+                $objSale = $admin->get_by_id($value);
+                if ($objSale) {
+                    $accountItem = [
+                        'id' => $objSale->id,
+                        'slug' => $objSale->slugUser,
+                        'name' => $objSale->fullName,
+                        'linkFacebook' => $objSale->linkFacebook,
+                    ];
+                    $saleData[] = $accountItem;
+                }
             }
+            $req->merge(['name_user_group' => $saleData]);
+        }else{
+            $req->merge(['name_user_group' => $saleData]);
         }
-        $req->merge(['name_user_sale' => $saleData]);
             
         // Lấy Thông Tin Người Tạo
         $req->merge(['user_create' =>  Auth::guard('admin')->user()->fullName]);
         $req->merge(['user_email_create' =>  Auth::guard('admin')->user()->email]);
+
+        // dd($req->all());
 
         //Thực hiện thêm mới
         $create = $group->create_group($req);
@@ -184,38 +195,47 @@ class GroupController extends Controller
         // Khởi tạo mảng rỗng để lưu trữ kết quả
         $accountData = [];
 
-        // Xử lý danh sách quản trị
-        foreach ($req->name_user_group as $value) {
-            $objAccount = $account->get_by_id($value);
-            if ($objAccount) {
-                $accountItem = [
-                    'id' => $objAccount->id,
-                    'slug' => $objAccount->slugUser,
-                    'name' => $objAccount->fullName
-                ];
-                $accountData[] = $accountItem;
+        // Xử lý danh sách sale
+        if (is_array($req->name_user_sale) || is_object($req->name_user_sale)) {
+            // Xử lý danh sách sale
+            foreach ($req->name_user_sale as $value) {
+                $objAccount = $account->get_by_id($value);
+                if ($objAccount) {
+                    $accountItem = [
+                        'id' => $objAccount->id,
+                        'slug' => $objAccount->slugUser,
+                        'name' => $objAccount->fullName
+                    ];
+                    $accountData[] = $accountItem;
+                }
             }
+            $req->merge(['name_user_sale' => $accountData]);
+        }else{
+            $req->merge(['name_user_sale' => $accountData]);
         }
-        $req->merge(['name_user_group' => $accountData]);
 
         // Xử lý danh sách sale
         // Khởi tạo mảng rỗng để lưu trữ kết quả
         $saleData = [];
 
         // Xử lý danh sách quản trị
-        foreach ($req->name_user_group as $value) {
-            $objSale = $admin->get_by_id($value);
-            if ($objSale) {
-                $accountItem = [
-                    'id' => $objSale->id,
-                    'slug' => $objSale->slugUser,
-                    'name' => $objSale->fullName,
-                    'linkFacebook' => $objSale->linkFacebook,
-                ];
-                $saleData[] = $accountItem;
+        if (is_array($req->name_user_group) || is_object($req->name_user_group)) {
+            foreach ($req->name_user_group as $value) {
+                $objSale = $admin->get_by_id($value);
+                if ($objSale) {
+                    $accountItem = [
+                        'id' => $objSale->id,
+                        'slug' => $objSale->slugUser,
+                        'name' => $objSale->fullName,
+                        'linkFacebook' => $objSale->linkFacebook,
+                    ];
+                    $saleData[] = $accountItem;
+                }
             }
+            $req->merge(['name_user_group' => $saleData]);
+        }else{
+            $req->merge(['name_user_group' => $saleData]);
         }
-        $req->merge(['name_user_sale' => $saleData]);
 
         // dd($req->all());
 

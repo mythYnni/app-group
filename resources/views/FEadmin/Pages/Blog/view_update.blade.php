@@ -63,7 +63,7 @@
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12">
                 <!-- Basic Inputs -->
-                <form class="card" action="{{ route('creater_blog') }}" method="POST" id="formReset"
+                <form class="card" method="POST" id="formReset"
                     enctype="multipart/form-data">
                     @csrf
                     <div class="card-header">
@@ -153,8 +153,8 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button class="btn btn-primary me-2" type="submit">Thêm Mới</button>
-                        <button type="reset" class="btn btn-light" id="resetBtn">Đặt Lại</button>
+                        <button class="btn btn-primary me-2" type="submit">Cập Nhật</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-light">Quay Lại</a>
                     </div>
                 </form>
             </div>

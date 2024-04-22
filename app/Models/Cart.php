@@ -17,9 +17,11 @@ class Cart extends Model
     protected $fillable = [
         'id',
         'name_account',
+        'linkFacebook',
         'phone',
         'email',
         'idGroup',
+        'codeGroup',
         'nameGroup',
         'price',
         'rent_cost',
@@ -28,6 +30,8 @@ class Cart extends Model
         'linkGroup',
         'timeCreate',
         'note',
+        'user_create',
+        'user_email_create',
     ];
 
     //Phương thức lấy danh sách nhóm thuê nhiều
@@ -57,16 +61,21 @@ class Cart extends Model
     public function create_cart($req){
         $currentTime = now();
         $creates = $this->Create([
-            'name_account' => $req -> name_account,
-            'phone' => $req -> phone,
-            'email' => $req -> email,
-            'idGroup' => $req -> idGroup,
-            'nameGroup' => $req -> nameGroup,
-            'price' => $req -> price,
-            'rent_cost' => $req -> rent_cost,
-            'status' => $req -> status,
-            'status_type' => $req -> status_type,
-            'linkGroup' => $req -> linkGroup,
+            'name_account' => $req->name_account,
+            'linkFacebook'=> $req->linkFacebook,
+            'phone'=> $req->phone,
+            'email'=> $req->email,
+            'idGroup'=> $req->idGroup,
+            'codeGroup'=> $req->codeGroup,
+            'nameGroup'=> $req->nameGroup,
+            'price'=> $req->price,
+            'rent_cost'=> $req->rent_cost,
+            'status'=> 0,
+            'status_type'=> $req->status_type,
+            'linkGroup'=> $req->linkGroup,
+            'note'=> $req->note,
+            'user_create'=> $req->user_create,
+            'user_email_create'=> $req->user_email_create,
             'timeCreate' => $currentTime,
         ]);
         return $creates;

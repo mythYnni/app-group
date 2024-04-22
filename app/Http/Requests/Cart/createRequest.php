@@ -23,16 +23,12 @@ class createRequest extends FormRequest
     {
         return [
             'name_account' => 'required',
-            'email' => 'required',
-            'phone' => 'required',
         ];
     }
 
     public function messages(){
         return [
             'name_account.required' => 'Trường không được để trống!',
-            'email.required' => 'Trường không được để trống!',
-            'phone.required' => 'Trường không được để trống!',
         ];
     }
 }

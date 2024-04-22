@@ -1,6 +1,7 @@
 @extends ('FEuser.master')
 @section('view')
     @php
+        use Carbon\Carbon;
         $typeHTML = [
             0 => ['name' => 'Riêng Tư', 'color' => 'bg-danger bg-gradient'],
             1 => ['name' => 'Công Khai', 'color' => 'bg-success bg-gradient'],
@@ -18,6 +19,8 @@
         ];
     @endphp
     <section class="section" style="min-height: 1000px;">
+        
+
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
@@ -212,6 +215,62 @@
                 <div class="col-12 mt-4 pt-2" style="text-align: center;">
                     <a href="{{ route('view_group_rent') }}" class="btn btn-sm btn-primary w-full">Xem Thêm</a>
                 </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+
+        <div class="container mt-50 mt-60">
+            <div class="row justify-content-center">
+                <div class="col">
+                    <div class="section-title text-center">
+                        <h4 class="title mb-3">Tin Tức Mới Nhất</h4>
+                        {{-- <p class="text-muted para-desc mb-0 mx-auto">Search all the open positions on the web. Get your own
+                            personalized salary estimate. Read reviews on over 30000+ companies worldwide.</p> --}}
+                    </div>
+                </div><!--end col-->
+            </div><!--end row-->
+
+            <div class="row g-4 mt-0">
+                @foreach ($listBlog as $key => $value)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="card blog blog-primary shadow rounded overflow-hidden border-0">
+                            <div class="card-img blog-image position-relative overflow-hidden rounded-0">
+                                <div class="position-relative overflow-hidden">
+                                    <div class="image-container"
+                                        style="height: 168px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                                        <img src="{{ $value->image }}" class="img-fluid" alt=""
+                                            style="width: auto; height: 100%; object-fit: cover;">
+                                    </div>
+                                    <div class="card-overlay"></div>
+                                </div>
+                            </div>
+
+                            <div class="card-body blog-content position-relative p-0">
+                                <div class="blog-tag px-4">
+                                    <a href="#" class="badge bg-primary rounded-pill">Bài Viết</a>
+                                </div>
+                                <div class="p-4">
+                                    <ul class="list-unstyled text-muted small mb-2">
+                                        <li class="d-inline-flex align-items-center me-2"><i data-feather="calendar"
+                                                class="fea icon-ex-sm me-1 text-dark"></i>{{ Carbon::parse($value->timeCreate)->locale('vi')->isoFormat('Do [tháng] M [năm] YYYY') }}
+                                        </li>
+                                    </ul>
+
+                                    <a href="blog-detail.html" class="title fw-semibold fs-5 text-dark"
+                                        style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis; display: inline-block; max-width: 100%;">{{ $value->name }}</a>
+
+                                    <ul
+                                        class="list-unstyled d-flex justify-content-between align-items-center text-muted mb-0 mt-3">
+                                        <li class="list-inline-item me-2"><a href="#"
+                                                class="btn btn-link primary text-dark">Xem Ngay <i
+                                                    class="mdi mdi-arrow-right"></i></a></li>
+                                        <li class="list-inline-item"><span class="text-dark">By</span> <span
+                                                class="text-muted link-title">DPC Marketing</span></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                @endforeach
             </div><!--end row-->
         </div><!--end container-->
     </section><!--end section-->

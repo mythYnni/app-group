@@ -8,7 +8,7 @@
         selectLocation.addEventListener("change", function() {
             var selectedValue = this.value;
 
-            if (selectedValue === "3") {
+            if (selectedValue === "3" ||  selectedValue === "4") {
                 // Reset giá trị của các dropdown khi selectedValue === "3"
                 selectProvince.selectedIndex = 0;
                 selectDistrict.selectedIndex = 0;

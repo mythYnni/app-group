@@ -73,11 +73,11 @@
                                             <hr class="my-3 border border-secondary-subtle">
                                             <div class="d-inline-flex align-items-center justify-content-start w-100 mb-3">
                                                 <i class="ti ti-mail me-2"></i>
-                                                <p class="mb-0">{{ $objs->email }}</p>
+                                                <p class="mb-0">{{ $objs->email !== null ? $objs->email : "Chưa Có Thông Tin" }}</p>
                                             </div>
                                             <div class="d-inline-flex align-items-center justify-content-start w-100 mb-3">
                                                 <i class="ti ti-phone me-2"></i>
-                                                <p class="mb-0">{{ $objs->phone }}</p>
+                                                <p class="mb-0">{{ $objs->phone !== null ? $objs->phone : "Chưa Có Thông Tin" }}</p>
                                             </div>
                                         </div>
                                     </div>
