@@ -32,6 +32,38 @@
     @include('FEuser.Layout.Fooder.Fooder')
     <!-- Footer End -->
 
+    <a href="https://www.facebook.com/groups/khokhoahoconline" id="linkzalo" target="_blank" rel="noopener noreferrer">
+        <div class="fcta-zalo-vi-tri-nut-facebook">
+            <div id="fcta-zalo-tracking" class="fcta-zalo-nen-nut-facebook">
+                <div id="fcta-zalo-tracking" class="fcta-zalo-ben-trong-nut">
+                    <img style="width: 100%;" src="{{ url('assets') }}/images/layout/facebook.png">
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="https://t.me/chiasekhoahoconline" id="linkzalo" target="_blank" rel="noopener noreferrer">
+        <div class="fcta-zalo-vi-tri-nut-telegram">
+            <div id="fcta-zalo-tracking" class="fcta-zalo-nen-nut-telegram">
+                <div id="fcta-zalo-tracking" class="fcta-zalo-ben-trong-nut">
+                    <img style="width: 100%;" src="{{ url('assets') }}/images/layout/telegram.png">
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <!-- :: END PAGES -->
+
+    <a href="https://chat.zalo.me/?phone=0888999857" id="linkzalo" target="_blank" rel="noopener noreferrer">
+        <div class="fcta-zalo-vi-tri-nut">
+            <div id="fcta-zalo-tracking" class="fcta-zalo-nen-nut">
+                <div id="fcta-zalo-tracking" class="fcta-zalo-ben-trong-nut">
+                    <img style="width: 100%;" src="{{ url('assets') }}/images/layout/zalo.png">
+                </div>
+            </div>
+        </div>
+    </a>
+
     @include('FEuser.Layout.Fooder.JS_Fooder')
     <!-- :: SUCCESS -->
     @include('FEuser.Sweetalert.success')

@@ -22,14 +22,14 @@
         <ul class="buy-button list-inline mb-0">
             <li class="list-inline-item ps-1 mb-0">
                 <div class="dropdown">
-                    <button type="button" class="dropdown-toggle btn btn-sm btn-icon btn-pills btn-primary" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button type="button" class="dropdown-toggle btn btn-sm btn-icon btn-pills btn-primary" style="background-color: #ff8a96 !important;" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <i data-feather="search" class="icons"></i>
                     </button>
                     <div class="dropdown-menu dd-menu dropdown-menu-end bg-white rounded border-0 mt-3 p-0" style="width: 420px;">
                         <div class="search-bar" style="margin-top: 2px;">
                             <div id="itemSearch" class="menu-search mb-0">
-                                <form role="search" method="get" id="searchItemform" class="searchform">
-                                    <input type="text" class="form-control rounded border" name="s" id="searchItem" placeholder="Tìm Kiếm..." style="border-color: #838383 !important;">
+                                <form role="search" method="GET" action="{{ route('view_group_index') }}" class="searchform">
+                                    <input type="text" class="form-control rounded border" name="search" id="searchItem" placeholder="Tìm Kiếm..." style="border-color: #838383 !important;">
                                     <input type="submit" id="searchItemsubmit" value="Search">
                                 </form>
                             </div>

@@ -25,6 +25,16 @@ class Banner extends Model
         'timeCreate',
     ];
 
+     //Phương thức lấy danh sách banner
+     public function get_banner(){
+        return $this->orderBy('timeCreate','DESC')->where('status_type', 0)->where('status', 0)->get();
+    } 
+
+     //Phương thức lấy danh sách popup
+     public function get_popup(){
+        return $this->orderBy('timeCreate','DESC')->where('status_type', 1)->where('status', 0)->get();
+    } 
+
     //Phương thức lấy danh sách
     public function get_popup_orderBy_ASC(){
         return $this->orderBy('timeCreate','DESC')->where('status_type', 1)->get();

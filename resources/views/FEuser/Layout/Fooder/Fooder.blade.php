@@ -2,12 +2,12 @@
     <div class="container">
         <div class="footerarea__copyright__wrapper footerarea__copyright__wrapper__2">
             <div class="row">
-                <div class="col-xl-3 col-lg-3">
+                <div class="col-xl-3 col-lg-3 col-md-3">
                     <div class="copyright__logo">
                         <a href="{{ route('view_home_user') }}"><img style="width: 100%;" class="image-responsize" src="{{ url('assets') }}/images/logo_black-background.png" class="l-dark" alt=""></a>
                     </div>
                 </div>
-                <div class="col-xl-9 col-lg-9">
+                <div class="col-xl-9 col-lg-9 col-md-9">
                     <div class="footerarea__copyright__content footerarea__copyright__content__2">
                         <p>DPC Marketing © <span style="color: #ee378b;">2024</span> Dịch Vụ Thuê Mua Trao Đổi Kinh Doanh</p>
                     </div>
@@ -16,7 +16,7 @@
         </div>
         <div class="footerarea__wrapper footerarea__wrapper__2" style="padding-top: 0px;">
             <div class="row">
-                <div class="col-xl-4 col-lg-4 col-sm-12 col-md-12 aos-init aos-animate" data-aos="fade-up">
+                <div class="col-xl-4 col-lg-4 col-sm-12 col-md-12 aos-init aos-animate note-foodter" data-aos="fade-up">
                     <div class="footerarea__inner footerarea__about__us">
                         <div class="footerarea__heading">
                             <span>GIỚI THIỆU</span>
@@ -49,8 +49,8 @@
                         </div>
                         <div class="foter__bottom__text">
                             <div class="footer__bottom__icon"
-                                style="width: 78px; height: 78px; color: #5f2ded; background: #5f2ded; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;">
-                                <img style="width: 52px; height: 50px; color: #5f2ded; background: #5f2ded; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;"
+                                style="width: 78px; height: 78px; color: #dc3545; background: #dc3545; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;">
+                                <img style="width: 52px; height: 50px; color: #dc3545; background: #dc3545; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;"
                                     src="https://chiasekhoahoc.com.vn/asset/img/herobanner/telephone.png">
                             </div>
                             <div class="footer__bottom__content">
@@ -60,7 +60,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-xl-4 col-lg-4 col-sm-6 col-md-6 aos-init aos-animate" data-aos="fade-up" style="display: flex; justify-content: space-around;">
+                <div class="col-xl-4 col-lg-4 col-sm-6 col-md-6 aos-init aos-animate aos-animate-mobile" data-aos="fade-up">
                     <div class="footerarea__inner">
                         <div class="footerarea__heading">
                             <span>THÔNG TIN WEBSITE</span>
@@ -96,7 +96,7 @@
                     </div>
                 </div>
             
-                <div class="col-xl-4 col-lg-4 col-sm-12 aos-init aos-animate" data-aos="fade-up">
+                <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 aos-init aos-animate" data-aos="fade-up">
                     <div class="footerarea__right__wraper footerarea__inner">
                         <div class="footerarea__heading">
                             <span>PHƯƠNG THỨC THANH TOÁN</span>

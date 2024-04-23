@@ -116,5 +116,6 @@ Route::prefix('/')->group(function () {
 
     // Route Bài Viết
     Route::get('/danh-sach-bai-viet',[UserBlogController::class,'view_list_blog'])->name('view_list_blog_user');
+    Route::get('/chi-tiet-bai-viet/{slug}',[UserBlogController::class,'view_list_detail_blog'])->name('view_list_detail_blog_user');
     // Kết Thúc Route Bài Viết
 });

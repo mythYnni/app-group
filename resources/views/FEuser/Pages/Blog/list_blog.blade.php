@@ -39,7 +39,7 @@
                             <div class="card-img blog-image position-relative overflow-hidden rounded-0">
                                 <div class="position-relative overflow-hidden">
                                     <div class="image-container"
-                                        style="height: 168px; overflow: hidden; display: flex; justify-content: center; align-items: center;">
+                                        style="height: 168px; overflow: hidden; display: flex; justify-content: center; align-items: center; padding: 5px 5px 0px 5px;">
                                         <img src="{{ $value->image }}" class="img-fluid" alt=""
                                             style="width: auto; height: 100%; object-fit: cover;">
                                     </div>
@@ -49,7 +49,7 @@
 
                             <div class="card-body blog-content position-relative p-0">
                                 <div class="blog-tag px-4">
-                                    <a href="#" class="badge bg-primary rounded-pill">Bài Viết</a>
+                                    <a href="{{route('view_list_detail_blog_user', $value->slug)}}" class="badge bg-primary rounded-pill">Bài Viết</a>
                                 </div>
                                 <div class="p-4">
                                     <ul class="list-unstyled text-muted small mb-2">
@@ -58,12 +58,12 @@
                                         </li>
                                     </ul>
 
-                                    <a href="blog-detail.html" class="title fw-semibold fs-5 text-dark"
+                                    <a href="{{route('view_list_detail_blog_user', $value->slug)}}" class="title fw-semibold fs-5 text-dark"
                                         style="white-space: nowrap; overflow: hidden;text-overflow: ellipsis; display: inline-block; max-width: 100%;">{{ $value->name }}</a>
 
                                     <ul
                                         class="list-unstyled d-flex justify-content-between align-items-center text-muted mb-0 mt-3">
-                                        <li class="list-inline-item me-2"><a href="#"
+                                        <li class="list-inline-item me-2"><a href="{{route('view_list_detail_blog_user', $value->slug)}}"
                                                 class="btn btn-link primary text-dark">Xem Ngay <i
                                                     class="mdi mdi-arrow-right"></i></a></li>
                                         <li class="list-inline-item"><span class="text-dark">By</span> <span

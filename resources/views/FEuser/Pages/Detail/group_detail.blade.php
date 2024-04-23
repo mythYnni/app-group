@@ -55,7 +55,7 @@
                         <img src="{{ $obj->image }}" class="avatar shadow bg-white" alt="" style="width: 100%;">
 
                         <div class="mt-4">
-                            <h4 class="title mb-3"><a href="{{ $obj->linkGroup }}" target="_blank"
+                            <h4 class="title mb-3"><a href="{{ $obj->linkGroup }}" target="_blank" style="color: rgb(253 13 13); font-weight: 700;"
                                     class="hover-h4">{{ $obj->nameGroup }}</a></h4>
 
                             <ul class="list-unstyled mb-3">

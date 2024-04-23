@@ -49,7 +49,7 @@
         </div><!--end container-->
 
         <div class="container">
-            <div class="alert alert-success" style="padding: 0px; background: #341eb9; border-color: #341eb9;">
+            <div class="alert alert-success" style="padding: 0px; background: #dc3545; border-color: #dc3545;">
                 <img loading="lazy" class="responsite-image-text" style="margin-left: 15px;"
                     src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo-removebg-preview.png"
                     alt="grid">

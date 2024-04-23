@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Group;
 use App\Models\Blog;
+use App\Models\Banner;
 
 class HomeController extends Controller
 {
     // View danh sách nhóm thuê nhiều + tương tác tốt trang home
-    public function view_home(Request $req, Group $group, Blog $blog){
+    public function view_home(Request $req, Group $group, Blog $blog, Banner $banner){
         // danh sách nhóm thuê nhiều
         $list_rent = $group->get_all_rent_paginate_12();
         // danh sách danh mục
@@ -19,8 +20,12 @@ class HomeController extends Controller
         $list_interact = $group->get_all_interact_paginate_12();
         // danh sách bài viết
         $listBlog = $blog->get_orderBy_DESC_where_status_paginate4();
+        // danh sách popup
+        $list_popup = $banner->get_popup();
+        // danh sách banner
+        $list_banner = $banner->get_banner();
 
-        return view('FEuser.Pages.Home.index', compact('list_rent', 'list_interact', 'list_category', 'listBlog'));
+        return view('FEuser.Pages.Home.index', compact('list_rent', 'list_interact', 'list_category', 'listBlog', 'list_popup', 'list_banner'));
     }
 
     // View danh sách nhóm
