@@ -31,6 +31,7 @@ class Cart extends Model
         'timeCreate',
         'note',
         'user_create',
+        'check_buiding',
         'user_email_create',
     ];
 
@@ -76,16 +77,26 @@ class Cart extends Model
             'note'=> $req->note,
             'user_create'=> $req->user_create,
             'user_email_create'=> $req->user_email_create,
+            'check_buiding'=> 0,
             'timeCreate' => $currentTime,
         ]);
         return $creates;
     }
 
-     // Phương thức cập nhật note
-     public function update_cart_note($req, $slug){
+    // Phương thức cập nhật note
+    public function update_cart_note($req, $slug){
         $obj = DB::table('cart')->where('id', $slug)->update([
             'status' => $req -> status,
             'note' => $req -> note,
+        ]);
+        return $obj;
+    }
+
+    // Phương thức cập nhật trạng thái
+    public function update_cart_status($slug){
+        $obj = DB::table('cart')->where('id', $slug)->update([
+            'status' => 1,
+            'check_buiding'=> 1,
         ]);
         return $obj;
     }

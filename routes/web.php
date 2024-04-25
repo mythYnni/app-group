@@ -11,6 +11,7 @@ use App\Http\Controllers\adminController\Cart\CartController as adminCartControl
 use App\Http\Controllers\AdminController\Banner\BannerController;
 use App\Http\Controllers\AdminController\Blog\BlogController;
 use App\Http\Controllers\AdminController\Admin\AdminController;
+use App\Http\Controllers\AdminController\Buiding\BuidingController;
 // Controller Người Dùng
 use App\Http\Controllers\UserController\Home\HomeController as UserHomeController;
 use App\Http\Controllers\UserController\Cart\CartController;
@@ -32,10 +33,14 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
     Route::get('/xoa-khach-hang/{slug}',[adminCartController::class,'delete_cart'])->name('delete_cart');
     Route::get('/cap-nhat-khach-hang/{slug}', [adminCartController::class,'index_update'])->name('view_update_cart');
     Route::post('/cap-nhat-khach-hang/{slug}',[adminCartController::class,'update_cart'])->name('update_cart');
-    Route::get('/tao-hop-dong-thue/{slug}', [adminCartController::class,'index_buiding'])->name('index_buiding');
     Route::get('/them-moi-khach-hang', [adminCartController::class,'view_create_cart'])->name('view_create_cart');
     Route::get('/lay-thong-tin-nhom/{slug}', [adminCartController::class,'get_detail_groups'])->name('get_detail_group');
     Route::post('them-moi-khach-hang',[adminCartController::class,'post_detail_groups'])->name('post_detail_groups');
+
+    // Router Hợp Đồng
+    Route::get('/hop-dong-thue', [BuidingController::class,'view_list_rent_buiding'])->name('view_list_rent_buiding');
+    Route::get('/tao-hop-dong-thue/{slug}', [BuidingController::class,'index_buiding'])->name('index_buiding');
+    Route::post('/tao-hop-dong-thue-dich-vu/{slug}', [BuidingController::class,'create_buiding'])->name('create_buiding');
 
     // Router Cá nhân
     Route::get('/thong-tin-ca-nhan', [ProfileController::class,'index'])->name('view_profile');

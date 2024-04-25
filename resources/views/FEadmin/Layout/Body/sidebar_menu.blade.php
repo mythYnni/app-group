@@ -17,10 +17,10 @@
                                 class="user-avtar wid-45 rounded-circle" />
                         </div>
                         <div class="flex-grow-1 ms-3 me-2">
-                            {{-- <h6 class="mb-0">{{ Auth::guard('admin')->user()->fullName }}</h6>
-                            <small>{{ Auth::guard('admin')->user()->email }}</small> --}}
-                            <h6 class="mb-0">Demo</h6>
-                            <small>Email Demo</small>
+                            <h6 class="mb-0">{{ Auth::guard('admin')->user()->fullName }}</h6>
+                            <small>{{ Auth::guard('admin')->user()->email }}</small>
+                            {{-- <h6 class="mb-0">Demo</h6>
+                            <small>Email Demo</small> --}}
                         </div>
                         <a class="btn btn-icon btn-link-secondary avtar" data-bs-toggle="collapse"
                             href="#pc_sidebar_userlink">
@@ -76,7 +76,7 @@
                             </svg></span>
                     </a>
                     <ul class="pc-submenu" style="display: none;">
-                        <li class="pc-item"><a class="pc-link" href="">Nhóm Thuê</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('view_list_rent_buiding')}}">Nhóm Thuê</a></li>
                         <li class="pc-item"><a class="pc-link" href="">Nhóm Đã Bán</a></li>
                     </ul>
                 </li>

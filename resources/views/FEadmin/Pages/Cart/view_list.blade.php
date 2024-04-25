@@ -13,9 +13,15 @@
     ];
 
     $statusHTML = [
-        0 => ['name' => 'Chưa Hỗ Trợ', 'color' => 'bg-cyan-900'],
-        1 => ['name' => 'Đã Hỗ Trợ', 'color' => 'bg-gray-800'],
+        0 => ['name' => 'Chưa Hỗ Trợ', 'color' => 'bg-pink-800'],
+        1 => ['name' => 'Đã Hỗ Trợ', 'color' => 'bg-green-700'],
     ];
+
+    $statusHTML_Buiding = [
+        0 => ['name' => 'Chưa Lên Hợp Đồng', 'color' => '#e5c0c0'],
+        1 => ['name' => 'Đã Lên Hợp Đồng', 'color' => '#c0e5d9'],
+    ];
+
 @endphp
 @section('view')
     <div class="pc-content">
@@ -49,7 +55,7 @@
                             <h5>Danh Sách Hỗ Trợ</h5>
                         </div>
                         <div>
-                            <a href="{{route('view_create_cart')}}" class="btn btn-success">Tạo Mới</a>
+                            <a href="{{ route('view_create_cart') }}" class="btn btn-success">Tạo Mới</a>
                         </div>
                     </div>
                     <div class="card-body">
@@ -58,6 +64,7 @@
                                 <thead>
                                     <tr>
                                         <th>stt</th>
+                                        <th>Hợp Đồng</th>
                                         <th>Tên Khách</th>
                                         <th>Phone</th>
                                         <th>Email</th>
@@ -82,6 +89,14 @@
                                             $typeColor = $type['color'];
                                         @endphp
                                         @php
+                                            $type = $statusHTML_Buiding[$value->check_buiding] ?? [
+                                                'name' => 'Không Xác Định',
+                                                'color' => '#000000',
+                                            ];
+                                            $typeNameBuiding = $type['name'];
+                                            $typeColorBuiding = $type['color'];
+                                        @endphp
+                                        @php
                                             $status_color = $statusHTML[$value->status] ?? [
                                                 'name' => 'Không Xác Định',
                                                 'color' => '#000000',
@@ -89,9 +104,11 @@
                                             $status_name = $status_color['name'];
                                             $status_back = $status_color['color'];
                                         @endphp
-                                        <tr>
+                                        <tr style="background: {{ $typeColorBuiding }}">
                                             <td>{{ $key + 1 }}</td>
-                                            <td><span class="h6">{{ $value->name_account }}</span></td>
+                                            <td>{{ $typeNameBuiding }}</td>
+                                            <td><a href="{{ $value->linkFacebook }}"
+                                                    target="_blank">{{ $value->name_account }}</a></td>
                                             <td>{{ $value->phone }}</td>
                                             <td>{{ $value->email }}</td>
                                             <td>{{ $value->nameGroup }}</td>
@@ -118,11 +135,19 @@
                                                         type="button" data-bs-toggle="dropdown" aria-haspopup="true"
                                                         aria-expanded="false">Lựa chọn</button>
                                                     <div class="dropdown-menu">
-                                                        <a class="dropdown-item"
-                                                            href="{{ route('index_buiding', $value->id) }}"><span
-                                                                style="display: flex; justify-content: flex-start; color: #352ca8;"><i
-                                                                    class="ti ti-pencil me-1"></i> Tạo Hợp Đồng
-                                                                Thuê</span></a>
+                                                        @if ($value->check_buiding == 0)
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('index_buiding', $value->id) }}"><span
+                                                                    style="display: flex; justify-content: flex-start; color: #352ca8;"><i
+                                                                        class="ti ti-pencil me-1"></i> Tạo Hợp Đồng
+                                                                    Thuê</span></a>
+                                                        @else
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('index_buiding', $value->id) }}"><span
+                                                                    style="display: flex; justify-content: flex-start; color: #352ca8;"><i
+                                                                        class="ti ti-eye me-1"></i> Xem Hợp Đồng</span></a>
+                                                        @endif
+
                                                         <a class="dropdown-item"
                                                             href="{{ route('view_update_cart', $value->id) }}"><span
                                                                 style="display: flex; justify-content: flex-start; color: #2ca87f;"><i

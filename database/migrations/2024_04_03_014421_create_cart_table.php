@@ -23,6 +23,7 @@ return new class extends Migration
             $table->double('price')->default(0)->nullable(); //giá bán
             $table->double('rent_cost')->default(0)->nullable(); //giá thuê
             $table->tinyInteger('status')->default(0); // 0 chưa duyện, 1 đã duyệt
+            $table->tinyInteger('check_buiding')->default(0); // 0 chưa tạo hợp đồng, 1 đã tạo hợp đồng
             $table->tinyInteger('status_type')->default(0); // 0 mua, 1 thuê
             $table->string('linkGroup')->nullable();
             $table->string('timeCreate'); // ngày thuê, ngày mua

@@ -105,7 +105,7 @@
                                         @endphp
                                         <tr style="background-color: {{ $color_backgroup }}">
                                             <td>{{ $value->code }}</td>
-                                            <td><a href="{{$value->linkGroup}}" target="_blank"><span class="h6">{{ $value->nameGroup }}</span></a></td>
+                                            <td><a href="{{$value->linkGroup}}" target="_blank"><span>{{ $value->nameGroup }}</span></a></td>
                                             <td>{{ $value->category }}</td>
                                             <td>{{ number_format($value->rent_cost, 0, ',', '.') }}</td>
                                             <td>{{ number_format($value->price, 0, ',', '.') }}</td>

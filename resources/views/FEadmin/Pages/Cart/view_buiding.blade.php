@@ -45,26 +45,47 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-header">
-                        <h5>Tạo Phiếu Thuê</h5>
+                        <h5>Tạo Phiếu Dịch Vụ</h5>
                     </div>
-                    <div class="card-body">
+                    <form class="card-body" method="POST" action="{{ route('create_buiding', $objs->id) }}">
+                        @csrf
                         <div class="row g-3">
                             <div class="col-sm-6 col-xl-3">
                                 <div class="form-group mb-0">
                                     <label class="form-label">Mã Phiếu</label>
-                                    <input type="text" class="form-control" placeholder="#xxxx" fdprocessedid="51rs98">
+                                    <input type="text" class="form-control" placeholder="#xxxx" fdprocessedid="51rs98"
+                                        name="code">
+                                    @error('code')
+                                        <small style="color: #f33923;">{{ $message }}</small>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-xl-3">
+                                <div class="form-group mb-0">
+                                    <label class="form-label">Dịch Vụ</label>
+                                    <select id="service-select" class="form-select" onchange="toggleDateInputs()"
+                                        name="status_type">
+                                        <option value="0">Thuê Nhóm</option>
+                                        <option value="1">Mua Nhóm</option>
+                                    </select>
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xl-3">
                                 <div class="form-group mb-0">
                                     <label class="form-label">Ngày Bắt Đầu</label>
-                                    <input type="datetime-local" class="form-control">
+                                    <input id="start-date-input" type="datetime-local" class="form-control" name="time">
+                                    @error('time')
+                                        <small style="color: #f33923;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-sm-6 col-xl-3">
                                 <div class="form-group mb-0">
                                     <label class="form-label">Ngày Kết Thúc</label>
-                                    <input type="datetime-local" class="form-control">
+                                    <input id="end-date-input" type="datetime-local" class="form-control" name="time_out">
+                                    @error('time_out')
+                                        <small style="color: #f33923;">{{ $message }}</small>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-xl-6">
@@ -73,9 +94,12 @@
                                         <h6 class="mb-0">Khách Hàng:</h6>
                                     </div>
                                     <h5>{{ $objs->name_account }}</h5>
-                                    <p class="mb-0">Địa Chỉ: Không Cập Nhật</p>
-                                    <p class="mb-0">Email: {{ $objs->email }}</p>
-                                    <p class="mb-0">Phone: {{ $objs->phone }}</p>
+                                    <p class="mb-0">Địa Chỉ: Chưa Cập Nhật</p>
+                                    <p class="mb-0">Email: {{ $objs->email ? $objs->email : 'Chưa Cập Nhật' }}</p>
+                                    <p class="mb-0">Phone: {{ $objs->phone ? $objs->phone : 'Chưa Cập Nhật' }}</p>
+                                    <p class="mb-0">Facebook: <a href="{{ $objs->linkFacebook }}"
+                                            target="_blank">{{ $objs->linkFacebook ? $objs->linkFacebook : 'Chưa Cập Nhật' }}</a>
+                                    </p>
                                 </div>
                             </div>
                             <div class="col-xl-6">
@@ -97,6 +121,7 @@
                                             <tr>
                                                 <th><span class="text-danger">*</span>Mã</th>
                                                 <th><span class="text-danger">*</span>Tên Nhóm</th>
+                                                <th><span class="text-danger">*</span>Giá Mua</th>
                                                 <th><span class="text-danger">*</span>Giá Thuê</th>
                                                 <th><span class="text-danger">*</span>Tháng Thuê</th>
                                                 <th>Tổng Tiền</th>
@@ -104,15 +129,43 @@
                                         </thead>
                                         <tbody>
                                             <tr>
+                                                <input type="hidden" name="id_group" value="{{ $obj_group->id }}">
+                                                <input type="hidden" name="linkGroup" value="{{ $obj_group->linkGroup }}">
                                                 <td><input type="text" class="form-control" placeholder="Tên Nhóm"
-                                                        fdprocessedid="nlmgf" value="{{ $obj_group->code }}"></td>
+                                                        fdprocessedid="nlmgf" value="{{ $obj_group->code }}"
+                                                        name="code_group">
+                                                    @error('code_group')
+                                                        <small style="color: #f33923;">{{ $message }}</small>
+                                                    @enderror
+                                                </td>
                                                 <td><input type="text" class="form-control" placeholder="Tên Nhóm"
-                                                        fdprocessedid="nlmgf" value="{{ $obj_group->nameGroup }}"></td>
+                                                        fdprocessedid="nlmgf" value="{{ $obj_group->nameGroup }}"
+                                                        name="nameGroup">
+                                                    @error('nameGroup')
+                                                        <small style="color: #f33923;">{{ $message }}</small>
+                                                    @enderror
+                                                </td>
+                                                <td><input type="number" id="price" class="form-control"
+                                                        placeholder="Giá" fdprocessedid="01nex"
+                                                        value="{{ $obj_group->price }}" name="price">
+                                                    @error('price')
+                                                        <small style="color: #f33923;">{{ $message }}</small>
+                                                    @enderror
+                                                </td>
                                                 <td><input type="number" id="rent_cost" class="form-control"
                                                         placeholder="Giá" fdprocessedid="01nex"
-                                                        value="{{ $obj_group->rent_cost }}"></td>
+                                                        value="{{ $obj_group->rent_cost }}" name="rent_cost">
+                                                    @error('rent_cost')
+                                                        <small style="color: #f33923;">{{ $message }}</small>
+                                                    @enderror
+                                                </td>
                                                 <td><input type="number" id="months" class="form-control"
-                                                        placeholder="Tháng" fdprocessedid="01nex" min="1"></td>
+                                                        placeholder="Tháng" fdprocessedid="01nex" min="1"
+                                                        name="date">
+                                                    @error('date')
+                                                        <small style="color: #f33923;">{{ $message }}</small>
+                                                    @enderror
+                                                </td>
                                                 <td id="total_table">0 đ</td>
                                             </tr>
                                         </tbody>
@@ -140,13 +193,14 @@
                                         <div class="col-6">
                                             <p class="f-w-600 mb-1 text-end" id="invoice_total">0 đ</p>
                                         </div>
+                                        <input type="hidden" name="totail_price" id="totail_price">
                                     </div>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group mb-0">
-                                    <label class="form-label">Note</label>
-                                    <textarea class="form-control" rows="3" placeholder="Note" style="height: 102px;"></textarea>
+                                    <label class="form-label">Ghi Chú</label>
+                                    <textarea class="form-control" rows="3" placeholder="Note" style="height: 102px;" name="note"></textarea>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -158,7 +212,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -166,22 +220,57 @@
 @stop
 @section('view_js')
     <script>
+        function toggleDateInputs() {
+            var serviceSelect = document.getElementById('service-select');
+            var startDateInput = document.getElementById('start-date-input');
+            var endDateInput = document.getElementById('end-date-input');
+            var rent_cost = document.getElementById('rent_cost');
+            var months = document.getElementById('months');
+            var price = document.getElementById('price');
+
+            if (serviceSelect.value === '0') { // Nếu chọn "Thuê Nhóm"
+                startDateInput.disabled = false; // Cho phép chọn Ngày Bắt Đầu
+                endDateInput.disabled = false; // Cho phép chọn Ngày Kết Thúc
+                months.disabled = false;
+                rent_cost.disabled = false;
+                price.disabled = true;
+            } else { // Nếu chọn "Mua Nhóm"
+                startDateInput.disabled = true; // Vô hiệu hóa chọn Ngày Bắt Đầu
+                endDateInput.disabled = true; // Vô hiệu hóa chọn Ngày Kết Thúc
+                months.disabled = true;
+                rent_cost.disabled = true;
+                price.disabled = false;
+            }
+        }
+
+        // Gọi hàm toggleDateInputs() để vô hiệu hóa/chọn trường Ngày Bắt Đầu và Ngày Kết Thúc một lần nữa khi trang được tải
+        toggleDateInputs();
+    </script>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Function to calculate and update the total cost
             function updateTotal() {
                 // Get values from input fields
+                var price = parseFloat(document.getElementById('price').value);
                 var rentCost = parseFloat(document.getElementById('rent_cost').value);
-                var monthsInput = document.getElementById('months');
-                var months = parseInt(monthsInput.value);
+                var months = parseInt(document.getElementById('months').value);
 
                 // Check if months is empty or not a number
                 if (isNaN(months) || months < 1) {
                     months = 1;
-                    monthsInput.value = 1; // Set the input value to 1
                 }
 
-                // Calculate total cost
-                var total = rentCost * months;
+                // Calculate total cost based on the selected service
+                var total = 0;
+                var serviceSelect = document.getElementById('service-select');
+                var selectedService = serviceSelect.value;
+
+                if (selectedService === '0') { // Thuê Nhóm
+                    total = rentCost * months;
+                } else { // Mua Nhóm
+                    total = price;
+                }
 
                 // Format total to Vietnamese currency
                 var formatter = new Intl.NumberFormat('vi-VN', {
@@ -194,11 +283,14 @@
                 document.getElementById('total_cost').innerText = formattedTotal;
                 document.getElementById('invoice_total').innerText = formattedTotal;
                 document.getElementById('total_table').innerText = formattedTotal;
+                document.getElementById('totail_price').value = total;
             }
 
             // Listen for changes in the inputs and call the updateTotal function
+            document.getElementById('price').addEventListener('input', updateTotal);
             document.getElementById('rent_cost').addEventListener('input', updateTotal);
             document.getElementById('months').addEventListener('input', updateTotal);
+            document.getElementById('service-select').addEventListener('change', updateTotal);
 
             // Call the updateTotal function initially to set the default value
             updateTotal();
