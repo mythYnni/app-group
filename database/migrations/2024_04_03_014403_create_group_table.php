@@ -34,7 +34,7 @@ return new class extends Migration
             $table->double('rent_cost')->default(0)->nullable(); //giá thuê
             $table->tinyInteger('status')->default(0); // 0 hoạt động, 1 lưu trữ
             $table->tinyInteger('status_color')->default(0); // 0 đỏ, 1 vành, 2 xanh
-            $table->tinyInteger('type_sale')->default(0); // 0 mặc định, 1 bán chạy, 2 tương tác nhiều
+            $table->tinyInteger('type_sale')->default(); // 0 mặc định, 1 bán chạy, 2 tương tác nhiều
             $table->string('timeCreate'); // ngày tạo
             $table->longText('detail_group')->default()->nullable(); //chi tiết
             $table->string('user_create')->nullable(); // người tạo

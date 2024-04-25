@@ -108,6 +108,23 @@
                         @enderror
                         <div class="form-group row mb-0">
                             <div class="col-12 col-md-6">
+                                <label class="form-label">Định Dạng</label>
+                                <div class="col-sm-12">
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status_type" value="0"
+                                            id="customCheckinlhstate1" {{ $obj->status_type == '0' ? 'checked' : '' }}
+                                            data-gtm-form-interact-field-id="2">
+                                        <label class="form-check-label" for="customCheckinlhstate1"> Banner </label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="status_type" value="1"
+                                            id="customCheckinlhstate2" {{ $obj->status_type == '1' ? 'checked' : '' }}
+                                            data-gtm-form-interact-field-id="1">
+                                        <label class="form-check-label" for="customCheckinlhstate2"> Popup </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-6">
                                 <label class="form-label">Trạng thái</label>
                                 <div class="col-sm-12">
                                     <div class="form-check form-check-inline">

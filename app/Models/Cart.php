@@ -93,10 +93,11 @@ class Cart extends Model
     }
 
     // Phương thức cập nhật trạng thái
-    public function update_cart_status($slug){
+    public function update_cart_status($req, $slug){
         $obj = DB::table('cart')->where('id', $slug)->update([
             'status' => 1,
             'check_buiding'=> 1,
+            'status_type'=> $req->status_type
         ]);
         return $obj;
     }

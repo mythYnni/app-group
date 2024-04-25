@@ -27,6 +27,7 @@ return new class extends Migration
             $table->double('totail_price')->default(0)->nullable(); //tổng tiền
             $table->tinyInteger('status_type')->default(0); // 0 thuê, 1 mua
             $table->string('linkGroup')->nullable(false);
+            $table->string('date')->nullable(); // ngày thuê, ngày mua tháng thue
             $table->string('time')->nullable(); // ngày thuê, ngày mua tháng thue
             $table->string('time_out')->nullable(); // ngày thuê, ngày mua tháng thue
             $table->string('timeCreate'); // ngày thuê, ngày mua

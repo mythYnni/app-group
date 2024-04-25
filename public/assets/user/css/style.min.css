@@ -384,6 +384,36 @@ p {
     }
 }
 
+@media (min-width: 1444px) {
+    .text-danh-gia a {
+        font-size: 13px !important;
+        font-weight: 600;
+    }
+    .text-danh-gia span {
+        font-size: 10px !important;
+    }
+    .image-item-span .p-4 {
+        padding: 1rem !important;
+    }
+    .text-a-blog {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: inline-block;
+        max-width: 100%;
+        font-size: 16px;
+    }
+    .list-inline-item a {
+        font-size: 12px;
+    }
+    .none-mobie-blog span {
+        font-size: 12px;
+    }
+    .ul-mobile-blog a {
+        font-size: 14px;
+    }
+}
+
 @media (min-width: 1500px) {
     .features-absolute {
         margin: 20px 0px 20px 0px;
@@ -393,7 +423,7 @@ p {
         justify-content: space-around;
     }
     .text-danh-gia a {
-        font-size: 16px !important;
+        font-size: 14px !important;
         font-weight: 600;
     }
 }

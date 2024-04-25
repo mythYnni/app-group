@@ -139,8 +139,7 @@
                                                             <a class="dropdown-item"
                                                                 href="{{ route('index_buiding', $value->id) }}"><span
                                                                     style="display: flex; justify-content: flex-start; color: #352ca8;"><i
-                                                                        class="ti ti-pencil me-1"></i> Tạo Hợp Đồng
-                                                                    Thuê</span></a>
+                                                                        class="fas fa-save"></i> Tạo Hợp Đồng</span></a>
                                                         @else
                                                             <a class="dropdown-item"
                                                                 href="{{ route('index_buiding', $value->id) }}"><span

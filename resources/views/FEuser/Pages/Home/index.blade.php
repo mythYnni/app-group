@@ -24,7 +24,7 @@
                 <div class="col-xl-3 none-mobie">
                     {{-- <h4 class="title mb-3">Danh Mục</h4> --}}
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">
+                        <li class="list-group-item image-item-span">
                             <div class="d-flex align-items-center p-4">
                                 <img src="{{ url('assets') }}/images/layout/promotion.png"
                                     class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
@@ -36,7 +36,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item image-item-span">
                             <div class="d-flex align-items-center p-4">
                                 <img src="{{ url('assets') }}/images/layout/group.png"
                                     class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
@@ -47,7 +47,7 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item image-item-span">
                             <div class="d-flex align-items-center p-4">
                                 <img src="{{ url('assets') }}/images/layout/best-employee.png"
                                     class="avatar avatar-small rounded shadow p-3 bg-white" alt="">

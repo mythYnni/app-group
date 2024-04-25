@@ -115,7 +115,7 @@ class GroupController extends Controller
         // Lấy Thông Tin Người Tạo
         $req->merge(['user_create' =>  Auth::guard('admin')->user()->fullName]);
         $req->merge(['user_email_create' =>  Auth::guard('admin')->user()->email]);
-
+        $req->merge(['type_sales' => $req->type_sale]);
         // dd($req->all());
 
         //Thực hiện thêm mới

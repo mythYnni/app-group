@@ -107,7 +107,11 @@ class BannerController extends Controller
         $req->merge(['image' => $imgrPath]);
 
         if ($banner->update_Banner($req, $slug) >= 0) {
-            return redirect()->route('view_list_banner')->with('success', 'Cập Nhật Banner Thành Công!');
+            if($req -> status_type == 0){
+                return redirect()->route('view_list_banner')->with('success', 'Cập Nhật Banner Thành Công!');
+            }else{
+                return redirect()->route('view_list_popup')->with('success', 'Cập Nhật Popup Thành Công!');
+            }
         } else {
             return redirect() -> back() ->with('error', 'Cập Nhật Banner Thất Bại!');
         }

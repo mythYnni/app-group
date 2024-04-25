@@ -40,7 +40,8 @@ class Group extends Model
         'detail_group',
         'user_create',
         'user_email_create',
-        'rentals'
+        'rentals',
+        'type_sale'
     ];
 
      // phương thức lấy hội nhóm theo mã nhóm
@@ -260,7 +261,7 @@ class Group extends Model
             'account_group_blog' => $req -> account_group_blog,
             'province' => $req -> province,
             'district' => $req -> district,
-            'type_sale' => $req -> type_sale,
+            'type_sale' => $req -> type_sales,
             'wards' => $req -> wards,
             'idCategory' => $req -> idCategory,
             'type' => $req -> type,

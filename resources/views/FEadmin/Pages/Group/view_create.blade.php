@@ -212,10 +212,8 @@
                             <label class="form-label" for="exampleSelect1">Phân Loại</label>
                             <select class="form-select" id="exampleSelect1" name="type_sale">
                                 <option value="0" {{ old('type_sale') == 0 ? 'selected' : '' }}>Mặc Định</option>
-                                <option value="1" {{ old('type_sale') == 1 ? 'selected' : '' }}>Nhóm Thuê Nhiều
-                                </option>
-                                <option value="2" {{ old('type_sale') == 2 ? 'selected' : '' }}>Nhóm Tương Tác Tốt
-                                </option>
+                                <option value="1" {{ old('type_sale') == 1 ? 'selected' : '' }}>Nhóm Thuê Nhiều</option>
+                                <option value="2" {{ old('type_sale') == 2 ? 'selected' : '' }}>Nhóm Tương Tác Tốt</option>
                             </select>
                             @error('type_sale')
                                 <small style="color: #f33923;">{{ $message }}</small>

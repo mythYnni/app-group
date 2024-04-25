@@ -68,7 +68,7 @@ class BuidingController extends Controller
             
             if ($create) {
 
-                $cart->update_cart_status($slug);
+                $cart->update_cart_status($req, $slug);
 
                 return redirect() -> route('view_home_admin')->with('success', 'Tạo Hợp Đồng Thành Công!');
             }else{
