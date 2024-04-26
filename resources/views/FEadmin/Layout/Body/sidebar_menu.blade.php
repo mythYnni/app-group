@@ -76,8 +76,8 @@
                             </svg></span>
                     </a>
                     <ul class="pc-submenu" style="display: none;">
-                        <li class="pc-item"><a class="pc-link" href="{{route('view_list_rent_buiding')}}">Nhóm Thuê</a></li>
-                        <li class="pc-item"><a class="pc-link" href="">Nhóm Đã Bán</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('view_list_rent_buiding')}}">Hợp Đồng Thuê</a></li>
+                        <li class="pc-item"><a class="pc-link" href="{{route('view_list_buy_buiding')}}">Hợp Đồng Mua</a></li>
                     </ul>
                 </li>
                 <li class="pc-item pc-caption">

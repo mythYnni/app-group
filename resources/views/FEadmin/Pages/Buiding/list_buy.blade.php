@@ -17,7 +17,7 @@
                             <li class="breadcrumb-item"><a href="index.html">Trang Chủ</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">Kinh Doanh</a></li>
                             <li class="breadcrumb-item"><a href="javascript: void(0)">Hợp Đồng</a></li>
-                            <li class="breadcrumb-item" aria-current="page">Danh Sách Hợp Đồng Thuê</li>
+                            <li class="breadcrumb-item" aria-current="page">Danh Sách Hợp Đồng Mua</li>
                         </ul>
                     </div>
                     <div class="col-md-12">
@@ -46,13 +46,10 @@
                                         <th>Tên Khách Hàng</th>
                                         <th>Email</th>
                                         <th>Phone</th>
-                                        <th>Tên Nhóm Thuê</th>
-                                        <th>Giá Thuê</th>
-                                        <th>Tháng Thuê</th>
+                                        <th>Tên Nhóm Mua</th>
+                                        <th>Giá Mua</th>
                                         <th>Tiền Dịch Vụ</th>
-                                        <th>Ngày Bắt Đầu</th>
-                                        <th>Ngày Kết Thúc</th>
-                                        <th>Ngày Tạo</th>
+                                        <th>Ngày Tạo Hợp Đồng</th>
                                         <th>Ghi Chú</th>
                                         <th>Chức năng</th>
                                     </tr>
@@ -68,13 +65,8 @@
                                             <td>{{ $value->Phone }}</td>
                                             <td><a href="{{ $value->linkGroup }}"
                                                     target="_blank"><span>{{ $value->nameGroup }}</span></a></td>
-                                            <td>{{ number_format($value->rent_cost, 0, ',', '.') }}</td>
-                                            <td>{{ $value->date }} Tháng</td>
+                                            <td>{{ number_format($value->price, 0, ',', '.') }}</td>
                                             <td>{{ number_format($value->totail_price, 0, ',', '.') }}</td>
-                                            <td>{{ Carbon::parse($value->time)->locale('vi')->isoFormat('Do [tháng] M [năm] YYYY') }}
-                                            </td>
-                                            <td>{{ Carbon::parse($value->time_out)->locale('vi')->isoFormat('Do [tháng] M [năm] YYYY') }}
-                                            </td>
                                             <td>{{ Carbon::parse($value->timeCreate)->locale('vi')->isoFormat('Do [tháng] M [năm] YYYY') }}
                                             </td>
                                             <td style="white-space: normal;">
@@ -102,9 +94,6 @@
                                                         <a class="dropdown-item" href=""><span
                                                                 style="display: flex; justify-content: flex-start; color: #2ca87f;"><i
                                                                     class="ti ti-pencil me-1"></i> Cập Nhật</span></a>
-                                                        <a class="dropdown-item" href=""><span
-                                                                style="display: flex; justify-content: flex-start; color: #a8982c;"><i
-                                                                    class="ti ti-settings me-1"></i> Gia Hạn</span></a>
                                                     </div>
                                                 </div>
                                             </td>
@@ -118,13 +107,10 @@
                                         <td>Tên Khách Hàng</td>
                                         <td>Email</td>
                                         <td>Phone</td>
-                                        <td>Tên Nhóm Thuê</td>
-                                        <td>Giá Thuê</td>
-                                        <td>Tháng Thuê</td>
+                                        <td>Tên Nhóm Mua</td>
+                                        <td>Giá Mua</td>
                                         <td>Tiền Dịch Vụ</td>
-                                        <td>Ngày Bắt Đầu</td>
-                                        <td>Ngày Kết Thúc</td>
-                                        <td>Ngày Tạo</td>
+                                        <td>Ngày Tạo Hợp Đồng</td>
                                         <td>Ghi Chú</td>
                                         <td>Chức năng</td>
                                     </tr>

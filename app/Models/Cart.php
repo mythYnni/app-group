@@ -101,4 +101,13 @@ class Cart extends Model
         ]);
         return $obj;
     }
+
+    // Phương thức cập nhật trạng thái xóa hợp đồng
+    public function update_cart_status_check_buiding($slug){
+        $obj = DB::table('cart')->where('id', $slug)->update([
+            'status' => 1,
+            'check_buiding'=> 0,
+        ]);
+        return $obj;
+    }
 }

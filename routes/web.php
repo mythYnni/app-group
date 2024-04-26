@@ -39,6 +39,9 @@ Route::prefix('group-admin')->middleware('admin')->group(function () {
 
     // Router Hợp Đồng
     Route::get('/hop-dong-thue', [BuidingController::class,'view_list_rent_buiding'])->name('view_list_rent_buiding');
+    Route::get('/chi-tiet-hop-dong/{slug}', [BuidingController::class,'view_detail_buiding'])->name('view_detail_buiding');
+    Route::get('/xoa-hop-dong/{slug}', [BuidingController::class,'delete_buiding'])->name('delete_buiding');
+    Route::get('/hop-dong-mua', [BuidingController::class,'view_list_buy_buiding'])->name('view_list_buy_buiding');
     Route::get('/tao-hop-dong-thue/{slug}', [BuidingController::class,'index_buiding'])->name('index_buiding');
     Route::post('/tao-hop-dong-thue-dich-vu/{slug}', [BuidingController::class,'create_buiding'])->name('create_buiding');
 
