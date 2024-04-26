@@ -7,7 +7,7 @@ use App\Http\Controllers\AccountController\User\LoginController;
 use App\Http\Controllers\AdminController\Home\HomeController;
 use App\Http\Controllers\AdminController\Profile\ProfileController;
 use App\Http\Controllers\AdminController\Group\GroupController;
-use App\Http\Controllers\adminController\Cart\CartController as adminCartController;
+use App\Http\Controllers\AdminController\Cart\CartController as adminCartController;
 use App\Http\Controllers\AdminController\Banner\BannerController;
 use App\Http\Controllers\AdminController\Blog\BlogController;
 use App\Http\Controllers\AdminController\Admin\AdminController;
