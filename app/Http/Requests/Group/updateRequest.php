@@ -37,7 +37,6 @@ class updateRequest extends FormRequest
             'status_color' => 'required',
             'status' => 'required',
             'type' => 'required',
-            'file' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
         ];
     }
 
@@ -62,9 +61,6 @@ class updateRequest extends FormRequest
             'status_color.required' => 'Trường Không Được Để Trống!',
             'status.required' => 'Trường Không Được Để Trống!',
             'type.required' => 'Trường Không Được Để Trống!',
-            'file.image' => 'Trường phải là một hình ảnh.',
-            'file.mimes' => 'Chỉ chấp nhận các định dạng hình ảnh là jpeg, png, jpg, gif.',
-            'file.max' => 'Kích thước tệp hình ảnh không được vượt quá 10 megabytes.',
         ];
     }
 }

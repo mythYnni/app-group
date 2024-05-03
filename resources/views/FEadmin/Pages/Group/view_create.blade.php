@@ -223,6 +223,7 @@
                             <label class="form-label" for="exampleSelect1">Ảnh Nhóm</label>
                             <div class="input-group">
                                 <input type="file" class="form-control" id="inputGroupFile01" name="file">
+                                <input type="text" class="form-control" id="imageURL" name="imageURL" value="{{old('imageURL')}}" placeholder="Nhập đường dẫn ảnh từ Google hoặc trang web khác">
                             </div>
                             @error('file')
                                 <small style="color: #f33923;">{{ $message }}</small>
@@ -316,4 +317,11 @@
     @include('FEadmin.Layout.JS.Drop_Account')
     @include('FEadmin.Layout.JS.Get_Account')
     @include('FEadmin.Layout.JS.Price')
+
+    <script>
+        function loadImage() {
+            var imageURL = document.getElementById('imageURL').value;
+            var img = document.createElement('img');
+        }
+    </script>
 @stop

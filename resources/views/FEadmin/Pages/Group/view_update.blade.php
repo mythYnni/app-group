@@ -222,12 +222,13 @@
                             <label class="form-label" for="exampleSelect1">Ảnh Nhóm</label>
                             <div class="input-group">
                                 <input type="file" class="form-control" id="inputGroupFile01" name="file">
+                                <input type="text" class="form-control" id="imageURL" name="imageURL" value="{{$obj->image}}" placeholder="Nhập đường dẫn ảnh từ Google hoặc trang web khác">
                             </div>
                             @error('file')
                                 <small style="color: #f33923;">{{ $message }}</small>
                             @enderror
                             <img src="{{ $obj->image }}" class="img-thumbnail" alt="Cinque Terre"
-                                style="margin-top: 10px;">
+                            style="margin-top: 10px;">
                         </div>
                         <div class="form-group col-12 col-md-6">
                             <div class="form-group col-12 col-md-12">

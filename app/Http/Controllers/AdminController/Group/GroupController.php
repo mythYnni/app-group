@@ -14,6 +14,7 @@ use App\Rules\Group\slugRule;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cart;
 use App\Models\Admin;
+use Illuminate\Support\Facades\Http;
 
 class GroupController extends Controller
 {
@@ -60,14 +61,17 @@ class GroupController extends Controller
         //     return view('FEadmin.Pages.Error.error404');
         // }
         
-
-        //Phương Thức tạo ảnh
-        $imgrPath = $req->file('file') ? cloudinary()->upload($req->file('file')->getRealPath())->getSecurePath(): null;
-        // Gán ảnh vào Request
-        $req->merge(['image' => $imgrPath]);
-
+        // Kiểm tra xem người dùng đã chọn ảnh từ file máy hay nhập đường dẫn ảnh từ URL
+        if ($req->hasFile('file')) {
+            // Nếu người dùng chọn ảnh từ file máy, thực hiện upload ảnh
+            $imagePath = cloudinary()->upload($req->file('file')->getRealPath())->getSecurePath();
+             // Gán ảnh vào Request
+            $req->merge(['image' => $imagePath]);
+        }else{
+             // Gán ảnh vào Request
+            $req->merge(['image' => $req->imageURL]);
+        }
         // Xử lý danh sách quản trị
-         // Khởi tạo mảng rỗng để lưu trữ kết quả
         $accountData = [];
 
         // Xử lý danh sách sale
@@ -187,9 +191,16 @@ class GroupController extends Controller
             return view('FEadmin.Pages.Error.error404', compact('count'));
         } 
         
-        // Xử lý ảnh: Nếu có file ảnh được tải lên, lưu trên Cloudinary, ngược lại sử dụng ảnh hiện tại
-        $imgrPath = $req->file('file') ? cloudinary()->upload($req->file('file')->getRealPath())->getSecurePath(): $obj->image;
-        $req->merge(['image' => $imgrPath]);
+        // Kiểm tra xem người dùng đã chọn ảnh từ file máy hay nhập đường dẫn ảnh từ URL
+        if ($req->hasFile('file')) {
+            // Nếu người dùng chọn ảnh từ file máy, thực hiện upload ảnh
+            $imagePath = cloudinary()->upload($req->file('file')->getRealPath())->getSecurePath();
+             // Gán ảnh vào Request
+            $req->merge(['image' => $imagePath]);
+        }else{
+             // Gán ảnh vào Request
+            $req->merge(['image' => $req->imageURL]);
+        }
 
         // Xử lý danh sách quản trị
         // Khởi tạo mảng rỗng để lưu trữ kết quả

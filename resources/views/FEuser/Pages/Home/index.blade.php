@@ -128,10 +128,12 @@
         <!--end container-->
 
         <div class="container">
-            <div class="alert alert-success" style="padding: 0px; background: #dc3545; border-color: #dc3545;">
-                <img loading="lazy" class="responsite-image-text" style="margin-left: 15px;"
-                    src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo-removebg-preview.png"
-                    alt="grid">
+            <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
+                <a href="{{ route('view_group_interact') }}">
+                    <img loading="lazy" class="responsite-image-text" style="margin-left: 15px;"
+                        src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo-removebg-preview.png"
+                        alt="grid">
+                </a>
             </div>
             <div class="row g-4">
                 @foreach ($list_interact as $key => $value)
@@ -171,11 +173,11 @@
                             <div class="d-flex align-items-center w-350px">
                                 <div>
                                     <div class="truncate-mobile">
-                                        <a href="{{ $value->linkGroup }}" target="_blank"
+                                        <a href="{{ $value->linkGroup }}" target="_blank" style="font-size: 15px !important;"
                                             class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                     </div>
-                                    <span class="d-flex fw-medium mt-md-2">{{ $value->account_group }} Thành
+                                    <span class="d-flex fw-medium mt-md-2" style="font-size: 12px;">{{ $value->account_group }} Thành
                                         Viên</span>
                                 </div>
                             </div>
@@ -218,10 +220,12 @@
         </div><!--end container-->
 
         <div class="container">
-            <div class="alert alert-success" style="padding: 0px; background: #dc3545; border-color: #dc3545;">
-                <img loading="lazy" class="responsite-image-text"
-                    src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo__2_-removebg-preview.png"
-                    style="margin-left: 15px;" alt="grid">
+            <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
+                <a href="{{ route('view_group_rent') }}">
+                    <img loading="lazy" class="responsite-image-text"
+                        src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo__2_-removebg-preview.png"
+                        style="margin-left: 15px;" alt="grid">
+                </a>
             </div>
             <div class="row g-4">
                 @foreach ($list_rent as $key => $value)
@@ -253,11 +257,11 @@
                             <div class="d-flex align-items-center w-350px">
                                 <div>
                                     <div class="truncate-mobile">
-                                        <a href="{{ $value->linkGroup }}" target="_blank"
+                                        <a href="{{ $value->linkGroup }}" target="_blank" style="font-size: 15px !important;"
                                             class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                     </div>
-                                    <span class="d-flex fw-medium mt-md-2">{{ $value->account_group }} Thành Viên</span>
+                                    <span class="d-flex fw-medium mt-md-2" style="font-size: 12px;">{{ $value->account_group }} Thành Viên</span>
                                 </div>
                             </div>
 

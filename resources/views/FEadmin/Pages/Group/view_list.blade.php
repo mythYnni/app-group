@@ -105,7 +105,8 @@
                                         @endphp
                                         <tr style="background-color: {{ $color_backgroup }}">
                                             <td>{{ $value->code }}</td>
-                                            <td><a href="{{$value->linkGroup}}" target="_blank"><span>{{ $value->nameGroup }}</span></a></td>
+                                            <td><a href="{{ $value->linkGroup }}"
+                                                    target="_blank"><span>{{ $value->nameGroup }}</span></a></td>
                                             <td>{{ $value->category }}</td>
                                             <td>{{ number_format($value->rent_cost, 0, ',', '.') }}</td>
                                             <td>{{ number_format($value->price, 0, ',', '.') }}</td>
@@ -122,7 +123,9 @@
                                                         $admin = json_decode($value->name_user_group);
                                                     @endphp
                                                     @foreach ($admin as $obj)
-                                                        <a href="{{ $obj->linkFacebook }}" target="_blank" class="badge bg-light-primary">{{ $obj->name }}</a>
+                                                        <a href="{{ $obj->linkFacebook }}" target="_blank"
+                                                            class="badge bg-light-primary"
+                                                            style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;display: inline-block;max-width: 100%;">{{ $obj->name }}</a>
                                                     @endforeach
                                                 </div>
                                             </td>
@@ -148,13 +151,24 @@
                                             </td>
                                             <td class="action">
                                                 <div class="btn-group-dropdown">
-                                                  <button class="btn btn-outline-secondary dropdown-toggle btn-sm mg-button-left" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Lựa chọn</button>
-                                                  <div class="dropdown-menu">
-                                                    <a class="dropdown-item" href="{{route('delete_group', $value->slugGroup) }}" title="Delete" onclick="return confirm('Bạn Có Chắc Muốn Xóa Nhóm {{ $value->nameGroup }} Không?')">
-                                                      <span style="display: flex; justify-content: flex-start; color: #dc2626;"><i class="ti ti-trash me-1"></i> Xóa</span>
-                                                    </a>
-                                                    <a class="dropdown-item" href="{{route('view_update_group', $value->slugGroup) }}"><span style="display: flex; justify-content: flex-start; color: #2ca87f;"><i class="ti ti-pencil me-1"></i> Cập Nhật</span></a>
-                                                  </div>
+                                                    <button
+                                                        class="btn btn-outline-secondary dropdown-toggle btn-sm mg-button-left"
+                                                        type="button" data-bs-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">Lựa chọn</button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('delete_group', $value->slugGroup) }}"
+                                                            title="Delete"
+                                                            onclick="return confirm('Bạn Có Chắc Muốn Xóa Nhóm {{ $value->nameGroup }} Không?')">
+                                                            <span
+                                                                style="display: flex; justify-content: flex-start; color: #dc2626;"><i
+                                                                    class="ti ti-trash me-1"></i> Xóa</span>
+                                                        </a>
+                                                        <a class="dropdown-item"
+                                                            href="{{ route('view_update_group', $value->slugGroup) }}"><span
+                                                                style="display: flex; justify-content: flex-start; color: #2ca87f;"><i
+                                                                    class="ti ti-pencil me-1"></i> Cập Nhật</span></a>
+                                                    </div>
                                                 </div>
                                             </td>
                                         </tr>

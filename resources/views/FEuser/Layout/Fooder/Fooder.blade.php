@@ -49,8 +49,8 @@
                         </div>
                         <div class="foter__bottom__text">
                             <div class="footer__bottom__icon"
-                                style="width: 78px; height: 78px; color: #dc3545; background: #dc3545; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;">
-                                <img style="width: 52px; height: 50px; color: #dc3545; background: #dc3545; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;"
+                                style="width: 78px; height: 78px; color: #ff0018; background: #ff0018; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;">
+                                <img style="width: 52px; height: 50px; color: #ff0018; background: #ff0018; display: inline-block; text-align: center; line-height: 78px; font-size: 30px;"
                                     src="https://chiasekhoahoc.com.vn/asset/img/herobanner/telephone.png">
                             </div>
                             <div class="footer__bottom__content">

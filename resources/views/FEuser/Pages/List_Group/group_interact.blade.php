@@ -49,7 +49,7 @@
         </div><!--end container-->
 
         <div class="container">
-            <div class="alert alert-success" style="padding: 0px; background: #dc3545; border-color: #dc3545;">
+            <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
                 <img loading="lazy" class="responsite-image-text" style="margin-left: 15px;"
                     src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo-removebg-preview.png"
                     alt="grid">
@@ -107,12 +107,12 @@
                                                         <div class="d-flex align-items-center w-350px">
                                                             <div>
                                                                 <div class="truncate-mobile">
-                                                                    <a href="{{ $value->linkGroup }}" target="_blank"
+                                                                    <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
                                                                         class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                                                 </div>
                                                                 <span
-                                                                    class="d-flex fw-medium mt-md-2">{{ $value->account_group }}
+                                                                    class="d-flex fw-medium mt-md-2" font-size: 12px;>{{ $value->account_group }}
                                                                     Thành Viên</span>
                                                             </div>
                                                         </div>
@@ -209,12 +209,12 @@
                                                         <div class="d-flex align-items-center w-350px">
                                                             <div>
                                                                 <div class="truncate-mobile">
-                                                                    <a href="{{ $value->linkGroup }}" target="_blank"
+                                                                    <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
                                                                         class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                                                 </div>
                                                                 <span
-                                                                    class="d-flex fw-medium mt-md-2">{{ $value->account_group }}
+                                                                    class="d-flex fw-medium mt-md-2"  style="font-size: 12px;">{{ $value->account_group }}
                                                                     Thành Viên</span>
                                                             </div>
                                                         </div>
@@ -311,12 +311,12 @@
                                                         <div class="d-flex align-items-center w-350px">
                                                             <div>
                                                                 <div class="truncate-mobile">
-                                                                    <a href="{{ $value->linkGroup }}" target="_blank"
+                                                                    <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
                                                                         class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                                                 </div>
                                                                 <span
-                                                                    class="d-flex fw-medium mt-md-2">{{ $value->account_group }}
+                                                                    class="d-flex fw-medium mt-md-2"  style="font-size: 12px;">{{ $value->account_group }}
                                                                     Thành Viên</span>
                                                             </div>
                                                         </div>
@@ -419,8 +419,8 @@
                                                         <div class="d-flex align-items-center w-350px">
                                                             <div>
                                                                 <div class="truncate-mobile">
-                                                                    <a href="{{ $value->linkGroup }}" target="_blank"
-                                                                        class="h5 title text-dark">{{ $value->nameGroup }}</a>
+                                                                    <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
+                                                                        class="h5 title text-dark"  style="font-size: 12px;">{{ $value->nameGroup }}</a>
 
                                                                 </div>
                                                                 <span
@@ -521,12 +521,12 @@
                                                         <div class="d-flex align-items-center w-350px">
                                                             <div>
                                                                 <div class="truncate-mobile">
-                                                                    <a href="{{ $value->linkGroup }}" target="_blank"
+                                                                    <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
                                                                         class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                                                 </div>
                                                                 <span
-                                                                    class="d-flex fw-medium mt-md-2">{{ $value->account_group }}
+                                                                    class="d-flex fw-medium mt-md-2"  style="font-size: 12px;">{{ $value->account_group }}
                                                                     Thành Viên</span>
                                                             </div>
                                                         </div>
@@ -615,11 +615,11 @@
                                 <div class="d-flex align-items-center w-350px">
                                     <div>
                                         <div class="truncate-mobile">
-                                            <a href="{{ $value->linkGroup }}" target="_blank"
+                                            <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
                                                 class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                         </div>
-                                        <span class="d-flex fw-medium mt-md-2">{{ $value->account_group }} Thành
+                                        <span class="d-flex fw-medium mt-md-2"  style="font-size: 12px;">{{ $value->account_group }} Thành
                                             Viên</span>
                                     </div>
                                 </div>
@@ -728,11 +728,11 @@
                                 <div class="d-flex align-items-center w-350px">
                                     <div>
                                         <div class="truncate-mobile">
-                                            <a href="{{ $value->linkGroup }}" target="_blank"
+                                            <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
                                                 class="h5 title text-dark">{{ $value->nameGroup }}</a>
 
                                         </div>
-                                        <span class="d-flex fw-medium mt-md-2">{{ $value->account_group }} Thành
+                                        <span class="d-flex fw-medium mt-md-2"  style="font-size: 12px;">{{ $value->account_group }} Thành
                                             Viên</span>
                                     </div>
                                 </div>

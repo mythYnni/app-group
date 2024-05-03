@@ -55,13 +55,14 @@
                         <img src="{{ $obj->image }}" class="avatar shadow bg-white" alt="" style="width: 100%;">
 
                         <div class="mt-4">
-                            <h4 class="title mb-3"><a href="{{ $obj->linkGroup }}" target="_blank" style="color: rgb(253 13 13); font-weight: 700;"
+                            <h4 class="title mb-3"><a href="{{ $obj->linkGroup }}" target="_blank"
+                                    style="color: rgb(253 13 13); font-weight: 700;"
                                     class="hover-h4">{{ $obj->nameGroup }}</a></h4>
 
                             <ul class="list-unstyled mb-3">
                                 <li class="d-inline-flex align-items-center text-muted me-2"
                                     style="color: #000000 !important; font-weight: 600;">Mã Nhóm:
-                                    {{$obj->code}}</li>
+                                    {{ $obj->code }}</li>
                             </ul>
 
                             <ul class="list-unstyled mb-3">
@@ -150,7 +151,9 @@
                         @if (empty($obj->detail_group))
                             <p class="text-muted">Chưa có thông tin miêu tả.</p>
                         @else
-                            <p class="text-muted">{!! $obj->detail_group !!}</p>
+                            <div>
+                                {!! $obj->detail_group !!}
+                            </div>
                         @endif
 
                         {{-- <div class="mt-4">
@@ -206,44 +209,49 @@
                             $address .= $value->wards;
                         }
                     @endphp
-                    <div class="col-12">
+                    <div class="col-xl-12 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div
-                            class="job-post job-post-list rounded shadow p-4 d-md-flex align-items-center justify-content-between position-relative">
-                            <div class="d-flex align-items-center w-400px">
+                            class="job-post job-post-list rounded shadow p-3 d-xl-flex align-items-center justify-content-between position-relative">
+                            <div class="d-flex align-items-center w-350px">
                                 <div>
-                                    <a href="{{ $value->linkGroup }}" target="_blank"
-                                        class="h5 title text-dark">{{ $value->nameGroup }}</a>
-                                    <span class="d-flex fw-medium mt-md-2">{{ $value->account_group }} Thành Viên</span>
+                                    <div class="truncate-mobile">
+                                        <a href="{{ $value->linkGroup }}" target="_blank"  style="font-size: 15px !important;"
+                                            class="h5 title text-dark">{{ $value->nameGroup }}</a>
+
+                                    </div>
+                                    <span class="d-flex fw-medium mt-md-2" font-size: 12px;>{{ $value->account_group }} Thành
+                                        Viên</span>
                                 </div>
                             </div>
 
-                            <div class="d-flex align-items-center justify-content-between d-md-block mt-3 mt-md-0 w-200px">
+                            <div class="d-flex align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-120px">
                                 <span class="badge rounded-pill {{ $typeColor }}">{{ $typeName }}</span>
-                                <span class="text-muted d-flex align-items-center fw-medium mt-md-2"><i
+                                <span class="text-muted d-flex align-items-center fw-medium mt-lg-2"><i
                                         class="fea icon-sm me-1 align-middle fas fa-map-signs"></i>{{ $value->category }}</span>
                             </div>
 
-                            <div class="d-blog align-items-center justify-content-between d-md-block mt-3 mt-md-0 w-250px">
+                            <div class="d-blog align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-280px">
                                 <span class="text-muted d-flex align-items-center fw-medium mt-md-2">
-                                    Giá Thuê: {{ number_format($value->rent_cost, 0, ',', '.') }} vnđ / tháng</span>
+                                    Giá Thuê: {{ number_format($value->rent_cost, 0, ',', '.') }} vnđ /
+                                    tháng</span>
                                 <span class="text-muted d-flex align-items-center fw-medium mt-md-2 mb-10px">
                                     Giá Bán: {{ number_format($value->price, 0, ',', '.') }} vnđ</span>
                             </div>
 
-                            <div class="d-blog align-items-center justify-content-between d-md-block mt-2 mt-md-0 w-350px">
-                                <span class="text-muted d-flex align-items-center"><i data-feather="map-pin"
+                            <div
+                                class="d-blog align-items-center justify-content-between d-xl-block mt-2 mt-md-0 w-350px truncate">
+                                <span class="text-muted d-flex align-items-center mt-md-2"><i data-feather="map-pin"
                                         class="fea icon-sm me-1 align-middle"></i>{{ $value->objCategory->name }}</span>
-                                <span class="d-flex fw-medium mt-md-2 mb-10px"
+                                <span class="d-flex fw-medium mt-md-2 mb-10px mb-md-2"
                                     style="font-size: 11.5px;">{{ $address }}</span>
                             </div>
 
                             <div class="mt-3 mt-md-0">
                                 <a href="{{ route('view_detail_group', $value->slugGroup) }}"
-                                    class="btn btn-sm btn-primary w-full ms-md-1">Đăng Ký</a>
+                                    class="btn btn-sm btn-primary w-full">Đăng Ký</a>
                             </div>
                         </div>
-                    </div>
-                    <!--end col-->
+                    </div><!--end col-->
                 @endforeach
             </div>
             <!--end row-->
