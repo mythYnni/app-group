@@ -21,47 +21,34 @@
     <section class="section" style="min-height: 1000px;">
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-xl-3 none-mobie">
-                    {{-- <h4 class="title mb-3">Danh Mục</h4> --}}
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item image-item-span">
-                            <div class="d-flex align-items-center p-4">
-                                <img src="{{ url('assets') }}/images/layout/promotion.png"
-                                    class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
-
-                                <div class="ms-3 text-danh-gia">
-                                    <a href="employer-profile.html" class="company text-dark">1548K Thành Viên</a>
-                                    <span class="d-flex align-items-center mt-1">
-                                        </svg>Đã Sử Dụng</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item image-item-span">
-                            <div class="d-flex align-items-center p-4">
-                                <img src="{{ url('assets') }}/images/layout/group.png"
-                                    class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
-                                <div class="ms-3 text-danh-gia">
-                                    <a href="employer-profile.html" class="company text-dark">+2000 Hội Nhóm</a>
-                                    <span class="d-flex align-items-center mt-1">
-                                        </svg>Tối Ưu & Hiệu Quả</span>
-                                </div>
-                            </div>
-                        </li>
-                        <li class="list-group-item image-item-span">
-                            <div class="d-flex align-items-center p-4">
-                                <img src="{{ url('assets') }}/images/layout/best-employee.png"
-                                    class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
-
-                                <div class="ms-3 text-danh-gia">
-                                    <a href="employer-profile.html" class="company text-dark">100% Khách Hàng</a>
-                                    <span class="d-flex align-items-center mt-1">
-                                        </svg>Đánh Giá Tốt</span>
-                                </div>
-                            </div>
-                        </li>
-                    </ul>
+                <div class="col-12">
+                    <div class="title-heading text-center">
+                        {{-- <h5 class="heading fw-semibold mb-0 sub-heading">Job Vacancies</h5> --}}
+                    </div>
                 </div><!--end col-->
-                <div class="col-12 col-lg-12 col-xl-9">
+                <div class="col-12">
+                    <div class="features-absolute">
+                        <div class="d-md-flex justify-content-between align-items-center bg-white shadow rounded p-4">
+                            <form class="card-body text-start" method="GET" action="{{ route('view_group_index') }}">
+                                <div class="registration-form text-dark text-start">
+                                    <div class="row g-lg-1" id="menuSearch">
+
+                                    </div><!--end row-->
+                                </div>
+                                <!--end row-->
+                            </form>
+                        </div>
+                        <!--end form-->
+                    </div>
+                </div>
+            </div>
+            <!--end col-->
+        </div>
+        <!--end container-->
+
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 col-lg-12 col-xl-12">
                     <div class="title-heading text-center">
                         <div id="demo" class="carousel slide" data-bs-ride="carousel">
                             <!-- Indicators/dots -->
@@ -96,36 +83,73 @@
                         </div>
                     </div>
                 </div><!--end col-->
-            </div>
-            <!--end col-->
-        </div>
-
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-12">
-                    <div class="title-heading text-center">
-                        {{-- <h5 class="heading fw-semibold mb-0 sub-heading">Job Vacancies</h5> --}}
+                <div class="col-xl-12 none-mobie" style="margin: 20px;">
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item image-item-span" style="width: 100%;">
+                                    <div class="d-flex align-items-center p-4">
+                                        <img src="{{ url('assets') }}/images/layout/promotion.png"
+                                            class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
+                                        <div class="ms-3 text-danh-gia">
+                                            <a href="employer-profile.html" class="company text-dark">1548K Thành Viên</a>
+                                            <span class="d-flex align-items-center mt-1">
+                                                </svg>Đã Sử Dụng</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-3">
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item image-item-span" style="width: 100%;">
+                                    <div class="d-flex align-items-center p-4">
+                                        <img src="{{ url('assets') }}/images/layout/group.png"
+                                            class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
+                                        <div class="ms-3 text-danh-gia">
+                                            <a href="employer-profile.html" class="company text-dark">+2000 Hội Nhóm</a>
+                                            <span class="d-flex align-items-center mt-1">
+                                                </svg>Tối Ưu & Hiệu Quả</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-3">
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item image-item-span" style="width: 100%;">
+                                    <div class="d-flex align-items-center p-4">
+                                        <img src="{{ url('assets') }}/images/layout/best-employee.png"
+                                            class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
+                                        <div class="ms-3 text-danh-gia">
+                                            <a href="employer-profile.html" class="company text-dark">100% Khách Hàng</a>
+                                            <span class="d-flex align-items-center mt-1">
+                                                </svg>Đánh Giá Tốt</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-xl-3">
+                            <ul class="list-group list-group-horizontal">
+                                <li class="list-group-item image-item-span" style="width: 100%;">
+                                    <div class="d-flex align-items-center p-4">
+                                        <img src="{{ url('assets') }}/images/layout/promotion.png"
+                                            class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
+                                        <div class="ms-3 text-danh-gia">
+                                            <a href="employer-profile.html" class="company text-dark">1548K Thành Viên</a>
+                                            <span class="d-flex align-items-center mt-1">
+                                                </svg>Đã Sử Dụng</span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div><!--end col-->
-                <div class="col-12">
-                    <div class="features-absolute">
-                        <div class="d-md-flex justify-content-between align-items-center bg-white shadow rounded p-4">
-                            <form class="card-body text-start" method="GET" action="{{ route('view_group_index') }}">
-                                <div class="registration-form text-dark text-start">
-                                    <div class="row g-lg-1" id="menuSearch">
-
-                                    </div><!--end row-->
-                                </div>
-                                <!--end row-->
-                            </form>
-                        </div>
-                        <!--end form-->
-                    </div>
-                </div>
             </div>
             <!--end col-->
         </div>
-        <!--end container-->
 
         <div class="container">
             <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
@@ -169,7 +193,7 @@
                     @endphp
                     <div class="col-xl-12 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div
-                            class="job-post job-post-list rounded shadow p-3 d-xl-flex align-items-center justify-content-between position-relative">
+                            class="job-post job-post-list rounded shadow d-xl-flex align-items-center justify-content-between position-relative" style="padding: 8px 10px !important;">
                             <div class="d-flex align-items-center w-350px">
                                 <div>
                                     <div class="truncate-mobile">
@@ -253,7 +277,7 @@
                     @endphp
                     <div class="col-xl-12 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div
-                            class="job-post job-post-list rounded shadow p-3 d-xl-flex align-items-center justify-content-between position-relative">
+                            class="job-post job-post-list rounded shadow d-xl-flex align-items-center justify-content-between position-relative" style="padding: 8px 10px !important;">
                             <div class="d-flex align-items-center w-350px">
                                 <div>
                                     <div class="truncate-mobile">

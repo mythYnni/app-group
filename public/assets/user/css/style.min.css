@@ -46,13 +46,16 @@ p {
 }
 
 .section {
-    padding: 100px 0;
+    padding: 75px 0;
     position: relative
 }
 
 @media (max-width: 768px) {
     .section {
         padding: 80px 0
+    }
+    #searchItem {
+        display: none;
     }
 }
 
@@ -380,7 +383,7 @@ p {
         font-weight: 600;
     }
     .text-danh-gia span {
-        font-size: 11px !important;
+        font-size: 14px !important;
     }
 }
 
@@ -390,7 +393,7 @@ p {
         font-weight: 600;
     }
     .text-danh-gia span {
-        font-size: 10px !important;
+        font-size: 14px !important;
     }
     .image-item-span .p-4 {
         padding: 1rem !important;
@@ -423,7 +426,7 @@ p {
         justify-content: space-around;
     }
     .text-danh-gia a {
-        font-size: 14px !important;
+        font-size: 16px !important;
         font-weight: 600;
     }
 }
@@ -2933,7 +2936,7 @@ button:not(:disabled) {
 }
 
 #topnav .buy-button {
-    float: right;
+    float: left;
     line-height: 74px
 }
 

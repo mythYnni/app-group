@@ -211,7 +211,7 @@
                     @endphp
                     <div class="col-xl-12 col-lg-4 col-md-6 col-sm-6 col-12">
                         <div
-                            class="job-post job-post-list rounded shadow p-3 d-xl-flex align-items-center justify-content-between position-relative">
+                            class="job-post job-post-list rounded shadow p-3 d-xl-flex align-items-center justify-content-between position-relative" style="padding: 8px 10px !important;">
                             <div class="d-flex align-items-center w-350px">
                                 <div>
                                     <div class="truncate-mobile">
