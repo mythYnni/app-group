@@ -134,12 +134,12 @@
                             <ul class="list-group list-group-horizontal">
                                 <li class="list-group-item image-item-span" style="width: 100%;">
                                     <div class="d-flex align-items-center p-4">
-                                        <img src="{{ url('assets') }}/images/layout/promotion.png"
+                                        <img src="{{ url('assets') }}/images/layout/24-hours-support.png"
                                             class="avatar avatar-small rounded shadow p-3 bg-white" alt="">
                                         <div class="ms-3 text-danh-gia">
-                                            <a href="employer-profile.html" class="company text-dark">1548K Thành Viên</a>
+                                            <a href="employer-profile.html" class="company text-dark">Hỗ Trợ Online (24/7)</a>
                                             <span class="d-flex align-items-center mt-1">
-                                                </svg>Đã Sử Dụng</span>
+                                                </svg>Zalo: 0888 999 857</span>
                                         </div>
                                     </div>
                                 </li>

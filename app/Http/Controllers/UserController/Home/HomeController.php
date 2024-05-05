@@ -8,6 +8,7 @@ use App\Models\Group;
 use App\Models\Blog;
 use App\Models\Banner;
 use App\Models\Category;
+use App\Helper\HistoryGroup;
 
 class HomeController extends Controller
 {
@@ -53,7 +54,7 @@ class HomeController extends Controller
     }
 
     // Chi Tiết
-    public function view_detail_group(Group $group, $slug, Category $category){
+    public function view_detail_group(Group $group, $slug, Category $category, HistoryGroup $history){
         $obj = $group->get_link_slug($slug);
         // danh sách danh mục
         $list_category = $group->lay_danh_muc();
@@ -62,8 +63,11 @@ class HomeController extends Controller
         $list_vi_tri = $category->get_orderBy_Where_status_ASC();
 
         $listDetail = $group->get_all_detail_3($obj->category, $obj->province, $slug);
+
+        $history->add_historyGroup($obj);
+        $historyList = $history->list_historyGroup();
         
-        return view('FEuser.Pages.Detail.group_detail', compact('obj', 'listDetail','list_category', 'list_vi_tri'));
+        return view('FEuser.Pages.Detail.group_detail', compact('obj', 'listDetail','list_category', 'list_vi_tri', 'historyList'));
     }
 
     // View danh sách nhóm tương tác tốt + phân trang và tìm kiếm

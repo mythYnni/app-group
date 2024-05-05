@@ -248,6 +248,9 @@ p {
     #searchItem {
         display: none;
     }
+    #history {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 800px) and (min-width: 510px) {
@@ -292,6 +295,9 @@ p {
         border-color: #838383 !important;
         width: 375px;
         border-radius: 10px !important;
+    }
+    #history {
+        display: none;
     }
 }
 
@@ -343,6 +349,9 @@ p {
         border-color: #838383 !important;
         width: 375px;
         border-radius: 10px !important;
+    }
+    #history {
+        display: none;
     }
 }
 
