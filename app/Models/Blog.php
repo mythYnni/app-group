@@ -21,9 +21,14 @@ class Blog extends Model
         'image',
         'detail',
         'status',
+        'typeBlog',
         'timeCreate',
     ];
 
+    //Phương thức lấy danh sách bài viết + phân trang 12
+    public function get_orderBy_DESC_where_status_type($type){
+        return $this->orderBy('timeCreate','DESC')->where('status', 0)->where('typeBlog', $type)->paginate(12);
+    } 
 
     //Phương thức lấy danh sách bài viết + phân trang 4
     public function get_orderBy_DESC_where_status_paginate4(){
@@ -49,6 +54,7 @@ class Blog extends Model
             'image' => $req -> image,
             'detail' => $req -> detail,
             'status' => $req -> status,
+            'typeBlog' => $req -> typeBlog,
             'timeCreate' => $currentTime,
         ]);
         return $creates;
@@ -73,6 +79,7 @@ class Blog extends Model
             'slug' => $req -> slug,
             'image' => $req -> image,
             'detail' => $req -> detail,
+            'typeBlog' => $req -> typeBlog,
             'status' => $req -> status,
         ]);
         return $obj;

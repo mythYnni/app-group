@@ -28,8 +28,7 @@ $search = isset($search) ? $search : '';
                 <div class="dropdown">
                     <form role="search" method="GET" action="{{ route('view_group_index') }}" class="searchform">
                         <input type="text" class="form-control rounded border" name="search"
-                            value="{{ $search }}" id="searchItem" placeholder="Tìm Kiếm Nhóm Theo Từ Khóa..."
-                            style="border-color: #838383 !important; width: 460px; border-radius: 10px !important;">
+                            value="{{ $search }}" id="searchItem" placeholder="Tìm Kiếm Nhóm Theo Từ Khóa..." >
                     </form>
                 </div>
             </li>
@@ -50,15 +49,15 @@ $search = isset($search) ? $search : '';
                 <li class="has-submenu parent-menu-item">
                     <a href="javascript:void(0)">Dịch Vụ</a><span class="menu-arrow"></span>
                     <ul class="submenu">
-                        <li><a href="" class="sub-menu-item">Hợp Tác Cá Nhân</a></li>
-                        <li><a href="" class="sub-menu-item">Hợp Tác Doanh Nghiệp</a></li>
-                        <li><a href="" class="sub-menu-item">Khóa Học Online</a></li>
-                        <li><a href="" class="sub-menu-item">Dịch Vụ Xây Nhóm</a></li>
-                        <li><a href="" class="sub-menu-item">Phát Triển Nhóm</a></li>
-                        <li><a href="" class="sub-menu-item">Tăng Thành Viên Nhóm</a></li>
-                        <li><a href="" class="sub-menu-item">Tăng Like/Follow Fanpage</a></li>
-                        <li><a href="" class="sub-menu-item">Dịch Vụ Facebook</a></li>
-                        <li><a href="" class="sub-menu-item">Thiết Kế Website</a></li>
+                        <li><a href="{{ route('list_tu_van_ca_nhan') }}" class="sub-menu-item">Tư Vấn Cá Nhân</a></li>
+                        <li><a href="{{ route('list_tu_van_doanh_nghiep') }}" class="sub-menu-item">Tư Vấn Doanh Nghiệp</a></li>
+                        <li><a href="{{ route('list_khoa_hoc_online') }}" class="sub-menu-item">Khóa Học Online</a></li>
+                        <li><a href="{{ route('list_dich_vu_xay_nhom') }}" class="sub-menu-item">Dịch Vụ Xây Nhóm</a></li>
+                        <li><a href="{{ route('list_phat_trien_nhom') }}" class="sub-menu-item">Phát Triển Nhóm</a></li>
+                        <li><a href="{{ route('list_tang_thanh_vien_nhom') }}" class="sub-menu-item">Tăng Thành Viên Nhóm</a></li>
+                        <li><a href="{{ route('list_Like_Follow') }}" class="sub-menu-item">Tăng Like/Follow Fanpage</a></li>
+                        <li><a href="{{ route('list_dich_vu_facebook') }}" class="sub-menu-item">Dịch Vụ Facebook</a></li>
+                        <li><a href="{{ route('list_thiet_ke_website') }}" class="sub-menu-item">Thiết Kế Website</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu parent-menu-item">

@@ -63,7 +63,7 @@ class Group extends Model
                        ->where('status', 0)
                        ->orderBy('timeCreate', 'DESC');
         
-        $filters = $request->only(['search', 'category', 'province', 'district', 'wards']);
+        $filters = $request->only(['search', 'category', 'province', 'district', 'wards', 'vitri']);
     
         // Kiểm tra xem $filters không rỗng và có các trường dữ liệu
         if (!empty($filters)) {
@@ -74,7 +74,14 @@ class Group extends Model
                     if ($key === 'search') {
                         $query->where('nameGroup', 'like', '%' . $value . '%');
                     } else {
-                        $query->where($key, 'like', '%' . $value . '%');
+                        // Kiểm tra xem nếu trường là 'vitri' thì thực hiện liên kết với bảng Category và áp dụng điều kiện tìm kiếm trên trường name của Category
+                        if ($key === 'vitri') {
+                            $query->whereHas('objCategory', function ($query) use ($value) {
+                                $query->where('name', 'like', '%' . $value . '%');
+                            });
+                        } else {
+                            $query->where($key, 'like', '%' . $value . '%');
+                        }
                     }
                 }
             }
@@ -96,25 +103,29 @@ class Group extends Model
         // Phân trang và trả về kết quả
         $searchResult = $query->paginate(20);
     
-        // Lấy danh sách bản ghi theo 'province' và 'province, district' nếu có
+       // Lấy danh sách bản ghi theo 'province' và 'province, district' nếu có
         $allByProvince = null;
         $allByProvinceAndDistrict = null;
-        
+
         if (isset($filters['province'])) {
             $allByProvince = Group::with('objCategory')
-                ->where('nameGroup', 'like', '%' . $filters['search'] . '%')
-                ->where('category', 'like', '%' . $filters['category'] . '%')
-                ->where('province', $filters['province'])
+                ->join('categories', 'group.idCategory', '=', 'categories.id') // Thực hiện join với bảng Category
+                ->where('group.nameGroup', 'like', '%' . $filters['search'] . '%') // Sử dụng trường 'nameGroup'
+                ->where('categories.name', 'like', '%' . $filters['vitri'] . '%') // Áp dụng điều kiện cho trường name của Category
+                ->where('group.province', $filters['province'])
+                ->where('group.category', 'like', '%' . $filters['category'] . '%') // Thêm điều kiện tìm kiếm cho trường category
                 ->get();
 
             $allByProvinceAndDistrict = Group::with('objCategory')
-                ->where('nameGroup', 'like', '%' . $filters['search'] . '%')
-                ->where('category', 'like', '%' . $filters['category'] . '%')
-                ->where('province', $filters['province'])
-                ->where('district', $filters['district'])
+                ->join('categories', 'group.idCategory', '=', 'categories.id') // Thực hiện join với bảng Category
+                ->where('group.nameGroup', 'like', '%' . $filters['search'] . '%') // Sử dụng trường 'nameGroup'
+                ->where('categories.name', 'like', '%' . $filters['vitri'] . '%') // Áp dụng điều kiện cho trường name của Category
+                ->where('group.province', $filters['province'])
+                ->where('group.district', $filters['district'])
+                ->where('group.category', 'like', '%' . $filters['category'] . '%') // Thêm điều kiện tìm kiếm cho trường category
                 ->get();
         }
-    
+
         return [
             'searchResult' => $searchResult,
             'allByProvince' => $allByProvince,
@@ -129,7 +140,7 @@ class Group extends Model
                        ->where('status', 0)
                        ->orderBy('timeCreate', 'DESC');
         
-        $filters = $request->only(['search', 'category', 'province', 'district', 'wards']);
+        $filters = $request->only(['search', 'category', 'province', 'district', 'wards', 'vitri']);
     
         // Kiểm tra xem $filters không rỗng và có các trường dữ liệu
         if (!empty($filters)) {
@@ -140,7 +151,14 @@ class Group extends Model
                     if ($key === 'search') {
                         $query->where('nameGroup', 'like', '%' . $value . '%');
                     } else {
-                        $query->where($key, 'like', '%' . $value . '%');
+                        // Kiểm tra xem nếu trường là 'vitri' thì thực hiện liên kết với bảng Category và áp dụng điều kiện tìm kiếm trên trường name của Category
+                        if ($key === 'vitri') {
+                            $query->whereHas('objCategory', function ($query) use ($value) {
+                                $query->where('name', 'like', '%' . $value . '%');
+                            });
+                        } else {
+                            $query->where($key, 'like', '%' . $value . '%');
+                        }
                     }
                 }
             }
@@ -168,18 +186,22 @@ class Group extends Model
         
         if (isset($filters['province'])) {
             $allByProvince = Group::with('objCategory')
-                ->where('nameGroup', 'like', '%' . $filters['search'] . '%')
-                ->where('category', 'like', '%' . $filters['category'] . '%')
-                ->where('type_sale', $type)
-                ->where('province', $filters['province'])
+                ->join('categories', 'group.idCategory', '=', 'categories.id') // Thực hiện join với bảng Category
+                ->where('group.nameGroup', 'like', '%' . $filters['search'] . '%') // Sử dụng trường 'nameGroup'
+                ->where('categories.name', 'like', '%' . $filters['vitri'] . '%') // Áp dụng điều kiện cho trường name của Category
+                ->where('group.province', $filters['province'])
+                ->where('group.type_sale', $type)
+                ->where('group.category', 'like', '%' . $filters['category'] . '%') // Thêm điều kiện tìm kiếm cho trường category
                 ->get();
 
             $allByProvinceAndDistrict = Group::with('objCategory')
-                ->where('nameGroup', 'like', '%' . $filters['search'] . '%')
-                ->where('category', 'like', '%' . $filters['category'] . '%')
-                ->where('province', $filters['province'])
-                ->where('type_sale', $type)
-                ->where('district', $filters['district'])
+                ->join('categories', 'group.idCategory', '=', 'categories.id') // Thực hiện join với bảng Category
+                ->where('group.nameGroup', 'like', '%' . $filters['search'] . '%') // Sử dụng trường 'nameGroup'
+                ->where('categories.name', 'like', '%' . $filters['vitri'] . '%') // Áp dụng điều kiện cho trường name của Category
+                ->where('group.province', $filters['province'])
+                ->where('group.district', $filters['district'])
+                ->where('group.type_sale', $type)
+                ->where('group.category', 'like', '%' . $filters['category'] . '%') // Thêm điều kiện tìm kiếm cho trường category
                 ->get();
         }
     

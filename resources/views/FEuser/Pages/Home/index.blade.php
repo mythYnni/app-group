@@ -153,6 +153,88 @@
 
         <div class="container">
             <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
+                <a href="{{ route('view_group_rent') }}">
+                    <img loading="lazy" class="responsite-image-text"
+                        src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo__2_-removebg-preview.png"
+                        style="margin-left: 15px;" alt="grid">
+                </a>
+            </div>
+            <div class="row g-4">
+                @foreach ($list_rent as $key => $value)
+                    @php
+                        $type = $typeHTML[$value->type] ?? [
+                            'name' => 'Không Xác Định',
+                            'color' => '#000000',
+                        ];
+                        $typeName = $type['name'];
+                        $typeColor = $type['color'];
+                        $address = '';
+
+                        // Kiểm tra và thêm thông tin thành phố
+                        if (isset($value->province)) {
+                            $address .= $value->province;
+                        }
+
+                        // Kiểm tra và thêm thông tin phường xã
+                        if (isset($value->wards)) {
+                            if ($address !== '') {
+                                $address .= ' - ';
+                            }
+                            $address .= $value->wards;
+                        }
+                    @endphp
+                    <div class="col-xl-12 col-lg-4 col-md-6 col-sm-6 col-12">
+                        <div
+                            class="job-post job-post-list rounded shadow d-xl-flex align-items-center justify-content-between position-relative" style="padding: 8px 10px !important;">
+                            <div class="d-flex align-items-center w-350px">
+                                <div>
+                                    <div class="truncate-mobile">
+                                        <a href="{{ $value->linkGroup }}" target="_blank" style="font-size: 15px !important;"
+                                            class="h5 title text-dark">{{ $value->nameGroup }}</a>
+
+                                    </div>
+                                    <span class="d-flex fw-medium mt-md-2" style="font-size: 12px;">{{ $value->account_group }} Thành Viên</span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-120px">
+                                <span class="badge rounded-pill {{ $typeColor }}">{{ $typeName }}</span>
+                                <span class="text-muted d-flex align-items-center fw-medium mt-lg-2"><i
+                                        class="fea icon-sm me-1 align-middle fas fa-map-signs"></i>{{ $value->category }}</span>
+                            </div>
+
+                            <div class="d-blog align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-280px">
+                                <span class="text-muted d-flex align-items-center fw-medium mt-md-2">
+                                    Giá Thuê: {{ number_format($value->rent_cost, 0, ',', '.') }} vnđ / tháng</span>
+                                <span class="text-muted d-flex align-items-center fw-medium mt-md-2 mb-10px">
+                                    Giá Bán: {{ number_format($value->price, 0, ',', '.') }} vnđ</span>
+                            </div>
+
+                            <div
+                                class="d-blog align-items-center justify-content-between d-xl-block mt-2 mt-md-0 w-350px truncate">
+                                <span class="text-muted d-flex align-items-center mt-md-2"><i data-feather="map-pin"
+                                        class="fea icon-sm me-1 align-middle"></i>{{ $value->objCategory->name }}</span>
+                                <span class="d-flex fw-medium mt-md-2 mb-10px mb-md-2"
+                                    style="font-size: 11.5px;">{{ $address }}</span>
+                            </div>
+
+                            <div class="mt-3 mt-md-0">
+                                <a href="{{ route('view_detail_group', $value->slugGroup) }}"
+                                    class="btn btn-sm btn-primary w-full">Đăng Ký</a>
+                            </div>
+                        </div>
+                    </div><!--end col-->
+                @endforeach
+            </div><!--end row-->
+            <div class="row">
+                <div class="col-12 mt-4 pt-2" style="text-align: center; margin: 0px 0px 50px 0px;">
+                    <a href="{{ route('view_group_rent') }}" class="btn btn-sm btn-primary w-full">Xem Thêm</a>
+                </div><!--end col-->
+            </div><!--end row-->
+        </div><!--end container-->
+
+        <div class="container">
+            <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
                 <a href="{{ route('view_group_interact') }}">
                     <img loading="lazy" class="responsite-image-text" style="margin-left: 15px;"
                         src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo-removebg-preview.png"
@@ -236,91 +318,9 @@
                     </div><!--end col-->
                 @endforeach
             </div><!--end row-->
-            <div class="row" style="margin: 0px 0px 50px 0px;">
-                <div class="col-12 mt-4 pt-2" style="text-align: center;">
-                    <a href="{{ route('view_group_interact') }}" class="btn btn-sm btn-primary w-full">Xem Thêm</a>
-                </div><!--end col-->
-            </div><!--end row-->
-        </div><!--end container-->
-
-        <div class="container">
-            <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
-                <a href="{{ route('view_group_rent') }}">
-                    <img loading="lazy" class="responsite-image-text"
-                        src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo__2_-removebg-preview.png"
-                        style="margin-left: 15px;" alt="grid">
-                </a>
-            </div>
-            <div class="row g-4">
-                @foreach ($list_rent as $key => $value)
-                    @php
-                        $type = $typeHTML[$value->type] ?? [
-                            'name' => 'Không Xác Định',
-                            'color' => '#000000',
-                        ];
-                        $typeName = $type['name'];
-                        $typeColor = $type['color'];
-                        $address = '';
-
-                        // Kiểm tra và thêm thông tin thành phố
-                        if (isset($value->province)) {
-                            $address .= $value->province;
-                        }
-
-                        // Kiểm tra và thêm thông tin phường xã
-                        if (isset($value->wards)) {
-                            if ($address !== '') {
-                                $address .= ' - ';
-                            }
-                            $address .= $value->wards;
-                        }
-                    @endphp
-                    <div class="col-xl-12 col-lg-4 col-md-6 col-sm-6 col-12">
-                        <div
-                            class="job-post job-post-list rounded shadow d-xl-flex align-items-center justify-content-between position-relative" style="padding: 8px 10px !important;">
-                            <div class="d-flex align-items-center w-350px">
-                                <div>
-                                    <div class="truncate-mobile">
-                                        <a href="{{ $value->linkGroup }}" target="_blank" style="font-size: 15px !important;"
-                                            class="h5 title text-dark">{{ $value->nameGroup }}</a>
-
-                                    </div>
-                                    <span class="d-flex fw-medium mt-md-2" style="font-size: 12px;">{{ $value->account_group }} Thành Viên</span>
-                                </div>
-                            </div>
-
-                            <div class="d-flex align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-120px">
-                                <span class="badge rounded-pill {{ $typeColor }}">{{ $typeName }}</span>
-                                <span class="text-muted d-flex align-items-center fw-medium mt-lg-2"><i
-                                        class="fea icon-sm me-1 align-middle fas fa-map-signs"></i>{{ $value->category }}</span>
-                            </div>
-
-                            <div class="d-blog align-items-center justify-content-between d-xl-block mt-3 mt-md-0 w-280px">
-                                <span class="text-muted d-flex align-items-center fw-medium mt-md-2">
-                                    Giá Thuê: {{ number_format($value->rent_cost, 0, ',', '.') }} vnđ / tháng</span>
-                                <span class="text-muted d-flex align-items-center fw-medium mt-md-2 mb-10px">
-                                    Giá Bán: {{ number_format($value->price, 0, ',', '.') }} vnđ</span>
-                            </div>
-
-                            <div
-                                class="d-blog align-items-center justify-content-between d-xl-block mt-2 mt-md-0 w-350px truncate">
-                                <span class="text-muted d-flex align-items-center mt-md-2"><i data-feather="map-pin"
-                                        class="fea icon-sm me-1 align-middle"></i>{{ $value->objCategory->name }}</span>
-                                <span class="d-flex fw-medium mt-md-2 mb-10px mb-md-2"
-                                    style="font-size: 11.5px;">{{ $address }}</span>
-                            </div>
-
-                            <div class="mt-3 mt-md-0">
-                                <a href="{{ route('view_detail_group', $value->slugGroup) }}"
-                                    class="btn btn-sm btn-primary w-full">Đăng Ký</a>
-                            </div>
-                        </div>
-                    </div><!--end col-->
-                @endforeach
-            </div><!--end row-->
             <div class="row">
                 <div class="col-12 mt-4 pt-2" style="text-align: center;">
-                    <a href="{{ route('view_group_rent') }}" class="btn btn-sm btn-primary w-full">Xem Thêm</a>
+                    <a href="{{ route('view_group_interact') }}" class="btn btn-sm btn-primary w-full">Xem Thêm</a>
                 </div><!--end col-->
             </div><!--end row-->
         </div><!--end container-->

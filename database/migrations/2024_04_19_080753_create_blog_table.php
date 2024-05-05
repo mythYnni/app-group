@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('slug')->nullable(false);
             $table->string('image')->nullable(false);
             $table->string('name')->nullable(false);
+            $table->tinyInteger('typeBlog')->default(0);
             $table->tinyInteger('status')->default(0);
             $table->longText('detail')->default()->nullable(); //chi tiết
             $table->string('timeCreate');

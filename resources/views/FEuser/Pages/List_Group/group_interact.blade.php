@@ -22,7 +22,8 @@
         $wards = isset($filters['wards']) ? $filters['wards'] : "";
         $category = isset($filters['category']) ? $filters['category'] : "";
         $search = isset($filters['search']) ? $filters['search'] : "";
-
+        $vitri = isset($filters['vitri']) ? $filters['vitri'] : "";
+        
     @endphp
     <section class="section" style="min-height: 1000px;">
         <div class="container">

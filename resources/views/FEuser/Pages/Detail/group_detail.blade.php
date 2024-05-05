@@ -143,6 +143,36 @@
                                     </div>
                                 </div>
                             </li>
+
+                            <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+                                <div class="d-flex widget align-items-center">
+                                    <i data-feather="book" class="fea icon-ex-md me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="widget-title mb-0">Mã Nhóm</h6>
+                                        <small class="text-primary mb-0">+{{ $obj->code }} bài / tuần</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+                                <div class="d-flex widget align-items-center">
+                                    <i data-feather="book" class="fea icon-ex-md me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="widget-title mb-0">Giá Thuê</h6>
+                                        <small class="text-primary mb-0">+{{ $obj->account_group_blog }} bài / tuần</small>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li class="list-inline-item px-3 py-2 shadow rounded text-start m-1 bg-white">
+                                <div class="d-flex widget align-items-center">
+                                    <i data-feather="book" class="fea icon-ex-md me-3"></i>
+                                    <div class="flex-1">
+                                        <h6 class="widget-title mb-0">Giá Bán</h6>
+                                        <small class="text-primary mb-0">+{{ $obj->account_group_blog }} bài / tuần</small>
+                                    </div>
+                                </div>
+                            </li>
                         </ul>
                     </div>
 

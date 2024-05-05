@@ -11,6 +11,7 @@
     };
 
     var selectedCategory = "<?php echo $category; ?>";
+    var selectedVitri = "<?php echo $vitri; ?>";
     var search = "<?php echo $search; ?>";
 
     function displayMenu() {
@@ -61,6 +62,20 @@
                                                 </select>
                                             </div>
                                         </div>
+                                        <div class="col-xl-2 col-lg-6 col-md-6 col-12 mt-1">
+                                            <div class="form-group">
+                                                <select class="form-select" fdprocessedid="o6qc3" name="vitri">
+                                                    <option value="">Vị Trí</option>
+                                                    @foreach ($list_vi_tri as $value)
+                                                        @if ($value->name == $vitri)
+                                                            <option value="{{ $value->name }}" selected>{{ $value->name }}</option>
+                                                        @else
+                                                            <option value="{{ $value->name }}">{{ $value->name }}</option>
+                                                        @endif
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
                                         <div class="col-xl-2 col-lg-4 col-md-4 col-12 mt-1">
                                             <div class="form-group">
                                                 <select class="form-select" id="city"
@@ -94,7 +109,7 @@
                          </div>
                     </div>
                 </div>
-                <div class="col-xl-1 col-lg-1 col-md-1 col-12">
+                <div class="col-xl-1 col-lg-1 col-md-1 col-12" style="display: flex;align-items: center;">
                     <div class="form-group" style="text-align: end;">
                         <button type="submit" class="btn btn-primary d-inline-flex"
                             style="padding: 7px 22px;"><i
@@ -105,15 +120,8 @@
         } else {
             // Nếu không phải là màn hình mobile, chèn khối mã HTML khác vào menuSearch
             menuSearchDiv.innerHTML = `
-                <div class="col-xl-3 col-lg-6 col-md-6 col-12 mb-md-1">
-                    <div class="input-group search-form">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="Tìm kiếm....." name="search"
-                            style="border-bottom-right-radius: 7px; border-top-right-radius: 7px; border: 1px solid #e7e7e7; padding: 0.3rem 2.25rem .375rem .75rem;"
-                            value="<?php echo $search; ?>">
-                    </div>
-                </div>
-                <div class="col-xl-2 col-lg-6 col-md-6 col-12">
+                <input type="hidden"  name="search" value="<?php echo $search; ?>">
+                <div class="col-xl-3 col-lg-6 col-md-6 col-12">
                     <div class="form-group">
                         <select class="form-select" fdprocessedid="o6qc3" name="category">
                             <option value="">Danh Mục</option>
@@ -122,6 +130,20 @@
                                     <option value="{{ $value }}" selected>{{ $value }}</option>
                                 @else
                                     <option value="{{ $value }}">{{ $value }}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-6 col-md-6 col-12">
+                    <div class="form-group">
+                        <select class="form-select" fdprocessedid="o6qc3" name="vitri">
+                            <option value="">Vị Trí</option>
+                            @foreach ($list_vi_tri as $value)
+                                @if ($value->name == $vitri)
+                                    <option value="{{ $value->name }}" selected>{{ $value->name }}</option>
+                                @else
+                                    <option value="{{ $value->name }}">{{ $value->name }}</option>
                                 @endif
                             @endforeach
                         </select>
@@ -151,7 +173,7 @@
                         </select>
                     </div>
                 </div>
-                <div class="col-xl-1 col-lg-1 col-md-1 col-12">
+                <div class="col-xl-1 col-lg-1 col-md-1 col-12" style="display: flex;align-items: center;">
                     <div class="form-group" style="text-align: end;">
                         <button type="submit" class="btn btn-primary d-inline-flex"
                             style="padding: 7px 22px;"><i
@@ -161,6 +183,7 @@
             `;
         }
     }
+    
     // Function to fetch data and render city options
     function fetchDataAndRenderCityOptions() {
 

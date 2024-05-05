@@ -22,6 +22,12 @@ class Category extends Model
         'timeCreate',
     ];
 
+    //Phương thức lấy danh sách có status bằng 0 
+    public function get_orderBy_Where_status_ASC(){
+        return $this->orderBy('timeCreate','DESC')->where('status', 0)->get();
+    } 
+
+
     //Phương thức lấy danh sách
     public function get_orderBy_ASC(){
         return $this->orderBy('timeCreate','DESC')->get();

@@ -124,6 +124,25 @@ Route::prefix('/')->group(function () {
 
     // Route Bài Viết
     Route::get('/danh-sach-bai-viet',[UserBlogController::class,'view_list_blog'])->name('view_list_blog_user');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/tu-van-ca-nhan',[UserBlogController::class,'list_tu_van_ca_nhan'])->name('list_tu_van_ca_nhan');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/tu-van-doanh-nghiep',[UserBlogController::class,'list_tu_van_doanh_nghiep'])->name('list_tu_van_doanh_nghiep');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/khoa-hoc-online',[UserBlogController::class,'list_khoa_hoc_online'])->name('list_khoa_hoc_online');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/dic-vu-xay-nhom',[UserBlogController::class,'list_dich_vu_xay_nhom'])->name('list_dich_vu_xay_nhom');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/phat-trien-nhom',[UserBlogController::class,'list_phat_trien_nhom'])->name('list_phat_trien_nhom');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/tang-thanh-vien-nhom',[UserBlogController::class,'list_tang_thanh_vien_nhom'])->name('list_tang_thanh_vien_nhom');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/tang-like-follow-fanpage',[UserBlogController::class,'list_Like_Follow'])->name('list_Like_Follow');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/dich-vu-facebook',[UserBlogController::class,'list_dich_vu_facebook'])->name('list_dich_vu_facebook');
+    // Route Bài Viết
+    Route::get('/danh-sach-bai-viet/thiet-ke-website',[UserBlogController::class,'list_thiet_ke_website'])->name('list_thiet_ke_website');
+    // Chi Tiết
     Route::get('/chi-tiet-bai-viet/{slug}',[UserBlogController::class,'view_list_detail_blog'])->name('view_list_detail_blog_user');
     // Kết Thúc Route Bài Viết
 });
