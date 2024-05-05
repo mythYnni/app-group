@@ -54,7 +54,7 @@ $address .= $obj->wards;
                 <div class="card bg-white p-4 rounded shadow sticky-bar">
                     <!-- RECENT POST -->
                     <div class="mt-4 pt-2">
-                        <h6 class="pt-2 pb-2 bg-light rounded text-center">Nhóm Đã Xem</h6>
+                        <h6 class="pt-2 pb-2 bg-light rounded text-center" style="background-color: #ff0018 !important; color: white;">Nhóm Đã Xem</h6>
                         <div class="mt-4">
                             @foreach ($historyList as $key => $valueHistory)
                             @if ($valueHistory['slugGroup'] != $obj->slugGroup)
