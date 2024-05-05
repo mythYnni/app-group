@@ -51,9 +51,11 @@
 
         <div class="container">
             <div class="alert alert-success" style="padding: 0px; background: #ff0018; border-color: #ff0018;">
-                <img loading="lazy" class="responsite-image-text" style="margin-left: 15px;"
-                    src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo-removebg-preview.png"
-                    alt="grid">
+                <a href="{{ route('view_group_interact') }}">
+                    <img loading="lazy" class="responsite-image-text" style="margin-left: 15px;"
+                        src="{{ url('assets') }}/images/Minimalist_Blue_Green_Real_Estate_Company_Group_Logo-removebg-preview.png"
+                        alt="grid">
+                </a>
             </div>
             @if (isset($filters['province']) && isset($filters['district']) && isset($filters['wards']))
                 <div class="col-lg-12 col-md-12">

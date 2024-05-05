@@ -58,7 +58,7 @@ class Group extends Model
 
 
     //Phương thức lấy 20 danh sách nhóm thuê nhiều + tìm kiếm + phân trang
-    public function get_all_group_20_type($request){
+    public function get_all_group_20($request){
         $query = Group::with('objCategory')
                        ->where('status', 0)
                        ->orderBy('timeCreate', 'DESC');

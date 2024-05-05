@@ -38,7 +38,7 @@ class HomeController extends Controller
         $filters = $req->only(['search' ,'category', 'province', 'district', 'wards', 'vitri']);
     
         // Lấy Dữ liệu
-        $searchResultAndRelated = $group->get_all_group_20_type($req, 2);
+        $searchResultAndRelated = $group->get_all_group_20($req);
         $searchResult = $searchResultAndRelated['searchResult'];
         $allByProvince = $searchResultAndRelated['allByProvince'];
         $allByProvinceAndDistrict = $searchResultAndRelated['allByProvinceAndDistrict'];
